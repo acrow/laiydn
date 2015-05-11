@@ -1,0 +1,38 @@
+<br>
+<div class="btn-group btn-group-justified" role="group" aria-label="...">
+	<a href="#/myAct" class="btn btn-default"><h4><span class="glyphicon glyphicon-fire" aria-hidden="true"></span> 我的活动</h4></a>
+	<a href="#/search" class="btn btn-primary"><h4><span class="glyphicon glyphicon-search" aria-hidden="true"></span> 查找活动</h4></a>
+	<a href="#/edit" class="btn btn-default"><h4><span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> 发起活动</h4></a>
+</div>
+<hr/>
+<div class="form-horizontal">
+	<div class="form-group">
+		<label class="col-xs-2 control-label">活动类型</label>
+		<div class="col-xs-10">
+			<select class="form-control col-sm-10" data-ng-model="activity.type">
+				<option data-ng-repeat="value in types">{{value}}</option>
+			</select>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-xs-2 control-label">活动日期</label>
+		<div class="col-xs-10">
+			<input type="date" class="form-control" data-ng-model="activity.date">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-xs-2 control-label">活动地点</label>
+		<div class="col-xs-10">
+			<input type="text" class="form-control" data-ng-model="activity.address">
+		</div>
+	</div>
+</div>
+<button class="btn btn-primary btn-block" data-ng-click="onSearch()"><span class="glyphicon glyphicon-search"></span> 查找</button>
+<table class="table">
+	<tr data-ng-repeat="act in activities">
+		<td>{{act.type}}</td>
+		<td>{{act.date}}</td>
+		<td><a href="#/view/{{act.id}}">查看</a></td>
+	</tr>
+</table>
