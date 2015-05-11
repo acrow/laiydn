@@ -12,6 +12,7 @@ function Activity(activity) {
 	this.amount = activity.amount;
 	this.auditMethod = activity.auditMethod;
 	this.status = activity.status;
+	this.members = activity.members;
 }
 
 module.exports = Activity;
@@ -29,7 +30,8 @@ Activity.prototype.Save = function Save(callback) {
 		minUsers: this.minUsers,
 		amount: this.amount,
 		auditMethod: this.auditMethod,
-		status: this.status
+		status: this.status,
+		members: this.members
 	};
 	db.open(function(err, db) {
 		if (err) {
