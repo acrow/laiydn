@@ -9,13 +9,13 @@ function Member() {
 
 module.exports = Member;
 
-Member.Prototype.Save = function save() {
+Member.prototype.Save = function Save(callback) {
 	var mem = {
-		userName = this.userName,
-		password = this.password,
-		displayName = this.displayName,
-		icon = this.icon,
-		openId = this.openId
+		userName : this.userName,
+		password : this.password,
+		displayName : this.displayName,
+		icon : this.icon,
+		openId : this.openId
 	};
 	db.open(function(err, db) {
 		if (err) {
@@ -33,7 +33,7 @@ Member.Prototype.Save = function save() {
 		});
 		
 	});
-}
+};
 
 Member.login = function login(usrName, pwd, callback) {
 	db.open(function(err, db) {
@@ -61,7 +61,7 @@ Member.login = function login(usrName, pwd, callback) {
 			}
 		});
 	});
-}
+};
 
 Member.getUserById = function getUserById(id, callback) {
 	db.open(function(err, db) {
@@ -86,7 +86,7 @@ Member.getUserById = function getUserById(id, callback) {
 			}
 		});
 	});
-}
+};
 
 Member.getUserByOpenId = function getUserByOpenId(oId, callback) {
 	db.open(function(err, db) {
@@ -111,4 +111,4 @@ Member.getUserByOpenId = function getUserByOpenId(oId, callback) {
 			}
 		});
 	});
-}
+};
