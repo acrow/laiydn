@@ -1,11 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var weixin = require('../module/wxMsg');
+var wxMsg = require('../module/wxMsg');
 var xmlParser = require('xml2js').parseString;
 var crypto = require('crypto');
 
 router.all('/', function(req, res, next) {
-    console.log('router.weixin');
     // 验证消息来源
     if (req.param('signature') == null || req.param('timestamp') == null || req.param('nonce') == null) {
         res.send("sorry!");
@@ -17,11 +16,9 @@ router.all('/', function(req, res, next) {
     paras[2] = req.param('nonce');
     paras.sort();
     var sig = paras[0] + paras[1] + paras[2];
-    console.log(sig);
     var sha1 = crypto.createHash('sha1');
     sha1.update(sig);
     var hsig = sha1.digest('hex');
-    console.log(hsig);
     if (hsig != req.param('signature')) {
         res.send("sorry!");
         return;
@@ -44,7 +41,7 @@ router.all('/', function(req, res, next) {
     req.addListener("end", function () {
         xmlParser(postData, { explicitArray : false, ignoreAttrs : true }, function(err, result) {
 			console.log("weixin msg : " + result.xml);
-			sendCustomMsg(result.xml);
+			wxMsg.sendCustomMsg(result.xml);
 		});
     });
 	
