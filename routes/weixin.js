@@ -12,7 +12,7 @@ router.all('/', function(req, res, next) {
         return;
     }
     var paras = new Array();
-    paras[0] = req.param('apbbh40dd'); //token 与公众号设置需要保持一致
+    paras[0] = 'albbh40dd'; //token 与公众号设置需要保持一致
     paras[1] = req.param('timestamp');
     paras[2] = req.param('nonce');
     paras.sort();
