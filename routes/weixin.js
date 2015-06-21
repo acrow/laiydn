@@ -17,9 +17,11 @@ router.all('/', function(req, res, next) {
     paras[2] = req.param('nonce');
     paras.sort();
     var sig = paras[0] + paras[1] + paras[2];
+    console.log(sig);
     var sha1 = crypto.createHash('sha1');
     sha1.update(sig);
     var hsig = sha1.digest('hex');
+    console.log(hsig);
     if (hsig != req.param('signature')) {
         res.send("sorry!");
         return;
