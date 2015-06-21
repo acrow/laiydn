@@ -13,7 +13,7 @@ WxMsg.handle = function(msg) {
 		sendText(msg.FromUserName, '收到：' + msg.Content)
 		return;
 	}
-	if (msg.MsgType == 'events') {
+	if (msg.MsgType == 'event') {
 		if (msg.Event == 'LOCATION') {
 			sendText(msg.FromUserName, '地理位置！');
 			return;
