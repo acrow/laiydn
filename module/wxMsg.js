@@ -10,9 +10,19 @@ module.exports = WxMsg;
 
 WxMsg.handle = function(msg) {
 	if (msg.MsgType == 'text') {
-		sendCustomMsg(msg);
+		sendText(msg.FromUserName, '收到：' + msg.Content)
 		return;
 	}
+	if (msg.MsgType == 'events') {
+		if (msg.Event == 'LOCATION') {
+			sendText(msg.FromUserName, '地理位置！');
+			return;
+		}
+		if (msg.Event == 'CLICK') {
+			sendText(msg.FromUserName, '菜单事件：' + msg.EventKey);
+		}
+	}
+
 };
 
 
@@ -46,17 +56,20 @@ WxMsg.refreshAccessToken = function() {
 	});
 };
 
-var sendCustomMsg = function(msg) {
+var sendText = function(toUsr, content) {
 	var data = JSON.stringify(
 	{
 		touser	: msg.FromUserName,
 		msgtype	: "text",
 		text	: 
 		{
-			content	: "收到!" + msg.Content
+			content	: content
 		}
 	});
+	sendMsg(data);
+}
 
+var sendMsg = function(data) {
 	var options = url.parse("https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=" + _accessToken);
 	options.method = "POST";
 	options.port = 443;
