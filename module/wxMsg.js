@@ -59,7 +59,7 @@ WxMsg.refreshAccessToken = function() {
 var sendText = function(toUsr, content) {
 	var data = JSON.stringify(
 	{
-		touser	: msg.FromUserName,
+		touser	: toUsr,
 		msgtype	: "text",
 		text	: 
 		{
