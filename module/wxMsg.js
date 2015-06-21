@@ -9,7 +9,7 @@ function WxMsg() {}
 module.exports = WxMsg;
 
 WxMsg.handle = function(msg) {
-	if (msg.msgType == 'text') {
+	if (msg.MsgType == 'text') {
 		sendCustomMsg(msg);
 		return;
 	}
