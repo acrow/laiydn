@@ -42,7 +42,7 @@ router.all('/', function(req, res, next) {
         xmlParser(postData, { explicitArray : false, ignoreAttrs : true }, function(err, result) {
 			console.log("weixin msg : " + result.xml);
             console.dir(result.xml);
-			wxMsg.sendCustomMsg(result.xml);
+			wxMsg.handle(result.xml);
 		});
     });
 	
