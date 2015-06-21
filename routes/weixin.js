@@ -5,6 +5,7 @@ var xmlParser = require('xml2js').parseString;
 var crypto = require('crypto');
 
 router.all('/', function(req, res, next) {
+    console.log('router.weixin');
     // 验证消息来源
     if (req.param('signature') == null || req.param('timestamp') == null || req.param('nonce') == null) {
         res.send("sorry!");
