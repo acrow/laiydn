@@ -41,7 +41,7 @@ router.all('/', function(req, res, next) {
     req.addListener("end", function () {
         xmlParser(postData, { explicitArray : false, ignoreAttrs : true }, function(err, result) {
 			console.log("weixin msg : " + result.xml);
-			wxMsg.sendCustomMsg(result.xml);
+			//wxMsg.sendCustomMsg(result.xml);
 		});
     });
 	
