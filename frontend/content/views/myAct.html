@@ -6,7 +6,7 @@
 </div>
 <hr/>
 <div class="text-left row container">
-	<div class="col-xs-12  col-md-4 "  data-ng-repeat="act in activities | orderBy:'date'">
+	<div class="col-xs-12  col-md-4 "  data-ng-repeat="act in activities | actImg | orderBy:'date'">
     <div class="thumbnail"  style="min-height:550px;">
       <img src="./img/{{act.img}}" alt="" style="height:250px;">
       <div class="caption">

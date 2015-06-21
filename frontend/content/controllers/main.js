@@ -71,3 +71,11 @@ laiydApp.controller('actSearchCtl',function($scope, $routeParams) {
 		                     ];
 	}
 });
+
+laiydApp.controller('loginCtl', function($scope, $routeParams) {
+	
+});
+
+laiydApp.controller('regCtl', function($scope, $routeParams) {
+	
+});

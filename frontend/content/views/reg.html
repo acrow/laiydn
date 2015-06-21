@@ -1,0 +1,17 @@
+<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+<form name="usrform" role="form" class="css-form needValid" novalidate>
+	<div class="form-group">
+		<label for="name"></label>
+		<input type="text" class="form-control" id="name" data-ng-model="usr.name" placeHolder="{{'placeholder.username'|translate}}" data-ng-maxlength="10" required maxlength="10">
+	</div>
+	<div class="form-group">
+		<label for="password"></label>
+		<input type="password" class="form-control" id="password" data-ng-model="usr.password" placeHolder="{{'placeholder.password'|translate}}" data-ng-minlength="4" required>
+	</div>
+	<div class="form-group">
+		<label for="passwordRepeat"></label>
+		<input type="password" class="form-control" id="passwordRepeat" data-ng-model="usr.passwordRepeat" placeHolder="{{'placeholder.passwordrepeat'|translate}}" required>
+	</div>
+	<button type="submit" class="btn btn-success" data-ng-click="onSave()" data-ng-disabled="usrform.$invalid">{{"btn.ok"|translate}}</button>&nbsp;&nbsp;<a href="#/home" class="btn btn-default">{{"btn.back"|translate}}</a>
+</form>
+</div>
