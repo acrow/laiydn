@@ -38,3 +38,7 @@ laiydApp.config(['$routeProvider', function ($routeProvider) {
         redirectTo: '/mine'
     });
 }]);
+
+laiydApp.run( function($rootScope) {
+	
+});

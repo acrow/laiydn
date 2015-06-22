@@ -1,4 +1,32 @@
-laiydApp.controller('myActCtl', function($scope, $window, Activity) {
+laiydApp.controller('myActCtl', function($scope, $window, Activity, Weixin) {
+	Weixin.getConfig(
+		{},
+		function(result) {
+			wx.config(result);
+			wx.error(function(res){
+				$window.alert('验证失败!');
+				$window.alert(location.href.split('#')[0])
+			});
+			wx.ready(function(res){
+				wx.onMenuShareAppMessage({
+				    title: 'test', // 分享标题
+				    desc: 'share', // 分享描述
+				    link: 'www.laiyd.cn', // 分享链接
+				    imgUrl: '', // 分享图标
+				    type: '', // 分享类型,music、video或link，不填默认为link
+				    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+				    success: function () { 
+				        // 用户确认分享后执行的回调函数
+				        $window.alert('分享成功!');
+				    },
+				    cancel: function () { 
+				        // 用户取消分享后执行的回调函数
+				        $window.alert('取消分享!');
+				    }
+				});
+			});
+		}
+	);
 	Activity.getAll(
 		{},
 		function(result) {
@@ -22,12 +50,12 @@ laiydApp.controller('myActCtl', function($scope, $window, Activity) {
 	}
 
 	$scope.showMap = false;
-	var map = new BMap.Map("mapContainer");          // 创建地图实例  
-	$scope.openMap = function () {
-		$('#mapModal').modal('show');
-		  var point = new BMap.Point(116.404, 39.915);  // 创建点坐标  
-		  map.centerAndZoom(point, 15); 
-	}
+	//var map = new BMap.Map("mapContainer");          // 创建地图实例  
+	// $scope.openMap = function () {
+	// 	$('#mapModal').modal('show');
+	// 	  var point = new BMap.Point(116.404, 39.915);  // 创建点坐标  
+	// 	  map.centerAndZoom(point, 15); 
+	// }
 });
 
 laiydApp.controller('actEditCtl',function($scope, $routeParams, $window, $http, Activity) {

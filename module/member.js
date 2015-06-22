@@ -5,6 +5,17 @@ function Member() {
 	this.displayName = mem.displayName;
 	this.icon = mem.icon;
 	this.openId = mem.openId;
+	this.nikeName = mem.nikeName;
+	this.sex = mem.sex;
+	this.city = mem.city;
+	this.country = mem.country;
+	this.province = mem.province;
+	this.language = mem.language;
+	this.headImgUrl = mem.headImgUrl;
+	this.subscribTime = mem.subscribTime;
+	this.unionId = mem.unionId;
+	this.remark = mem.remark;
+	this.groupId = mem.groupId;
 }
 
 module.exports = Member;
@@ -15,8 +26,20 @@ Member.prototype.Save = function Save(callback) {
 		password : this.password,
 		displayName : this.displayName,
 		icon : this.icon,
-		openId : this.openId
+		openId : this.openId,
+		nikeName : this.nikeName,
+		sex : this.sex,
+		city : this.city,
+		country : this.country,
+		province : this.province,
+		language : this.language,
+		headImgUrl : this.headimgUrl,
+		subscribTime : this.subscribTime,
+		unionId : this.unionId,
+		remark : this.remark,
+		groupId : this.groupId
 	};
+
 	db.open(function(err, db) {
 		if (err) {
 			return callback(err);
@@ -40,7 +63,7 @@ Member.login = function login(usrName, pwd, callback) {
 		if (err) {
 			return callback(err);
 		}
-		db.collection('activities', function(err, collection) {
+		db.collection('members', function(err, collection) {
 			if (err) {
 				db.close();
 				return callback(err);
@@ -68,7 +91,7 @@ Member.getUserById = function getUserById(id, callback) {
 		if (err) {
 			return callback(err);
 		}
-		db.collection('activities', function(err, collection) {
+		db.collection('members', function(err, collection) {
 			if (err) {
 				db.close();
 				return callback(err);
@@ -88,18 +111,18 @@ Member.getUserById = function getUserById(id, callback) {
 	});
 };
 
-Member.getUserByOpenId = function getUserByOpenId(oId, callback) {
+Member.getUserByOpenId = function getUserByOpenId(openId, callback) {
 	db.open(function(err, db) {
 		if (err) {
 			return callback(err);
 		}
-		db.collection('activities', function(err, collection) {
+		db.collection('members', function(err, collection) {
 			if (err) {
 				db.close();
 				return callback(err);
 			}
 			if (collection) {
-				collection.find({openId:oId})(function(err, mem) {
+				collection.find({openId:openId})(function(err, mem) {
 					if (err) {
 						return callback(err);
 					}

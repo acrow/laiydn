@@ -25,4 +25,16 @@ angular.module('resource', ['ngResource'])
 								);
 
 
-			}]);
+			}]).factory('Weixin', ['$resource', function ($resource, appConfig) {
+				return $resource(
+									'weixin',
+									null, 
+									{
+						
+										'getConfig' 	:	{ method : 'GET' , url : 'weixin/getConfig'}
+									}
+								);
+
+
+			}
+			]);

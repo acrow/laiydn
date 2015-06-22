@@ -9,7 +9,6 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var data = require('./routes/data');
 var weixin = require('./routes/weixin');
-var wxMsg = require('./module/wxMsg');
 
 var app = express();
 
@@ -32,9 +31,6 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/data', data);
 app.use('/weixin', weixin);
-
-// 定时刷新微信accessToken
-setInterval(wxMsg.refreshAccessToken(), 7000000);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -48,5 +48,13 @@ router.all('/', function(req, res, next) {
 	
     res.send("");
 });
+router.get('/getConfig', function(req, res, next) {
+    var url = req.param('url');
+    console.log(url);
+    res.send(wxMsg.generatePageConfig(url));
+});
+router.get('/ping', function(req, res, next) {
+    res.send(wxMsg.accessToken() + " | " + wxMsg.jsApiTicket());
+});
 
 module.exports = router;	
