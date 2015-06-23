@@ -40,19 +40,20 @@ router.all('/', function(req, res, next) {
     // 数据接收完毕，执行回调函数
     req.addListener("end", function () {
         xmlParser(postData, { explicitArray : false, ignoreAttrs : true }, function(err, result) {
-			console.log("weixin msg : " + result.xml);
-            console.dir(result.xml);
 			wxMsg.handle(result.xml);
 		});
     });
 	
     res.send("");
 });
+
 router.get('/getConfig', function(req, res, next) {
     var url = req.param('url');
     console.log(url);
+    url = decodeURIComponent(url);
     res.send(wxMsg.generatePageConfig(url));
 });
+
 router.get('/ping', function(req, res, next) {
     res.send(wxMsg.accessToken() + " | " + wxMsg.jsApiTicket());
 });

@@ -43,7 +43,6 @@ var refreshJsApiTicket = function() {
 	  		jd = JSON.parse(d);
 	  		if (jd.ticket != null) {
 	  			_jsApiTicket = jd.ticket;
-	  			console.log("new ticket : " + _jsApiTicket);
 		  	} else {
 		  		console.error(jd);
 		  	}
@@ -73,7 +72,6 @@ var refreshAccessToken = function() {
 	  		jd = JSON.parse(d);
 	  		if (jd.access_token != null) {
 	  			_accessToken = jd.access_token;
-	  			console.log("new token : " + _accessToken);
 	  			refreshJsApiTicket(); // 得到新token后立即取得ticket
 		  	} else {
 		  		console.error(jd);
@@ -110,7 +108,6 @@ var sendMsg = function(data) {
 	options.method = "POST";
 	options.port = 443;
 	
-	console.dir(options);
 	var req = https.request(options, function(res) {
 
 	});
@@ -128,7 +125,8 @@ WxMsg.generatePageConfig = function(url) {
 		url = 'http://www.laiyd.cn';
 	}
 	var noncestr = 'albbh40dd'
-	var timestamp = new Date().getSeconds(); // 时间戳（秒）
+	var timestamp = new Date().getTime().toString(); // 时间戳（秒）
+	timestamp = timestamp.substring(timestamp.length - 10);
 	var paras = new Array();
     paras[0] = 'noncestr=' + noncestr; 
     paras[1] = 'jsapi_ticket=' + _jsApiTicket;	
@@ -140,7 +138,7 @@ WxMsg.generatePageConfig = function(url) {
     var sha1 = crypto.createHash('sha1');
     sha1.update(sig);
     var hsig = sha1.digest('hex');
-
+    console.log(hsig);
     return {
     	debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
 	    appId: 'wx4dcce61ef82e8cfb', // 必填，公众号的唯一标识
