@@ -1,5 +1,6 @@
 var db = require('./db');
-function Member() {
+var _collectionName = 'members';
+function Member(mem) {
 	this.userName = mem.userName;
 	this.password = mem.password;
 	this.displayName = mem.displayName;
@@ -44,7 +45,7 @@ Member.prototype.Save = function Save(callback) {
 		if (err) {
 			return callback(err);
 		}
-		db.collection('members', function(err, collection) {
+		db.collection(_collectionName, function(err, collection) {
 			if (err) {
 				db.close();
 				return callback(err);
@@ -63,7 +64,7 @@ Member.login = function login(usrName, pwd, callback) {
 		if (err) {
 			return callback(err);
 		}
-		db.collection('members', function(err, collection) {
+		db.collection(_collectionName, function(err, collection) {
 			if (err) {
 				db.close();
 				return callback(err);
@@ -91,7 +92,7 @@ Member.getUserById = function getUserById(id, callback) {
 		if (err) {
 			return callback(err);
 		}
-		db.collection('members', function(err, collection) {
+		db.collection(_collectionName, function(err, collection) {
 			if (err) {
 				db.close();
 				return callback(err);
@@ -116,7 +117,7 @@ Member.getUserByOpenId = function getUserByOpenId(openId, callback) {
 		if (err) {
 			return callback(err);
 		}
-		db.collection('members', function(err, collection) {
+		db.collection(_collectionName, function(err, collection) {
 			if (err) {
 				db.close();
 				return callback(err);

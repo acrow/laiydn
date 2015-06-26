@@ -40,7 +40,10 @@ router.all('/', function(req, res, next) {
     // 数据接收完毕，执行回调函数
     req.addListener("end", function () {
         xmlParser(postData, { explicitArray : false, ignoreAttrs : true }, function(err, result) {
-			wxMsg.handle(result.xml);
+            if (!req.session.usr) {
+                req.session.usr = {};
+            }
+			wxMsg.handle(result.xml, req.session.usr);
 		});
     });
 	
@@ -58,4 +61,7 @@ router.get('/ping', function(req, res, next) {
     res.send(wxMsg.accessToken() + " | " + wxMsg.jsApiTicket());
 });
 
+router.get('/cusr', function(req, res, next) {
+    res.send(JSON.stringify(req.session.usr));
+});
 module.exports = router;	

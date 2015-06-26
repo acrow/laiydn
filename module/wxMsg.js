@@ -2,6 +2,7 @@ var setting = require('../setting');
 var https = require('https');
 var url = require('url');
 var crypto = require('crypto');
+var Member = require(./member);
 
 var _accessToken;
 var _jsApiTicket;
@@ -9,14 +10,29 @@ var _jsApiTicket;
 function WxMsg() {}
 module.exports = WxMsg;
 
-WxMsg.handle = function(msg) {
+WxMsg.handle = function(msg, usr) {
+	
+	if (!usr.openId) {
+		Member.getUserByOpenId(msg.FromUserName, function(err, mem) {
+			if (err || !mem) {
+				usr = new Member({openId: msg.FromUserName});
+				usr.save();
+			} else {
+				usr = mem;
+			}
+		});
+	}
+	
+
 	if (msg.MsgType == 'text') {
 		sendText(msg.FromUserName, '收到：' + msg.Content)
 		return;
 	}
 	if (msg.MsgType == 'event') {
 		if (msg.Event == 'LOCATION') {
+			usr.location = {x: msg.Location_X, y: msg.Location_Y};
 			sendText(msg.FromUserName, '地理位置！');
+
 			return;
 		}
 		if (msg.Event == 'CLICK') {
@@ -121,15 +137,15 @@ var sendMsg = function(data) {
 };
 
 WxMsg.generatePageConfig = function(url) {
-	if (url == null) {
+	if (typeof url == "undefined") {
 		url = 'http://www.laiyd.cn';
 	}
-	var noncestr = 'albbh40dd'
-	var timestamp = new Date().getTime().toString(); // 时间戳（秒）
-	timestamp = timestamp.substring(timestamp.length - 10);
+	var noncestr = Math.random().toString(36).substr(2, 15);
+	var timestamp = parseInt(new Date().getTime() / 1000) + ''; // 时间戳（秒）
+
 	var paras = new Array();
-    paras[0] = 'noncestr=' + noncestr; 
-    paras[1] = 'jsapi_ticket=' + _jsApiTicket;	
+	paras[0] = 'jsapi_ticket=' + _jsApiTicket;	
+    paras[1] = 'noncestr=' + noncestr; 
     paras[2] = 'timestamp=' + timestamp;
     paras[3] = 'url=' + url;
     paras.sort();
@@ -145,7 +161,8 @@ WxMsg.generatePageConfig = function(url) {
 	    timestamp: timestamp, // 必填，生成签名的时间戳
 	    nonceStr: noncestr, // 必填，生成签名的随机串
 	    signature: hsig,// 必填，签名，见附录1
-	    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+	    url: url,
+	    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'openLocation', 'getLocation'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
     }
 
 };
