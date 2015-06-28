@@ -174,3 +174,32 @@ WxMsg.accessToken = function() {
 WxMsg.jsApiTicket = function() {
 	return _jsApiTicket;
 };
+
+WxMsg.getUserInfo = function(openId, callback) {
+	var options = {
+	  hostname	: 'api.weixin.qq.com',
+	  port		: 443,
+	  path		: '/cgi-bin/user/info?access_token=' + _accessToken + '&openid=' + openId + '&lang=zh_CN',
+	  method	: 'GET'
+	};
+
+	var req = https.request(options, function(res) {
+	  res.on('data', function(d) {
+	  	
+	  	if (d != null) {
+	  		var jd;
+	  		jd = JSON.parse(d);
+	  		if (jd.access_token != null) {
+	  			callback(jd);
+		  	} else {
+		  		console.error(jd);
+		  	}
+	  	} 
+	  });
+	});
+	req.end();
+
+	req.on('error', function(e) {
+	  console.error(e);
+	});
+}
