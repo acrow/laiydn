@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var wxMsg = require('../module/wxMsg');
+var wxHandler = require('../module/wxHandler');
 var xmlParser = require('xml2js').parseString;
 var crypto = require('crypto');
 
@@ -43,7 +43,7 @@ router.all('/', function(req, res, next) {
             if (!req.session.usr) {
                 req.session.usr = {};
             }
-			wxMsg.handle(result.xml, req.session.usr);
+			wxHandler.handle(result.xml, req.session.usr);
 		});
     });
 	
@@ -54,11 +54,11 @@ router.get('/getConfig', function(req, res, next) {
     var url = req.param('url');
     console.log(url);
     url = decodeURIComponent(url);
-    res.send(wxMsg.generatePageConfig(url));
+    res.send(wxHandler.generatePageConfig(url));
 });
 
 router.get('/ping', function(req, res, next) {
-    res.send(wxMsg.accessToken() + " | " + wxMsg.jsApiTicket());
+    res.send(wxHandler.accessToken() + " | " + wxHandler.jsApiTicket());
 });
 
 router.get('/cusr', function(req, res, next) {
