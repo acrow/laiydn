@@ -11,6 +11,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var data = require('./routes/data');
 var weixin = require('./routes/weixin');
+var setting = require('./setting.js');
 
 var app = express();
 
@@ -29,9 +30,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
-  secret: 'albbh40dd',
-  name  : 'laiyd',
-  cookie: {maxAge:8000000},
+  secret: setting.cookieSecret,
+  name  : setting.host,
+  cookie: {maxAge: setting.cookieMaxAge},
   resave: false,
   saveUninitialized: true
 }));
