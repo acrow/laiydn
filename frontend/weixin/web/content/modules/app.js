@@ -80,7 +80,7 @@ laiydApp.directive('actDetails', function() {
 						refresh();
 					},
 					function(err) {
-						$window.alert(err);
+						$window.alert(JSON.stringify(err));
 					}
 				);
 			};

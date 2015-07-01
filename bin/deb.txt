@@ -1,0 +1,1645 @@
+zOD65vuEbGgSndZ7txQJW5v3Pml6REx3
+[0mPOST /weixin?signature=6674224ae5c4c14e86c461ec0511dfb0990752aa&timestamp=1435577865&nonce=666064939 [32m200 [0m70037.575 ms - 0[0m
+-Vl34uduDUnzzgkwBuagQ3mZkRMWVfgC
+p6KRp8hJxwmrir9Z_6yEThlRQMXeej6C
+9Aikuwp_YpxZKPy9cctXaiwVCXFle6fo
+DhevNgZ3mowP05JdLzGJU77mu1Kk1IKm
+raBs0gDWcj3zpyuGy2Clelu1qa8ZMBow
+[0mPOST /weixin?signature=266591468df4befc1d02e8c079eb0c44010f6f7a&timestamp=1435577868&nonce=1129350579 [32m200 [0m14641.749 ms - 0[0m
+[0mPOST /weixin?signature=266591468df4befc1d02e8c079eb0c44010f6f7a&timestamp=1435577868&nonce=1129350579 [32m200 [0m2516.823 ms - 0[0m
+[0mPOST /weixin?signature=6674224ae5c4c14e86c461ec0511dfb0990752aa&timestamp=1435577865&nonce=666064939 [32m200 [0m5212.808 ms - 0[0m
+[0mPOST /weixin?signature=266591468df4befc1d02e8c079eb0c44010f6f7a&timestamp=1435577868&nonce=1129350579 [32m200 [0m8095.992 ms - 0[0m
+[0mPOST /weixin?signature=6674224ae5c4c14e86c461ec0511dfb0990752aa&timestamp=1435577865&nonce=666064939 [32m200 [0m11430.361 ms - 0[0m
+
+==== Stack trace ============================================
+
+Security context: 00000000B3657281 <JS Object>#0#
+    1: toBin [D:\JOB\gittest\laiydn\node_modules\mongodb\node_modules\mongodb-core\lib\connection\commands.js:91] (this=00000000C3574B11 <JS Object>#1#)
+    2: /* anonymous */(aka /* anonymous */) [D:\JOB\gittest\laiydn\node_modules\mongodb\node_modules\mongodb-core\lib\cursor.js:227] (this=00000000B3604121 <undefined>,self=00000000C3572269 <JS Object>#2#,query=00000000C3574B11 <JS Object>#1#,cmd=00000000C3571CA1 <an Object>#3#,options=00000000C3571151 <an Object>#4#,cursorState=00000000C3572E41 <an Object>#5#,connection=00000000C3F26F71 <JS Object>#6#,logger=00000000C35731B1 <JS Object>#7#,callbacks=00000000A7A1BF59 <JS Object>#8#,callback=00000000C3575039 <JS Function>#9#)
+    3: next [D:\JOB\gittest\laiydn\node_modules\mongodb\node_modules\mongodb-core\lib\cursor.js:534] (this=00000000C3572269 <JS Object>#2#,callback=00000000C3574441 <JS Function>#10#)
+    4: findOne [D:\JOB\gittest\laiydn\node_modules\mongodb\lib\collection.js:847] (this=00000000C3F074A1 <JS Object>#11#)
+    5: arguments adaptor frame: 2->0
+    6: /* anonymous */ [D:\JOB\gittest\laiydn\module\member.js:128] (this=00000000B36573A1 <JS Global Object>#12#,err=00000000B3604101 <null>,collection=00000000C3F074A1 <JS Object>#11#)
+    7: collection [D:\JOB\gittest\laiydn\node_modules\mongodb\lib\db.js:316] (this=00000000A7A212A1 <JS Object>#13#,name=000000008B40DB41 <String[7]: members>,options=00000000C3F07501 <JS Function>#14#,callback=00000000B3604121 <undefined>)
+    8: arguments adaptor frame: 2->3
+    9: /* anonymous */ [D:\JOB\gittest\laiydn\module\member.js:122] (this=00000000B36573A1 <JS Global Object>#12#,err=00000000B3604101 <null>,db=00000000A7A212A1 <JS Object>#13#)
+   10: /* anonymous */(aka /* anonymous */) [D:\JOB\gittest\laiydn\node_modules\mongodb\lib\db.js:200] (this=00000000B3604121 <undefined>,err=00000000B3604101 <null>,topology=00000000AA8ECC11 <JS Object>#15#)
+   11: /* anonymous */ [D:\JOB\gittest\laiydn\node_modules\mongodb\lib\server.js:272] (this=00000000AA8ECB41 <JS Object>#16#)
+   12: arguments adaptor frame: 1->0
+   14: g [events.js:180] (this=00000000AA8ECB41 <JS Object>#16#)
+   15: arguments adaptor frame: 1->0
+   17: emit [events.js:117] (this=00000000AA8ECB41 <JS Object>#16#,type=0000000081FEC431 <String[7]: connect>)
+   18: arguments adaptor frame: 2->1
+   19: /* anonymous */(aka /* anonymous */) [D:\JOB\gittest\laiydn\node_modules\mongodb\node_modules\mongodb-core\lib\topologies\server.js:373] (this=00000000B3604121 <undefined>,err=00000000B3604101 <null>,r=00000000C3F076F1 <JS Object>#17#)
+   20: /* anonymous */(aka /* anonymous */) [D:\JOB\gittest\laiydn\node_modules\mongodb\node_modules\mongodb-core\lib\topologies\server.js:770] (this=00000000B3604121 <undefined>,err=00000000B3604101 <null>,result=00000000C3F07801 <JS Object>#18#)
+   21: emit [D:\JOB\gittest\laiydn\node_modules\mongodb\node_modules\mongodb-core\lib\topologies\server.js:84] (this=00000000A7A1BF59 <JS Object>#8#,id=0,err=00000000B3604101 <null>,value=00000000C3F07801 <JS Object>#18#)
+   22: messageHandler [D:\JOB\gittest\laiydn\node_modules\mongodb\node_modules\mongodb-core\lib\topologies\server.js:218] (this=00000000C3F079C1 <JS Object>#19#,response=00000000C3F07801 <JS Object>#18#,connection=00000000C3F079C1 <JS Object>#19#)
+   23: /* anonymous */ [D:\JOB\gittest\laiydn\node_modules\mongodb\node_modules\mongodb-core\lib\connection\connection.js:259] (this=00000000C3F07BB1 <a Socket>#20#,data=00000000C3F07B81 <a Buffer>#21#)
+   24: emit [events.js:95] (this=00000000C3F07BB1 <a Socket>#20#,type=000000008F715179 <String[4]: data>)
+   25: arguments adaptor frame: 2->1
+   26: /* anonymous */ [_stream_readable.js:748] (this=00000000C3F07BB1 <a Socket>#20#)
+   27: emit [events.js:92] (this=00000000C3F07BB1 <a Socket>#20#,type=000000008F717AC1 <String[8]: readable>)
+   28: emitReadable_ [_stream_readable.js:410] (this=00000000B36573A1 <JS Global Object>#12#,stream=00000000C3F07BB1 <a Socket>#20#)
+   29: emitReadable [_stream_readable.js:406] (this=00000000B36573A1 <JS Global Object>#12#,stream=00000000C3F07BB1 <a Socket>#20#)
+   30: readableAddChunk [_stream_readable.js:168] (this=00000000B36573A1 <JS Global Object>#12#,stream=00000000C3F07BB1 <a Socket>#20#,state=00000000C3F07DB9 <a ReadableState>#22#,chunk=00000000C3F07B09 <a Buffer>#23#,encoding=00000000B3604121 <undefined>,addToFront=00000000B3604181 <false>)
+   31: push [_stream_readable.js:130] (this=00000000C3F07BB1 <a Socket>#20#,chunk=00000000C3F07B09 <a Buffer>#23#,encoding=00000000B3604121 <undefined>)
+   32: arguments adaptor frame: 1->2
+   33: onread [net.js:528] (this=00000000C3F07EB9 <a TCP>#24#,buffer=00000000990261F1 <a SlowBuffer>#25#,offset=12256,length=194)
+
+==== Details ================================================
+
+[1]: toBin [D:\JOB\gittest\laiydn\node_modules\mongodb\node_modules\mongodb-core\lib\connection\commands.js:91] (this=00000000C3574B11 <JS Object>#1#) {
+  // stack-allocated locals
+  var self = 00000000C3574B11 <JS Object>#1#
+  var length = 00000000B3604121 <undefined>
+  var _buffer = 00000000B3604121 <undefined>
+  var flags = 00000000B3604121 <undefined>
+  var index = 00000000B3604121 <undefined>
+  var queryLength = 00000000B3604121 <undefined>
+  var fieldSelectorLength = 00000000B3604121 <undefined>
+  // expression stack (top to bottom)
+  [12] : 00000000990F28D9 <JS Function calculateObjectSize>#26#
+  [11] : 00000000B3604161 <true>
+  [10] : 00000000B3604181 <false>
+  [09] : 00000000C3F07449 <an Object>#27#
+  [08] : 00000000A7A400E9 <a BSON>#28#
+  [07] : 26
+--------- s o u r c e   c o d e ---------
+function () {??  var self = this;??  // Basic length??  var length = 4 ??    + Buffer.byteLength(self.ns) ??    + 1 + 4 + 4 ??    + self.bson.calculateObjectSize(self.query, self.serializeFunctions, true) ??    + (4 * 4);????  // Additional size for field selection??  if(self.returnFieldSelector && Object.ke...
+
+-----------------------------------------
+}
+
+[2]: /* anonymous */(aka /* anonymous */) [D:\JOB\gittest\laiydn\node_modules\mongodb\node_modules\mongodb-core\lib\cursor.js:227] (this=00000000B3604121 <undefined>,self=00000000C3572269 <JS Object>#2#,query=00000000C3574B11 <JS Object>#1#,cmd=00000000C3571CA1 <an Object>#3#,options=00000000C3571151 <an Object>#4#,cursorState=00000000C3572E41 <an Object>#5#,connection=00000000C3F26F71 <JS Object>#6#,logger=00000000C35731B1 <JS Object>#7#,callbacks=00000000A7A1BF59 <JS Object>#8#,callback=00000000C3575039 <JS Function>#9#) {
+  // stack-allocated locals
+  var queryCallback = 00000000C35750D1 <JS Function>#29#
+  // heap-allocated locals
+  var callback = 00000000C3575039 <JS Function>#9#
+  var cursorState = 00000000C3572E41 <an Object>#5#
+  var cmd = 00000000C3571CA1 <an Object>#3#
+  var self = 00000000C3572269 <JS Object>#2#
+  // expression stack (top to bottom)
+  [02] : 00000000C3574B11 <JS Object>#1#
+  [01] : 00000000C3F26F71 <JS Object>#6#
+--------- s o u r c e   c o d e ---------
+function (self, query, cmd, options, cursorState, connection, logger, callbacks, callback) {??  if(logger.isDebug()) {??    logger.debug(f("issue initial query [%s] with flags [%s]"??      , JSON.stringify(cmd)??      , JSON.stringify(query)));??  }????  var queryCallback = function(err, result) {??    if(er...
+
+-----------------------------------------
+}
+
+[3]: next [D:\JOB\gittest\laiydn\node_modules\mongodb\node_modules\mongodb-core\lib\cursor.js:534] (this=00000000C3572269 <JS Object>#2#,callback=00000000C3574441 <JS Function>#10#) {
+  // stack-allocated locals
+  var doc = 00000000B3604121 <undefined>
+  // heap-allocated locals
+  var callback = 00000000C3574441 <JS Function>#10#
+  var self = 00000000C3572269 <JS Object>#2#
+  var processExhaustMessages = 00000000C3574FF1 <JS Function>#30#
+  // expression stack (top to bottom)
+  [11] : 00000000C3575039 <JS Function>#9#
+  [10] : 00000000A7A1BF59 <JS Object>#8#
+  [09] : 00000000C35731B1 <JS Object>#7#
+  [08] : 00000000C3F26F71 <JS Object>#6#
+  [07] : 00000000C3572E41 <an Object>#5#
+  [06] : 00000000C3571151 <an Object>#4#
+  [05] : 00000000C3571CA1 <an Object>#3#
+  [04] : 00000000C3574B11 <JS Object>#1#
+  [03] : 00000000C3572269 <JS Object>#2#
+  [02] : 00000000B3604121 <undefined>
+  [01] : 00000000A7A2BD99 <JS Function>#31#
+--------- s o u r c e   c o d e ---------
+function (callback) {??  var self = this;??  // We have notified about it??  if(self.cursorState.notified) return;????  // Cursor is killed return null??  if(isCursorKilled(self, callback)) return;  ????  // Cursor is dead but not marked killed, return null??  if(isCursorDeadButNotkilled(self, callback)) ret...
+
+-----------------------------------------
+}
+
+[4]: findOne [D:\JOB\gittest\laiydn\node_modules\mongodb\lib\collection.js:847] (this=00000000C3F074A1 <JS Object>#11#) {
+  // stack-allocated locals
+  var arguments = 00000000C3570789 <an Arguments>#32#
+  var self = 00000000C3F074A1 <JS Object>#11#
+  var args = 00000000C35707E9 <JS Array[1]>#33#
+  var cursor = 00000000C3572269 <JS Object>#2#
+  // heap-allocated locals
+  var callback = 00000000C3570709 <JS Function>#34#
+  // expression stack (top to bottom)
+  [05] : 00000000C3574441 <JS Function>#10#
+  [04] : 00000000C3572269 <JS Object>#2#
+--------- s o u r c e   c o d e ---------
+function () {    ??  var self = this;??  var args = Array.prototype.slice.call(arguments, 0);??  var callback = args.pop();??  var cursor = this.find.apply(this, args).limit(-1).batchSize(1);????  // Return the item??  cursor.next(function(err, item) {??    if(err != null) return handleCallback(callback, toE...
+
+-----------------------------------------
+}
+
+[5]: arguments adaptor frame: 2->0 {
+  // actual arguments
+  [00] : 00000000C3F07449 <an Object>#27#  // not passed to callee
+  [01] : 00000000C3570709 <JS Function>#34#  // not passed to callee
+}
+
+[6]: /* anonymous */ [D:\JOB\gittest\laiydn\module\member.js:128] (this=00000000B36573A1 <JS Global Object>#12#,err=00000000B3604101 <null>,collection=00000000C3F074A1 <JS Object>#11#) {
+  // expression stack (top to bottom)
+  [02] : 00000000C3570709 <JS Function>#34#
+  [01] : 00000000C3F07449 <an Object>#27#
+  [00] : 00000000C3F074A1 <JS Object>#11#
+--------- s o u r c e   c o d e ---------
+function (err, collection) {?????if (err) {??????db.close();??????return callback(err);?????}?????if (collection) {??????collection.findOne({openId:openId}, function(err, mem) {???????if (err) {????????return callback(err);???????}???????callback(err, mem);???????console.log(mem);??????});?????} else {??????...
+
+-----------------------------------------
+}
+
+[7]: collection [D:\JOB\gittest\laiydn\node_modules\mongodb\lib\db.js:316] (this=00000000A7A212A1 <JS Object>#13#,name=000000008B40DB41 <String[7]: members>,options=00000000C3F07501 <JS Function>#14#,callback=00000000B3604121 <undefined>) {
+  // stack-allocated locals
+  var collection = 00000000C3F074A1 <JS Object>#11#
+  // heap-allocated locals
+  var callback = 00000000C3F07501 <JS Function>#14#
+  var options = 00000000C3F1BF79 <an Object>#35#
+  var name = 000000008B40DB41 <String[7]: members>
+  var self = 00000000A7A212A1 <JS Object>#13#
+  // expression stack (top to bottom)
+  [09] : 00000000C3F074A1 <JS Object>#11#
+  [08] : 00000000B3604101 <null>
+  [07] : 00000000B36573A1 <JS Global Object>#12#
+  [06] : 00000000C3F07501 <JS Function>#14#
+--------- s o u r c e   c o d e ---------
+function (name, options, callback) {??  var self = this;??  if(typeof options == 'function') callback = options, options = {};??  options = options || {};????  if(options == null || !options.strict) {??    try {??      var collection = new Collection(this, this.s.topology, this.s.databaseName, name, this.s.p...
+
+-----------------------------------------
+}
+
+[8]: arguments adaptor frame: 2->3 {
+  // actual arguments
+  [00] : 000000008B40DB41 <String[7]: members>
+  [01] : 00000000C3F07501 <JS Function>#14#
+}
+
+[9]: /* anonymous */ [D:\JOB\gittest\laiydn\module\member.js:122] (this=00000000B36573A1 <JS Global Object>#12#,err=00000000B3604101 <null>,db=00000000A7A212A1 <JS Object>#13#) {
+  // heap-allocated locals
+  var db = 00000000A7A212A1 <JS Object>#13#
+  // expression stack (top to bottom)
+  [02] : 00000000C3F07501 <JS Function>#14#
+  [01] : 000000008B40DB41 <String[7]: members>
+  [00] : 00000000A7A212A1 <JS Object>#13#
+--------- s o u r c e   c o d e ---------
+function (err, db) {????if (err) {?????return callback(err);????}????db.collection(_collectionName, function(err, collection) {?????if (err) {??????db.close();??????return callback(err);?????}?????if (collection) {??????collection.findOne({openId:openId}, function(err, mem) {???????if (err) {????????return c...
+
+-----------------------------------------
+}
+
+[10]: /* anonymous */(aka /* anonymous */) [D:\JOB\gittest\laiydn\node_modules\mongodb\lib\db.js:200] (this=00000000B3604121 <undefined>,err=00000000B3604101 <null>,topology=00000000AA8ECC11 <JS Object>#15#) {
+  // stack-allocated locals
+  var internalCallback = 00000000C1BF91E9 <JS Function>#36#
+  // expression stack (top to bottom)
+  [04] : 00000000A7A212A1 <JS Object>#13#
+  [03] : 00000000B3604101 <null>
+  [02] : 00000000B36573A1 <JS Global Object>#12#
+  [01] : 00000000C1BF91E9 <JS Function>#36#
+--------- s o u r c e   c o d e ---------
+function (err, topology) {??    if(callback == null) return;??    var internalCallback = callback;??    callback == null;????    if(err) {??      self.close();??      return internalCallback(err);??    }????    internalCallback(null, self);??  }
+-----------------------------------------
+}
+
+[11]: /* anonymous */ [D:\JOB\gittest\laiydn\node_modules\mongodb\lib\server.js:272] (this=00000000AA8ECB41 <JS Object>#16#) {
+  // expression stack (top to bottom)
+  [08] : 00000000AA8ECC11 <JS Object>#15#
+  [07] : 00000000B3604101 <null>
+  [06] : 00000000B3604121 <undefined>
+  [05] : 00000000C1BF7E31 <JS Function>#37#
+--------- s o u r c e   c o d e ---------
+function () {??    // Clear out all the current handlers left over??    ["timeout", "error", "close"].forEach(function(e) {??      self.s.server.removeAllListeners(e);??    });????    // Set up listeners??    self.s.server.once('timeout', errorHandler('timeout'));??    self.s.server.once('error', errorHandle...
+
+-----------------------------------------
+}
+
+[12]: arguments adaptor frame: 1->0 {
+  // actual arguments
+  [00] : 00000000AA8ECB41 <JS Object>#16#  // not passed to callee
+}
+
+[14]: g [events.js:180] (this=00000000AA8ECB41 <JS Object>#16#) {
+  // stack-allocated locals
+  var arguments = 00000000C3F07599 <an Arguments>#38#
+  // expression stack (top to bottom)
+  [03] : 00000000C3F07599 <an Arguments>#38#
+  [02] : 00000000AA8ECB41 <JS Object>#16#
+  [01] : 00000000C1BF7DE9 <JS Function>#39#
+--------- s o u r c e   c o d e ---------
+function g() {?    this.removeListener(type, g);??    if (!fired) {?      fired = true;?      listener.apply(this, arguments);?    }?  }
+-----------------------------------------
+}
+
+[15]: arguments adaptor frame: 1->0 {
+  // actual arguments
+  [00] : 00000000AA8ECB41 <JS Object>#16#  // not passed to callee
+}
+
+[17]: emit [events.js:117] (this=00000000AA8ECB41 <JS Object>#16#,type=0000000081FEC431 <String[7]: connect>) {
+  // stack-allocated locals
+  var arguments = 00000000C3F07601 <an Arguments>#40#
+  var er = 00000000B3604121 <undefined>
+  var handler = 00000000E0B4B981 <JS Array[5]>#41#
+  var len = 6
+  var args = 00000000C3F075C1 <JS Array[1]>#42#
+  var i = 0
+  var listeners = 00000000C3F075E1 <JS Array[6]>#43#
+  // heap-allocated locals
+  var type = 0000000081FEC431 <String[7]: connect>
+  // expression stack (top to bottom)
+  [10] : 00000000C3F075C1 <JS Array[1]>#42#
+  [09] : 00000000AA8ECB41 <JS Object>#16#
+  [08] : 00000000C1BF3751 <JS Function g>#44#
+  [07] : 00000000B3661899 <JS Function emit>#45#
+--------- s o u r c e   c o d e ---------
+function emit(type) {?  var er, handler, len, args, i, listeners;??  if (!this._events)?    this._events = {};??  // If there is no 'error' event listener then throw.?  if (type === 'error') {?    if (!this._events.error ||?        (typeof this._events.error === 'object' &&?         !this._events.error.length)) ...
+
+-----------------------------------------
+}
+
+[18]: arguments adaptor frame: 2->1 {
+  // actual arguments
+  [00] : 0000000081FEC431 <String[7]: connect>
+  [01] : 00000000AA8ECB41 <JS Object>#16#  // not passed to callee
+}
+
+[19]: /* anonymous */(aka /* anonymous */) [D:\JOB\gittest\laiydn\node_modules\mongodb\node_modules\mongodb-core\lib\topologies\server.js:373] (this=00000000B3604121 <undefined>,err=00000000B3604101 <null>,r=00000000C3F076F1 <JS Object>#17#) {
+  // expression stack (top to bottom)
+  [02] : 00000000AA8ECB41 <JS Object>#16#
+  [01] : 0000000081FEC431 <String[7]: connect>
+  [00] : 00000000AA8ECB41 <JS Object>#16#
+--------- s o u r c e   c o d e ---------
+function (err, r) {??        if(err) {??          state.state = DISCONNECTED;??          return self.emit('close', err, self);??        }????        // Set the current ismaster??        if(!err) {??          state.ismaster = r.result;??        }????        // Determine the wire protocol handler??        stat...
+
+-----------------------------------------
+}
+
+[20]: /* anonymous */(aka /* anonymous */) [D:\JOB\gittest\laiydn\node_modules\mongodb\node_modules\mongodb-core\lib\topologies\server.js:770] (this=00000000B3604121 <undefined>,err=00000000B3604101 <null>,result=00000000C3F07801 <JS Object>#18#) {
+  // expression stack (top to bottom)
+  [08] : 00000000C3F076F1 <JS Object>#17#
+  [07] : 00000000B3604101 <null>
+  [06] : 00000000B3604121 <undefined>
+  [05] : 00000000C3F07661 <JS Function>#46#
+--------- s o u r c e   c o d e ---------
+function (err, result) {??    // Notify end of command??    notifyStrategies(self, self.s, 'endOperation', [self, err, result, new Date()]);??    if(err) return callback(err);??    if(result.documents[0]['$err']??      || result.documents[0]['errmsg']??      || result.documents[0]['err']??      || result.doc...
+
+-----------------------------------------
+}
+
+[21]: emit [D:\JOB\gittest\laiydn\node_modules\mongodb\node_modules\mongodb-core\lib\topologies\server.js:84] (this=00000000A7A1BF59 <JS Object>#8#,id=0,err=00000000B3604101 <null>,value=00000000C3F07801 <JS Object>#18#) {
+  // stack-allocated locals
+  var callback = 00000000C3F077B9 <JS Function>#47#
+  // expression stack (top to bottom)
+  [04] : 00000000C3F07801 <JS Object>#18#
+  [03] : 00000000B3604101 <null>
+  [02] : 00000000B3604121 <undefined>
+  [01] : 00000000C3F077B9 <JS Function>#47#
+--------- s o u r c e   c o d e ---------
+function (id, err, value) {??  var callback = this.callbacks[id];??  delete this.callbacks[id];??  callback(err, value);??}
+-----------------------------------------
+}
+
+[22]: messageHandler [D:\JOB\gittest\laiydn\node_modules\mongodb\node_modules\mongodb-core\lib\topologies\server.js:218] (this=00000000C3F079C1 <JS Object>#19#,response=00000000C3F07801 <JS Object>#18#,connection=00000000C3F079C1 <JS Object>#19#) {
+  // expression stack (top to bottom)
+  [08] : 00000000C3F07801 <JS Object>#18#
+  [07] : 00000000B3604101 <null>
+  [06] : 0
+  [05] : 00000000A7A1BF59 <JS Object>#8#
+--------- s o u r c e   c o d e ---------
+function (response, connection) {??    try {??      // Parse the message??      response.parse({raw: state.callbacks.raw(response.responseTo)});??      if(state.logger.isDebug()) state.logger.debug(f('message [%s] received from %s', response.raw.toString('hex'), self.name));??      state.callbacks.emit(respo...
+
+-----------------------------------------
+}
+
+[23]: /* anonymous */ [D:\JOB\gittest\laiydn\node_modules\mongodb\node_modules\mongodb-core\lib\connection\connection.js:259] (this=00000000C3F07BB1 <a Socket>#20#,data=00000000C3F07B81 <a Buffer>#21#) {
+  // stack-allocated locals
+  var remainingBytesToRead = 00000000B3604121 <undefined>
+  var emitBuffer = 00000000C3F07B09 <a Buffer>#23#
+  var errorObject = 00000000B3604121 <undefined>
+  var newData = 00000000B3604121 <undefined>
+  var newStubBuffer = 00000000B3604121 <undefined>
+  var sizeOfMessage = 194
+  // expression stack (top to bottom)
+  [13] : 00000000C3F079C1 <JS Object>#19#
+  [12] : 00000000C3F07801 <JS Object>#18#
+  [11] : 00000000C3F079C1 <JS Object>#19#
+--------- s o u r c e   c o d e ---------
+function (data) {??    // Parse until we are done with the data??    while(data.length > 0) {??      // If we still have bytes to read on the current message??      if(self.bytesRead > 0 && self.sizeOfMessage > 0) {??        // Calculate the amount of remaining bytes??        var remainingBytesToRead = self....
+
+-----------------------------------------
+}
+
+[24]: emit [events.js:95] (this=00000000C3F07BB1 <a Socket>#20#,type=000000008F715179 <String[4]: data>) {
+  // stack-allocated locals
+  var arguments = 00000000C3F07C69 <an Arguments>#48#
+  var er = 00000000B3604121 <undefined>
+  var handler = 00000000C3F07B39 <JS Function>#49#
+  var len = 00000000B3604121 <undefined>
+  var args = 00000000B3604121 <undefined>
+  var i = 00000000B3604121 <undefined>
+  var listeners = 00000000B3604121 <undefined>
+  // heap-allocated locals
+  var type = 000000008F715179 <String[4]: data>
+  // expression stack (top to bottom)
+  [09] : 00000000C3F07B81 <a Buffer>#21#
+  [08] : 00000000C3F07BB1 <a Socket>#20#
+  [07] : 00000000B3661899 <JS Function emit>#45#
+--------- s o u r c e   c o d e ---------
+function emit(type) {?  var er, handler, len, args, i, listeners;??  if (!this._events)?    this._events = {};??  // If there is no 'error' event listener then throw.?  if (type === 'error') {?    if (!this._events.error ||?        (typeof this._events.error === 'object' &&?         !this._events.error.length)) ...
+
+-----------------------------------------
+}
+
+[25]: arguments adaptor frame: 2->1 {
+  // actual arguments
+  [00] : 000000008F715179 <String[4]: data>
+  [01] : 00000000C3F07B09 <a Buffer>#23#  // not passed to callee
+}
+
+[26]: /* anonymous */ [_stream_readable.js:748] (this=00000000C3F07BB1 <a Socket>#20#) {
+  // stack-allocated locals
+  var c = 00000000C3F07B09 <a Buffer>#23#
+  // expression stack (top to bottom)
+  [03] : 00000000C3F07B09 <a Buffer>#23#
+  [02] : 000000008F715179 <String[4]: data>
+  [01] : 00000000C3F07BB1 <a Socket>#20#
+--------- s o u r c e   c o d e ---------
+function () {?    readable = true;??    var c;?    while (!paused && (null !== (c = stream.read())))?      stream.emit('data', c);??    if (c === null) {?      readable = false;?      stream._readableState.needReadable = true;?    }?  }
+-----------------------------------------
+}
+
+[27]: emit [events.js:92] (this=00000000C3F07BB1 <a Socket>#20#,type=000000008F717AC1 <String[8]: readable>) {
+  // stack-allocated locals
+  var arguments = 00000000C3F07D59 <an Arguments>#50#
+  var er = 00000000B3604121 <undefined>
+  var handler = 00000000C3F07CC9 <JS Function>#51#
+  var len = 00000000B3604121 <undefined>
+  var args = 00000000B3604121 <undefined>
+  var i = 00000000B3604121 <undefined>
+  var listeners = 00000000B3604121 <undefined>
+  // heap-allocated locals
+  var type = 000000008F717AC1 <String[8]: readable>
+  // expression stack (top to bottom)
+  [08] : 00000000C3F07BB1 <a Socket>#20#
+  [07] : 00000000B3661899 <JS Function emit>#45#
+--------- s o u r c e   c o d e ---------
+function emit(type) {?  var er, handler, len, args, i, listeners;??  if (!this._events)?    this._events = {};??  // If there is no 'error' event listener then throw.?  if (type === 'error') {?    if (!this._events.error ||?        (typeof this._events.error === 'object' &&?         !this._events.error.length)) ...
+
+-----------------------------------------
+}
+
+[28]: emitReadable_ [_stream_readable.js:410] (this=00000000B36573A1 <JS Global Object>#12#,stream=00000000C3F07BB1 <a Socket>#20#) {
+  // expression stack (top to bottom)
+  [01] : 000000008F717AC1 <String[8]: readable>
+  [00] : 00000000C3F07BB1 <a Socket>#20#
+--------- s o u r c e   c o d e ---------
+function emitReadable_(stream) {?  stream.emit('readable');?}
+-----------------------------------------
+}
+
+[29]: emitReadable [_stream_readable.js:406] (this=00000000B36573A1 <JS Global Object>#12#,stream=00000000C3F07BB1 <a Socket>#20#) {
+  // stack-allocated locals
+  var state = 00000000C3F07DB9 <a ReadableState>#22#
+  // heap-allocated locals
+  var stream = 00000000C3F07BB1 <a Socket>#20#
+  // expression stack (top to bottom)
+  [03] : 00000000C3F07BB1 <a Socket>#20#
+  [02] : 00000000B36573A1 <JS Global Object>#12#
+  [01] : 0000000099068899 <JS Function emitReadable_>#52#
+--------- s o u r c e   c o d e ---------
+function emitReadable(stream) {?  var state = stream._readableState;?  state.needReadable = false;?  if (state.emittedReadable)?    return;??  state.emittedReadable = true;?  if (state.sync)?    process.nextTick(function() {?      emitReadable_(stream);?    });?  else?    emitReadable_(stream);?}
+-----------------------------------------
+}
+
+[30]: readableAddChunk [_stream_readable.js:168] (this=00000000B36573A1 <JS Global Object>#12#,stream=00000000C3F07BB1 <a Socket>#20#,state=00000000C3F07DB9 <a ReadableState>#22#,chunk=00000000C3F07B09 <a Buffer>#23#,encoding=00000000B3604121 <undefined>,addToFront=00000000B3604181 <false>) {
+  // stack-allocated locals
+  var er = 00000000B3604101 <null>
+  var e = 00000000B3604121 <undefined>
+  // expression stack (top to bottom)
+  [04] : 00000000C3F07BB1 <a Socket>#20#
+  [03] : 00000000B36573A1 <JS Global Object>#12#
+  [02] : 0000000099068851 <JS Function emitReadable>#53#
+--------- s o u r c e   c o d e ---------
+function readableAddChunk(stream, state, chunk, encoding, addToFront) {?  var er = chunkInvalid(state, chunk);?  if (er) {?    stream.emit('error', er);?  } else if (chunk === null || chunk === undefined) {?    state.reading = false;?    if (!state.ended)?      onEofChunk(stream, state);?  } else if (state.objectMode || chu...
+
+-----------------------------------------
+}
+
+[31]: push [_stream_readable.js:130] (this=00000000C3F07BB1 <a Socket>#20#,chunk=00000000C3F07B09 <a Buffer>#23#,encoding=00000000B3604121 <undefined>) {
+  // stack-allocated locals
+  var state = 00000000C3F07DB9 <a ReadableState>#22#
+  // expression stack (top to bottom)
+  [07] : 00000000B3604181 <false>
+  [06] : 00000000B3604121 <undefined>
+  [05] : 00000000C3F07B09 <a Buffer>#23#
+  [04] : 00000000C3F07DB9 <a ReadableState>#22#
+  [03] : 00000000C3F07BB1 <a Socket>#20#
+  [02] : 00000000B36573A1 <JS Global Object>#12#
+  [01] : 00000000990686A1 <JS Function readableAddChunk>#54#
+--------- s o u r c e   c o d e ---------
+function (chunk, encoding) {?  var state = this._readableState;??  if (typeof chunk === 'string' && !state.objectMode) {?    encoding = encoding || state.defaultEncoding;?    if (encoding !== state.encoding) {?      chunk = new Buffer(chunk, encoding);?      encoding = '';?    }?  }??  return readableAddChun...
+
+-----------------------------------------
+}
+
+[32]: arguments adaptor frame: 1->2 {
+  // actual arguments
+  [00] : 00000000C3F07B09 <a Buffer>#23#
+}
+
+[33]: onread [net.js:528] (this=00000000C3F07EB9 <a TCP>#24#,buffer=00000000990261F1 <a SlowBuffer>#25#,offset=12256,length=194) {
+  // stack-allocated locals
+  var handle = 00000000C3F07EB9 <a TCP>#24#
+  var self = 00000000C3F07BB1 <a Socket>#20#
+  var end = 12450
+  var ret = 00000000B3604161 <true>
+  var r = 00000000B3604121 <undefined>
+  // expression stack (top to bottom)
+  [06] : 00000000C3F07B09 <a Buffer>#23#
+  [05] : 00000000C3F07BB1 <a Socket>#20#
+--------- s o u r c e   c o d e ---------
+function onread(buffer, offset, length) {?  var handle = this;?  var self = handle.owner;?  assert(handle === self._handle, 'handle != self._handle');??  timers._unrefActive(self);??  var end = offset + length;?  debug('onread', process._errno, offset, length, end);??  if (buffer) {?    debug('got data');??    // ...
+
+-----------------------------------------
+}
+
+==== Key         ============================================
+
+ #0# 00000000B3657281: 00000000B3657281 <JS Object>
+ #1# 00000000C3574B11: 00000000C3574B11 <JS Object>
+              bson: 00000000A7A400E9 <a BSON>#28#
+                ns: 00000000C3F21029 <String[13]: laiyd.members>
+             query: 00000000C3F07449 <an Object>#27#
+           options: 00000000C3574A39 <an Object>#55#
+      numberToSkip: 0
+    numberToReturn: -1
+returnFieldSelector: 00000000B3604101 <null>
+         requestId: 1
+serializeFunctions: 00000000B3604181 <false>
+       maxBsonSize: 16777216
+         checkKeys: 00000000B3604181 <false>
+         batchSize: -1
+          tailable: 00000000B3604181 <false>
+           slaveOk: 00000000B3604181 <false>
+        oplogReply: 00000000B3604181 <false>
+   noCursorTimeout: 00000000B3604181 <false>
+         awaitData: 00000000B3604181 <false>
+           exhaust: 00000000B3604181 <false>
+           partial: 00000000B3604181 <false>
+ #2# 00000000C3572269: 00000000C3572269 <JS Object>
+        connection: 00000000C3F26F71 <JS Object>#6#
+            server: 00000000AA8ECB41 <JS Object>#16#
+ disconnectHandler: 00000000A7A25B29 <JS Object>#56#
+              bson: 00000000A7A400E9 <a BSON>#28#
+                ns: 00000000C3F21029 <String[13]: laiyd.members>
+               cmd: 00000000C3571CA1 <an Object>#3#
+           options: 00000000C3571151 <an Object>#4#
+          topology: 00000000AA8ECB41 <JS Object>#16#
+       cursorState: 00000000C3572E41 <an Object>#5#
+         callbacks: 00000000A7A1BF59 <JS Object>#8#
+            logger: 00000000C35731B1 <JS Object>#7#
+    _readableState: 00000000C35733A1 <a ReadableState>#57#
+          readable: 00000000B3604161 <true>
+            domain: 00000000B3604101 <null>
+           _events: 00000000C3573769 <an Object>#58#
+     _maxListeners: 10
+                 s: 00000000C3573DF1 <an Object>#59#
+           timeout: 00000000B3604181 <false>
+         sortValue: 00000000B3604121 <undefined>
+    readPreference: 00000000B3604121 <undefined>
+             query: 00000000C3574B11 <JS Object>#1#
+ #3# 00000000C3571CA1: 00000000C3571CA1 <an Object>
+              find: 00000000C3F21029 <String[13]: laiyd.members>
+             limit: -1
+              skip: 0
+             query: 00000000C3F07449 <an Object>#27#
+           slaveOk: 00000000B3604181 <false>
+         batchSize: 1
+ #4# 00000000C3571151: 00000000C3571151 <an Object>
+              skip: 0
+             limit: 0
+               raw: 00000000B3604121 <undefined>
+              hint: 00000000B3604101 <null>
+           timeout: 00000000B3604121 <undefined>
+           slaveOk: 00000000B3604181 <false>
+                db: 00000000A7A212A1 <JS Object>#13#
+ disconnectHandler: 00000000A7A25B29 <JS Object>#56#
+ #5# 00000000C3572E41: 00000000C3572E41 <an Object>
+          cursorId: 00000000B3604101 <null>
+         documents: 00000000C3572ED9 <JS Array[0]>#60#
+       cursorIndex: 0
+              dead: 00000000B3604181 <false>
+            killed: 00000000B3604181 <false>
+              init: 00000000B3604161 <true>
+          notified: 00000000B3604181 <false>
+             limit: -1
+              skip: 0
+         batchSize: 1
+      currentLimit: 0
+        transforms: 00000000B3604121 <undefined>
+ #6# 00000000C3F26F71: 00000000C3F26F71 <JS Object>
+            domain: 00000000B3604101 <null>
+           _events: 00000000C3F2BF61 <an Object>#61#
+     _maxListeners: 10
+           options: 00000000AA8ECBB9 <an Object>#62#
+                id: 26
+            logger: 00000000C3F2BF79 <JS Object>#63#
+              bson: 00000000A7A400E9 <a BSON>#28#
+               tag: 00000000B3604121 <undefined>
+    messageHandler: 00000000C3F07979 <JS Function>#64#
+maxBsonMessageSize: 67108864
+              port: 27017
+              host: 000000008B40DD89 <String[9]: localhost>
+         keepAlive: 00000000B3604161 <true>
+keepAliveInitialDelay: 0
+           noDelay: 00000000B3604161 <true>
+ connectionTimeout: 0
+     socketTimeout: 0
+      domainSocket: 00000000B3604181 <false>
+singleBufferSerializtion: 00000000B3604161 <true>
+serializationFunction: 00000000B4CF8C51 <String[12]: toBinUnified>
+                ca: 00000000B3604101 <null>
+              cert: 00000000B3604101 <null>
+               key: 00000000B3604101 <null>
+        passphrase: 00000000B3604101 <null>
+               ssl: 00000000B3604181 <false>
+rejectUnauthorized: 00000000B3604181 <false>
+   responseOptions: 00000000C3F2BF99 <an Object>#65#
+          flushing: 00000000B3604181 <false>
+             queue: 00000000C3F2BFB9 <JS Array[0]>#66#
+        connection: 00000000C3F1F271 <a Socket>#67#
+       writeStream: 00000000B3604101 <null>
+ #7# 00000000C35731B1: 00000000C35731B1 <JS Object>
+         className: 000000008B40E049 <String[6]: Cursor>
+ #8# 00000000A7A1BF59: 00000000A7A1BF59 <JS Object>
+         callbacks: 00000000A7A1C741 <an Object>#68#
+                id: 0
+              type: 000000008F72C021 <String[6]: server>
+ #9# 00000000C3575039: 00000000C3575039 <JS Function>
+ #10# 00000000C3574441: 00000000C3574441 <JS Function>
+ #11# 00000000C3F074A1: 00000000C3F074A1 <JS Object>
+                 s: 00000000C3F1BED9 <an Object>#69#
+ #12# 00000000B36573A1: 00000000B36573A1 <JS Global Object>
+ #13# 00000000A7A212A1: 00000000A7A212A1 <JS Object>
+            domain: 00000000B3604101 <null>
+           _events: 00000000A7A18601 <an Object>#70#
+     _maxListeners: 10
+                 s: 00000000A7A18619 <an Object>#71#
+ #14# 00000000C3F07501: 00000000C3F07501 <JS Function>
+ #15# 00000000AA8ECC11: 00000000AA8ECC11 <JS Object>
+            domain: 00000000B3604101 <null>
+           _events: 00000000A7A1AEF1 <an Object>#72#
+     _maxListeners: 10
+                 s: 00000000A7A1AF09 <an Object>#73#
+ #16# 00000000AA8ECB41: 00000000AA8ECB41 <JS Object>
+            domain: 00000000B3604101 <null>
+           _events: 00000000A7A1ADC1 <an Object>#74#
+     _maxListeners: 10
+                 s: 00000000A7A1ADD9 <an Object>#75#
+ #17# 00000000C3F076F1: 00000000C3F076F1 <JS Object>
+            result: 00000000C3F17179 <an Object>#76#
+        connection: 00000000C3F079C1 <JS Object>#19#
+ #18# 00000000C3F07801: 00000000C3F07801 <JS Object>
+            parsed: 00000000B3604161 <true>
+             index: 194
+               raw: 00000000C3F07B09 <a Buffer>#23#
+              data: 00000000C3F07B09 <a Buffer>#23#
+              bson: 00000000A7A400E9 <a BSON>#28#
+              opts: 00000000C3F1C0B1 <an Object>#77#
+            length: 194
+         requestId: 558
+        responseTo: 0
+     responseFlags: 8
+          cursorId: 00000000C3F1C0D1 <a Long>#78#
+      startingFrom: 0
+    numberReturned: 1
+         documents: 00000000C3F1C101 <JS Array[1]>#79#
+    cursorNotFound: 00000000B3604181 <false>
+      queryFailure: 00000000B3604181 <false>
+  shardConfigStale: 00000000B3604181 <false>
+      awaitCapable: 00000000B3604161 <true>
+      promoteLongs: 00000000B3604161 <true>
+ #19# 00000000C3F079C1: 00000000C3F079C1 <JS Object>
+            domain: 00000000B3604101 <null>
+           _events: 00000000C3F1C181 <an Object>#80#
+     _maxListeners: 10
+           options: 00000000AA8ECBB9 <an Object>#62#
+                id: 25
+            logger: 00000000C3F1C199 <JS Object>#81#
+              bson: 00000000A7A400E9 <a BSON>#28#
+               tag: 00000000B3604121 <undefined>
+    messageHandler: 00000000C3F07979 <JS Function>#64#
+maxBsonMessageSize: 67108864
+              port: 27017
+              host: 000000008B40DD89 <String[9]: localhost>
+         keepAlive: 00000000B3604161 <true>
+keepAliveInitialDelay: 0
+           noDelay: 00000000B3604161 <true>
+ connectionTimeout: 0
+     socketTimeout: 0
+      domainSocket: 00000000B3604181 <false>
+singleBufferSerializtion: 00000000B3604161 <true>
+serializationFunction: 00000000B4CF8C51 <String[12]: toBinUnified>
+                ca: 00000000B3604101 <null>
+              cert: 00000000B3604101 <null>
+               key: 00000000B3604101 <null>
+        passphrase: 00000000B3604101 <null>
+               ssl: 00000000B3604181 <false>
+rejectUnauthorized: 00000000B3604181 <false>
+   responseOptions: 00000000C3F1C0B1 <an Object>#77#
+          flushing: 00000000B3604181 <false>
+             queue: 00000000C3F1C1B9 <JS Array[0]>#82#
+        connection: 00000000C3F07BB1 <a Socket>#20#
+       writeStream: 00000000B3604101 <null>
+            buffer: 00000000B3604101 <null>
+     sizeOfMessage: 0
+         bytesRead: 0
+        stubBuffer: 00000000B3604101 <null>
+ #20# 00000000C3F07BB1: 00000000C3F07BB1 <a Socket>
+       _connecting: 00000000B3604181 <false>
+           _handle: 00000000C3F07EB9 <a TCP>#24#
+    _readableState: 00000000C3F07DB9 <a ReadableState>#22#
+          readable: 00000000B3604161 <true>
+            domain: 00000000B3604101 <null>
+           _events: 00000000C3F1C289 <an Object>#83#
+     _maxListeners: 10
+    _writableState: 00000000C3F1C2A1 <a WritableState>#84#
+          writable: 00000000B3604161 <true>
+     allowHalfOpen: 00000000B3604181 <false>
+             onend: 00000000B3604101 <null>
+         destroyed: 00000000B3604181 <false>
+         bytesRead: 194
+  _bytesDispatched: 56
+      _pendingData: 00000000B3604101 <null>
+  _pendingEncoding: 000000008F709A09 <String[0]: >
+         _idleNext: 00000000B3604101 <null>
+         _idlePrev: 00000000B3604101 <null>
+      _idleTimeout: -1
+             pause: 00000000E0B8FFF9 <JS Function>#85#
+            resume: 00000000E0B90041 <JS Function>#86#
+        _consuming: 00000000B3604161 <true>
+ #21# 00000000C3F07B81: 00000000C3F07B81 <a Buffer>
+            length: 0
+            parent: 0000000099067871 <a SlowBuffer>#87#
+            offset: 0
+ #22# 00000000C3F07DB9: 00000000C3F07DB9 <a ReadableState>
+     highWaterMark: 16384
+            buffer: 00000000C3F1C391 <JS Array[0]>#88#
+            length: 0
+             pipes: 00000000B3604101 <null>
+        pipesCount: 0
+           flowing: 00000000B3604181 <false>
+             ended: 00000000B3604181 <false>
+        endEmitted: 00000000B3604181 <false>
+           reading: 00000000B3604161 <true>
+        calledRead: 00000000B3604161 <true>
+              sync: 00000000B3604181 <false>
+      needReadable: 00000000B3604161 <true>
+   emittedReadable: 00000000B3604181 <false>
+ readableListening: 00000000B3604181 <false>
+        objectMode: 00000000B3604181 <false>
+   defaultEncoding: 000000008F716A81 <String[4]: utf8>
+            ranOut: 00000000B3604181 <false>
+        awaitDrain: 0
+       readingMore: 00000000B3604181 <false>
+           oldMode: 00000000B3604161 <true>
+           decoder: 00000000B3604101 <null>
+          encoding: 00000000B3604101 <null>
+ #23# 00000000C3F07B09: 00000000C3F07B09 <a Buffer>
+            length: 194
+            parent: 00000000990261F1 <a SlowBuffer>#25#
+            offset: 12256
+ #24# 00000000C3F07EB9: 00000000C3F07EB9 <a TCP>
+    writeQueueSize: 0
+             owner: 00000000C3F07BB1 <a Socket>#20#
+           reading: 00000000B3604161 <true>
+                  : 00000000C3F21269 <FixedArray[11]>#89#
+ #25# 00000000990261F1: 00000000990261F1 <a SlowBuffer>
+            length: 1048576
+ #26# 00000000990F28D9: 00000000990F28D9 <JS Function calculateObjectSize>
+ #27# 00000000C3F07449: 00000000C3F07449 <an Object>
+            openId: 00000000AA88E811 <an IncomingMessage>#90#
+ #28# 00000000A7A400E9: 00000000A7A400E9 <a BSON>
+ #29# 00000000C35750D1: 00000000C35750D1 <JS Function>
+ #30# 00000000C3574FF1: 00000000C3574FF1 <JS Function>
+ #31# 00000000A7A2BD99: 00000000A7A2BD99 <JS Function>
+ #32# 00000000C3570789: 00000000C3570789 <an Arguments>
+            length: 2
+ #33# 00000000C35707E9: 00000000C35707E9 <JS Array[1]>
+                 0: 00000000C3F07449 <an Object>#27#
+ #34# 00000000C3570709: 00000000C3570709 <JS Function>
+ #35# 00000000C3F1BF79: 00000000C3F1BF79 <an Object>
+ #36# 00000000C1BF91E9: 00000000C1BF91E9 <JS Function>
+ #37# 00000000C1BF7E31: 00000000C1BF7E31 <JS Function>
+ #38# 00000000C3F07599: 00000000C3F07599 <an Arguments>
+            length: 1
+            callee: 00000000C1BF3751 <JS Function g>#44#
+ #39# 00000000C1BF7DE9: 00000000C1BF7DE9 <JS Function>
+ #40# 00000000C3F07601: 00000000C3F07601 <an Arguments>
+            length: 2
+            callee: 00000000B3661899 <JS Function emit>#45#
+ #41# 00000000E0B4B981: 00000000E0B4B981 <JS Array[5]>
+                 0: 00000000E0B63611 <JS Function g>#91#
+                 1: 00000000E0B9DAE9 <JS Function g>#92#
+                 2: 00000000E0B9DB31 <JS Function g>#93#
+                 3: 00000000C3F21071 <JS Function g>#94#
+                 4: 00000000C3F210B9 <JS Function g>#95#
+ #42# 00000000C3F075C1: 00000000C3F075C1 <JS Array[1]>
+                 0: 00000000AA8ECB41 <JS Object>#16#
+ #43# 00000000C3F075E1: 00000000C3F075E1 <JS Array[6]>
+                 0: 00000000C1BF3751 <JS Function g>#44#
+                 1: 00000000E0B63611 <JS Function g>#91#
+                 2: 00000000E0B9DAE9 <JS Function g>#92#
+                 3: 00000000E0B9DB31 <JS Function g>#93#
+                 4: 00000000C3F21071 <JS Function g>#94#
+                 5: 00000000C3F210B9 <JS Function g>#95#
+ #44# 00000000C1BF3751: 00000000C1BF3751 <JS Function g>
+          listener: 00000000C1BF7DE9 <JS Function>#39#
+ #45# 00000000B3661899: 00000000B3661899 <JS Function emit>
+ #46# 00000000C3F07661: 00000000C3F07661 <JS Function>
+ #47# 00000000C3F077B9: 00000000C3F077B9 <JS Function>
+ #48# 00000000C3F07C69: 00000000C3F07C69 <an Arguments>
+            length: 2
+            callee: 00000000B3661899 <JS Function emit>#45#
+ #49# 00000000C3F07B39: 00000000C3F07B39 <JS Function>
+ #50# 00000000C3F07D59: 00000000C3F07D59 <an Arguments>
+            length: 1
+            callee: 00000000B3661899 <JS Function emit>#45#
+ #51# 00000000C3F07CC9: 00000000C3F07CC9 <JS Function>
+ #52# 0000000099068899: 0000000099068899 <JS Function emitReadable_>
+ #53# 0000000099068851: 0000000099068851 <JS Function emitReadable>
+ #54# 00000000990686A1: 00000000990686A1 <JS Function readableAddChunk>
+ #55# 00000000C3574A39: 00000000C3574A39 <an Object>
+      numberToSkip: 0
+    numberToReturn: -1
+         checkKeys: 00000000B3604181 <false>
+returnFieldSelector: 00000000B3604121 <undefined>
+ #56# 00000000A7A25B29: 00000000A7A25B29 <JS Object>
+                 s: 00000000A7A1AD91 <an Object>#96#
+ #57# 00000000C35733A1: 00000000C35733A1 <a ReadableState>
+     highWaterMark: 16384
+            buffer: 00000000C3573489 <JS Array[0]>#97#
+            length: 0
+             pipes: 00000000B3604101 <null>
+        pipesCount: 0
+           flowing: 00000000B3604181 <false>
+             ended: 00000000B3604181 <false>
+        endEmitted: 00000000B3604181 <false>
+           reading: 00000000B3604181 <false>
+        calledRead: 00000000B3604181 <false>
+              sync: 00000000B3604161 <true>
+      needReadable: 00000000B3604181 <false>
+   emittedReadable: 00000000B3604181 <false>
+ readableListening: 00000000B3604181 <false>
+        objectMode: 00000000B3604161 <true>
+   defaultEncoding: 000000008F716A81 <String[4]: utf8>
+            ranOut: 00000000B3604181 <false>
+        awaitDrain: 0
+       readingMore: 00000000B3604181 <false>
+           oldMode: 00000000B3604181 <false>
+           decoder: 00000000B3604101 <null>
+          encoding: 00000000B3604101 <null>
+ #58# 00000000C3573769: 00000000C3573769 <an Object>
+ #59# 00000000C3573DF1: 00000000C3573DF1 <an Object>
+         maxTimeMS: 00000000B3604101 <null>
+   numberOfRetries: 5
+tailableRetryInterval: 500
+currentNumberOfRetries: 5
+             state: 0
+     streamOptions: 00000000C35732D9 <an Object>#98#
+              bson: 00000000A7A400E9 <a BSON>#28#
+                ns: 00000000C3F21029 <String[13]: laiyd.members>
+               cmd: 00000000C3571CA1 <an Object>#3#
+           options: 00000000C3571151 <an Object>#4#
+          topology: 00000000AA8ECB41 <JS Object>#16#
+   topologyOptions: 00000000AA8ECBB9 <an Object>#62#
+ #60# 00000000C3572ED9: 00000000C3572ED9 <JS Array[0]>
+ #61# 00000000C3F2BF61: 00000000C3F2BF61 <an Object>
+             close: 00000000C3F3D511 <JS Function g>#99#
+             error: 00000000C3F3D559 <JS Function g>#100#
+           timeout: 00000000C3F3D5A1 <JS Function g>#101#
+        parseError: 00000000C3F3D5E9 <JS Function g>#102#
+           connect: 00000000C3F3D631 <JS Function>#103#
+ #62# 00000000AA8ECBB9: 00000000AA8ECBB9 <an Object>
+    auto_reconnect: 00000000B3604161 <true>
+              host: 000000008B40DD89 <String[9]: localhost>
+              port: 27017
+         reconnect: 00000000B3604161 <true>
+         emitError: 00000000B3604161 <true>
+              size: 5
+ disconnectHandler: 00000000A7A25B29 <JS Object>#56#
+              bson: 00000000A7A400E9 <a BSON>#28#
+    messageHandler: 00000000C3F07979 <JS Function>#64#
+wireProtocolHandler: 00000000C3F17191 <JS Object>#104#
+ #63# 00000000C3F2BF79: 00000000C3F2BF79 <JS Object>
+         className: 00000000EF766FD9 <String[10]: Connection>
+ #64# 00000000C3F07979: 00000000C3F07979 <JS Function>
+ #65# 00000000C3F2BF99: 00000000C3F2BF99 <an Object>
+      promoteLongs: 00000000B3604161 <true>
+ #66# 00000000C3F2BFB9: 00000000C3F2BFB9 <JS Array[0]>
+ #67# 00000000C3F1F271: 00000000C3F1F271 <a Socket>
+       _connecting: 00000000B3604181 <false>
+           _handle: 00000000C3F08599 <a TCP>#105#
+    _readableState: 00000000C3F24F21 <a ReadableState>#106#
+          readable: 00000000B3604161 <true>
+            domain: 00000000B3604101 <null>
+           _events: 00000000C3F24FE9 <an Object>#107#
+     _maxListeners: 10
+    _writableState: 00000000C3F25001 <a WritableState>#108#
+          writable: 00000000B3604161 <true>
+     allowHalfOpen: 00000000B3604181 <false>
+             onend: 00000000B3604101 <null>
+         destroyed: 00000000B3604181 <false>
+         bytesRead: 0
+  _bytesDispatched: 0
+      _pendingData: 00000000B3604101 <null>
+  _pendingEncoding: 000000008F709A09 <String[0]: >
+         _idleNext: 00000000B3604101 <null>
+         _idlePrev: 00000000B3604101 <null>
+      _idleTimeout: -1
+             pause: 00000000E0B900D1 <JS Function>#109#
+            resume: 00000000E0B90119 <JS Function>#110#
+        _consuming: 00000000B3604161 <true>
+ #68# 00000000A7A1C741: 00000000A7A1C741 <an Object>
+ #69# 00000000C3F1BED9: 00000000C3F1BED9 <an Object>
+         pkFactory: 00000000B3637141 <JS Function ObjectID>#111#
+                db: 00000000A7A212A1 <JS Object>#13#
+          topology: 00000000AA8ECC11 <JS Object>#15#
+            dbName: 000000008F72D1B1 <String[5]: laiyd>
+           options: 00000000C3F1BF79 <an Object>#35#
+         namespace: 00000000C3F21029 <String[13]: laiyd.members>
+    readPreference: 00000000B3604101 <null>
+               raw: 00000000B3604121 <undefined>
+           slaveOk: 00000000B3604181 <false>
+serializeFunctions: 00000000B3604121 <undefined>
+      internalHint: 00000000B3604101 <null>
+    collectionHint: 00000000B3604101 <null>
+              name: 000000008B40DB41 <String[7]: members>
+ #70# 00000000A7A18601: 00000000A7A18601 <an Object>
+ #71# 00000000A7A18619: 00000000A7A18619 <an Object>
+      databaseName: 000000008F72D1B1 <String[5]: laiyd>
+          topology: 00000000AA8ECC11 <JS Object>#15#
+           options: 00000000AA8E4DD9 <an Object>#112#
+            logger: 00000000AA8E4D79 <JS Object>#113#
+              bson: 00000000A7A400E9 <a BSON>#28#
+        authSource: 00000000B3604121 <undefined>
+    readPreference: 00000000B3604121 <undefined>
+  bufferMaxEntries: -1
+          parentDb: 00000000B3604101 <null>
+         pkFactory: 00000000B3604121 <undefined>
+      nativeParser: 00000000B3604121 <undefined>
+ #72# 00000000A7A1AEF1: 00000000A7A1AEF1 <an Object>
+ #73# 00000000A7A1AF09: 00000000A7A1AF09 <an Object>
+            server: 00000000AA8ECB41 <JS Object>#16#
+     sCapabilities: 00000000B3604101 <null>
+     clonedOptions: 00000000AA8ECBB9 <an Object>#62#
+         reconnect: 00000000B3604161 <true>
+         emitError: 00000000B3604161 <true>
+          poolSize: 5
+      storeOptions: 00000000A7A1BED1 <an Object>#114#
+             store: 00000000A7A25B29 <JS Object>#56#
+              host: 000000008B40DD89 <String[9]: localhost>
+              port: 27017
+           options: 00000000AA8E4DD9 <an Object>#112#
+ #74# 00000000A7A1ADC1: 00000000A7A1ADC1 <an Object>
+ #75# 00000000A7A1ADD9: 00000000A7A1ADD9 <an Object>
+           options: 00000000AA8ECBB9 <an Object>#62#
+         callbacks: 00000000A7A1BF59 <JS Object>#8#
+            logger: 00000000A7A1BEF9 <JS Object>#115#
+             state: 000000008B40ECD9 <String[9]: connected>
+         reconnect: 00000000B3604161 <true>
+    reconnectTries: 30
+ reconnectInterval: 1000
+         emitError: 00000000B3604161 <true>
+currentReconnectRetry: 30
+          ismaster: 00000000C3F17179 <an Object>#76#
+readPreferenceStrategies: 00000000B3604121 <undefined>
+     authProviders: 00000000A7A1BFC9 <an Object>#116#
+                id: 0
+               tag: 00000000B3604121 <undefined>
+ disconnectHandler: 00000000A7A25B29 <JS Object>#56#
+wireProtocolHandler: 00000000C3F17191 <JS Object>#104#
+            Cursor: 00000000A7A25FB1 <JS Function>#117#
+      bsonInstance: 00000000A7A400E9 <a BSON>#28#
+              bson: 00000000A7A400E9 <a BSON>#28#
+              pool: 00000000C3F08AF9 <JS Object>#118#
+     serverDetails: 00000000AA8EEA81 <an Object>#119#
+ #76# 00000000C3F17179: 00000000C3F17179 <an Object>
+          ismaster: 00000000B3604161 <true>
+ maxBsonObjectSize: 16777216
+maxMessageSizeBytes: 48000000
+ maxWriteBatchSize: 1000
+         localTime: 00000000C3F25599 <a Date>#120#
+    maxWireVersion: 3
+    minWireVersion: 0
+                ok: 1
+ #77# 00000000C3F1C0B1: 00000000C3F1C0B1 <an Object>
+      promoteLongs: 00000000B3604161 <true>
+ #78# 00000000C3F1C0D1: 00000000C3F1C0D1 <a Long>
+         _bsontype: 000000008B40E131 <String[4]: Long>
+              low_: 0
+             high_: 0
+ #79# 00000000C3F1C101: 00000000C3F1C101 <JS Array[1]>
+                 0: 00000000C3F17179 <an Object>#76#
+ #80# 00000000C3F1C181: 00000000C3F1C181 <an Object>
+             close: 00000000C3F26BA9 <JS Function g>#121#
+             error: 00000000C3F26BF1 <JS Function g>#122#
+           timeout: 00000000C3F26C39 <JS Function g>#123#
+        parseError: 00000000C3F26C81 <JS Function g>#124#
+           connect: 00000000C3F26CC9 <JS Function>#125#
+ #81# 00000000C3F1C199: 00000000C3F1C199 <JS Object>
+         className: 00000000EF766FD9 <String[10]: Connection>
+ #82# 00000000C3F1C1B9: 00000000C3F1C1B9 <JS Array[0]>
+ #83# 00000000C3F1C289: 00000000C3F1C289 <an Object>
+               end: 00000000C3F26D11 <JS Function g>#126#
+            finish: 0000000099093869 <JS Function onSocketFinish>#127#
+           connect: 00000000C3F26D59 <JS Array[1]>#128#
+             error: 00000000C3F26D79 <JS Function g>#129#
+           timeout: 00000000C3F26DC1 <JS Function g>#130#
+             close: 00000000C3F26E09 <JS Function g>#131#
+              data: 00000000C3F07B39 <JS Function>#49#
+          readable: 00000000C3F07CC9 <JS Function>#51#
+ #84# 00000000C3F1C2A1: 00000000C3F1C2A1 <a WritableState>
+     highWaterMark: 16384
+        objectMode: 00000000B3604181 <false>
+         needDrain: 00000000B3604181 <false>
+            ending: 00000000B3604181 <false>
+             ended: 00000000B3604181 <false>
+          finished: 00000000B3604181 <false>
+     decodeStrings: 00000000B3604181 <false>
+   defaultEncoding: 000000008F716A81 <String[4]: utf8>
+            length: 0
+           writing: 00000000B3604181 <false>
+              sync: 00000000B3604181 <false>
+  bufferProcessing: 00000000B3604181 <false>
+           onwrite: 00000000E0B8FFB1 <JS Function>#132#
+           writecb: 00000000B3604101 <null>
+          writelen: 0
+            buffer: 00000000C3F21211 <JS Array[0]>#133#
+      errorEmitted: 00000000B3604181 <false>
+ #85# 00000000E0B8FFF9: 00000000E0B8FFF9 <JS Function>
+ #86# 00000000E0B90041: 00000000E0B90041 <JS Function>
+ #87# 0000000099067871: 0000000099067871 <a SlowBuffer>
+            length: 0
+ #88# 00000000C3F1C391: 00000000C3F1C391 <JS Array[0]>
+ #89# 00000000C3F21269: 00000000C3F21269 <FixedArray[11]>
+                 0: 1
+                 1: 0
+                 2: 4
+                 3: 00000000B3604121 <undefined>
+                 4: 00000000B3604121 <undefined>
+                 5: 00000000B3604121 <undefined>
+                 6: 00000000B3604121 <undefined>
+                 7: 0000000081FD0FD1 <String[21]: slab_0000000002190930>
+                 8: 00000000B3604101 <null>
+                 9: 00000000B3604121 <undefined>
+                  ...
+ #90# 00000000AA88E811: 00000000AA88E811 <an IncomingMessage>
+    _readableState: 00000000AA88E8E1 <a ReadableState>#134#
+          readable: 00000000B3604181 <false>
+            domain: 00000000B3604101 <null>
+           _events: 00000000AA88E9C9 <an Object>#135#
+     _maxListeners: 10
+            socket: 00000000C1B5EA31 <a Socket>#136#
+        connection: 00000000C1B5EA31 <a Socket>#136#
+       httpVersion: 00000000B4CA2C31 <String[3]: 1.0>
+          complete: 00000000B3604161 <true>
+           headers: 00000000AA88E9E1 <an Object>#137#
+          trailers: 00000000AA88E9F9 <an Object>#138#
+         _pendings: 00000000AA88EA11 <JS Array[0]>#139#
+     _pendingIndex: 0
+               url: 00000000B4C9C0B9 <String[89]: /?signature=6674224ae5c4c14e86c461ec0511dfb0990752aa&timestamp=1435577865&nonce=666064939>
+            method: 0000000081FF3689 <String[4]: POST>
+        statusCode: 00000000B3604101 <null>
+            client: 00000000C1B5EA31 <a Socket>#136#
+        _consuming: 00000000B3604161 <true>
+           _dumped: 00000000B3604181 <false>
+  httpVersionMajor: 1
+  httpVersionMinor: 0
+           upgrade: 00000000B3604181 <false>
+              next: 00000000990E90C9 <JS Function next>#140#
+           baseUrl: 00000000B4CA2CB9 <String[7]: /weixin>
+       originalUrl: 00000000B4CA2BB9 <String[95]: /weixin?signature=6674224ae5c4c14e86c461ec0511dfb0990752aa&timestamp=1435577865&nonce=666064939>
+        _parsedUrl: 00000000990E89A1 <an Url>#141#
+            params: 00000000990E8A49 <an Object>#142#
+             query: 00000000C1B5DB69 <an Object>#143#
+               res: 00000000C1B5CB79 <a ServerResponse>#144#
+          _startAt: 00000000C1B5B541 <JS Array[2]>#145#
+        _startTime: 00000000C1B5B9C1 <a Date>#146#
+    _remoteAddress: 00000000B4CA1BD1 <String[13]: 192.168.1.104>
+              body: 00000000C1B58D41 <an Object>#147#
+            secret: 00000000B3604121 <undefined>
+           cookies: 00000000C1B593C9 <an Object>#148#
+     signedCookies: 00000000C1B59431 <an Object>#149#
+_parsedOriginalUrl: 00000000C1B599F9 <an Url>#150#
+      sessionStore: 000000009901E621 <a MemoryStore>#151#
+         sessionID: 00000000B4CA1C31 <String[32]: zOD65vuEbGgSndZ7txQJW5v3Pml6REx3>
+           session: 00000000C1B59DC9 <a Session>#152#
+             route: 00000000E54F8E19 <a Route>#153#
+ #91# 00000000E0B63611: 00000000E0B63611 <JS Function g>
+          listener: 00000000E0B640E9 <JS Function>#154#
+ #92# 00000000E0B9DAE9: 00000000E0B9DAE9 <JS Function g>
+          listener: 00000000E0BA2E01 <JS Function>#155#
+ #93# 00000000E0B9DB31: 00000000E0B9DB31 <JS Function g>
+          listener: 00000000E0BA2E49 <JS Function>#156#
+ #94# 00000000C3F21071: 00000000C3F21071 <JS Function g>
+          listener: 00000000C3F2B8D9 <JS Function>#157#
+ #95# 00000000C3F210B9: 00000000C3F210B9 <JS Function g>
+          listener: 00000000C3F2B921 <JS Function>#158#
+ #96# 00000000A7A1AD91: 00000000A7A1AD91 <an Object>
+         storedOps: 00000000A7A1BEB1 <JS Array[5]>#159#
+      storeOptions: 00000000A7A1BED1 <an Object>#114#
+          topology: 00000000AA8ECC11 <JS Object>#15#
+ #97# 00000000C3573489: 00000000C3573489 <JS Array[0]>
+ #98# 00000000C35732D9: 00000000C35732D9 <an Object>
+ #99# 00000000C3F3D511: 00000000C3F3D511 <JS Function g>
+          listener: 00000000C3F4BB69 <JS Function>#160#
+ #100# 00000000C3F3D559: 00000000C3F3D559 <JS Function g>
+          listener: 00000000C3F4BBB1 <JS Function>#161#
+ #101# 00000000C3F3D5A1: 00000000C3F3D5A1 <JS Function g>
+          listener: 00000000C3F4BBF9 <JS Function>#162#
+ #102# 00000000C3F3D5E9: 00000000C3F3D5E9 <JS Function g>
+          listener: 00000000C3F4BC41 <JS Function>#163#
+ #103# 00000000C3F3D631: 00000000C3F3D631 <JS Function>
+ #104# 00000000C3F17191: 00000000C3F17191 <JS Object>
+ #105# 00000000C3F08599: 00000000C3F08599 <a TCP>
+    writeQueueSize: 0
+             owner: 00000000C3F1F271 <a Socket>#67#
+           reading: 00000000B3604161 <true>
+ #106# 00000000C3F24F21: 00000000C3F24F21 <a ReadableState>
+     highWaterMark: 16384
+            buffer: 00000000C3F29FA1 <JS Array[0]>#164#
+            length: 0
+             pipes: 00000000B3604101 <null>
+        pipesCount: 0
+           flowing: 00000000B3604181 <false>
+             ended: 00000000B3604181 <false>
+        endEmitted: 00000000B3604181 <false>
+           reading: 00000000B3604161 <true>
+        calledRead: 00000000B3604161 <true>
+              sync: 00000000B3604181 <false>
+      needReadable: 00000000B3604161 <true>
+   emittedReadable: 00000000B3604181 <false>
+ readableListening: 00000000B3604181 <false>
+        objectMode: 00000000B3604181 <false>
+   defaultEncoding: 000000008F716A81 <String[4]: utf8>
+            ranOut: 00000000B3604181 <false>
+        awaitDrain: 0
+       readingMore: 00000000B3604181 <false>
+           oldMode: 00000000B3604161 <true>
+           decoder: 00000000B3604101 <null>
+          encoding: 00000000B3604101 <null>
+ #107# 00000000C3F24FE9: 00000000C3F24FE9 <an Object>
+               end: 00000000C3F31D89 <JS Function g>#165#
+            finish: 0000000099093869 <JS Function onSocketFinish>#127#
+           connect: 00000000C3F31DD1 <JS Array[1]>#166#
+             error: 00000000C3F31DF1 <JS Function g>#167#
+           timeout: 00000000C3F31E39 <JS Function g>#168#
+             close: 00000000C3F31E81 <JS Function g>#169#
+              data: 00000000C3F31EC9 <JS Function>#170#
+          readable: 00000000C3F31F11 <JS Function>#171#
+ #108# 00000000C3F25001: 00000000C3F25001 <a WritableState>
+     highWaterMark: 16384
+        objectMode: 00000000B3604181 <false>
+         needDrain: 00000000B3604181 <false>
+            ending: 00000000B3604181 <false>
+             ended: 00000000B3604181 <false>
+          finished: 00000000B3604181 <false>
+     decodeStrings: 00000000B3604181 <false>
+   defaultEncoding: 000000008F716A81 <String[4]: utf8>
+            length: 0
+           writing: 00000000B3604181 <false>
+              sync: 00000000B3604161 <true>
+  bufferProcessing: 00000000B3604181 <false>
+           onwrite: 00000000E0B90089 <JS Function>#172#
+           writecb: 00000000B3604101 <null>
+          writelen: 0
+            buffer: 00000000C3F2A019 <JS Array[0]>#173#
+      errorEmitted: 00000000B3604181 <false>
+ #109# 00000000E0B900D1: 00000000E0B900D1 <JS Function>
+ #110# 00000000E0B90119: 00000000E0B90119 <JS Function>
+ #111# 00000000B3637141: 00000000B3637141 <JS Function ObjectID>
+             index: 14112058
+ #112# 00000000AA8E4DD9: 00000000AA8E4DD9 <an Object>
+              safe: 00000000B3604161 <true>
+ #113# 00000000AA8E4D79: 00000000AA8E4D79 <JS Object>
+         className: 000000008B40DCD9 <String[2]: Db>
+ #114# 00000000A7A1BED1: 00000000A7A1BED1 <an Object>
+             force: 00000000B3604181 <false>
+  bufferMaxEntries: -1
+ #115# 00000000A7A1BEF9: 00000000A7A1BEF9 <JS Object>
+         className: 0000000081FEC411 <String[6]: Server>
+ #116# 00000000A7A1BFC9: 00000000A7A1BFC9 <an Object>
+ #117# 00000000A7A25FB1: 00000000A7A25FB1 <JS Function>
+            super_: 00000000990646C9 <JS Function Readable>#174#
+              INIT: 0
+              OPEN: 1
+            CLOSED: 2
+          GET_MORE: 3
+ #118# 00000000C3F08AF9: 00000000C3F08AF9 <JS Object>
+            domain: 00000000B3604101 <null>
+           _events: 00000000C3F1C8A1 <an Object>#175#
+     _maxListeners: 10
+           options: 00000000AA8ECBB9 <an Object>#62#
+              size: 5
+    messageHandler: 00000000C3F07979 <JS Function>#64#
+       connections: 00000000C3F1C8B9 <JS Array[5]>#176#
+             state: 000000008B40ECD9 <String[9]: connected>
+             index: 2
+              dead: 00000000B3604181 <false>
+            logger: 00000000C3F1C8D9 <JS Object>#177#
+                id: 5
+               tag: 00000000B3604121 <undefined>
+ #119# 00000000AA8EEA81: 00000000AA8EEA81 <an Object>
+              host: 000000008B40DD89 <String[9]: localhost>
+              port: 27017
+              name: 0000000081F41C69 <String[15]: localhost:27017>
+ #120# 00000000C3F25599: 00000000C3F25599 <a Date>
+ #121# 00000000C3F26BA9: 00000000C3F26BA9 <JS Function g>
+          listener: 00000000C3F35199 <JS Function>#178#
+ #122# 00000000C3F26BF1: 00000000C3F26BF1 <JS Function g>
+          listener: 00000000C3F351E1 <JS Function>#179#
+ #123# 00000000C3F26C39: 00000000C3F26C39 <JS Function g>
+          listener: 00000000C3F35229 <JS Function>#180#
+ #124# 00000000C3F26C81: 00000000C3F26C81 <JS Function g>
+          listener: 00000000C3F35271 <JS Function>#181#
+ #125# 00000000C3F26CC9: 00000000C3F26CC9 <JS Function>
+ #126# 00000000C3F26D11: 00000000C3F26D11 <JS Function g>
+          listener: 000000009906F091 <JS Function onend>#182#
+ #127# 0000000099093869: 0000000099093869 <JS Function onSocketFinish>
+ #128# 00000000C3F26D59: 00000000C3F26D59 <JS Array[1]>
+                 0: 00000000C3F352B9 <JS Function>#183#
+ #129# 00000000C3F26D79: 00000000C3F26D79 <JS Function g>
+          listener: 00000000C3F35301 <JS Function>#184#
+ #130# 00000000C3F26DC1: 00000000C3F26DC1 <JS Function g>
+          listener: 00000000C3F35349 <JS Function>#185#
+ #131# 00000000C3F26E09: 00000000C3F26E09 <JS Function g>
+          listener: 00000000C3F35391 <JS Function>#186#
+ #132# 00000000E0B8FFB1: 00000000E0B8FFB1 <JS Function>
+ #133# 00000000C3F21211: 00000000C3F21211 <JS Array[0]>
+ #134# 00000000AA88E8E1: 00000000AA88E8E1 <a ReadableState>
+     highWaterMark: 16384
+            buffer: 00000000AA88E9A9 <JS Array[0]>#187#
+            length: 0
+             pipes: 00000000B3604101 <null>
+        pipesCount: 0
+           flowing: 00000000B3604181 <false>
+             ended: 00000000B3604161 <true>
+        endEmitted: 00000000B3604161 <true>
+           reading: 00000000B3604181 <false>
+        calledRead: 00000000B3604161 <true>
+              sync: 00000000B3604161 <true>
+      needReadable: 00000000B3604161 <true>
+   emittedReadable: 00000000B3604181 <false>
+ readableListening: 00000000B3604181 <false>
+        objectMode: 00000000B3604181 <false>
+   defaultEncoding: 000000008F716A81 <String[4]: utf8>
+            ranOut: 00000000B3604181 <false>
+        awaitDrain: 0
+       readingMore: 00000000B3604181 <false>
+           oldMode: 00000000B3604161 <true>
+           decoder: 00000000C1B57B09 <JS Object>#188#
+          encoding: 000000008F71AC21 <String[5]: utf-8>
+ #135# 00000000AA88E9C9: 00000000AA88E9C9 <an Object>
+ #136# 00000000C1B5EA31: 00000000C1B5EA31 <a Socket>
+       _connecting: 00000000B3604181 <false>
+           _handle: 00000000B3604101 <null>
+    _readableState: 00000000C1B5EAE9 <a ReadableState>#189#
+          readable: 00000000B3604181 <false>
+            domain: 00000000B3604101 <null>
+           _events: 00000000C1B5EBD1 <an Object>#190#
+     _maxListeners: 10
+    _writableState: 00000000C1B5EBE9 <a WritableState>#191#
+          writable: 00000000B3604181 <false>
+     allowHalfOpen: 00000000B3604161 <true>
+             onend: 00000000B3604101 <null>
+         destroyed: 00000000B3604161 <true>
+         bytesRead: 532
+  _bytesDispatched: 335
+      _pendingData: 00000000B3604101 <null>
+  _pendingEncoding: 000000008F709A09 <String[0]: >
+            server: 000000009901F5F1 <a Server>#192#
+      _idleTimeout: -1
+         _idleNext: 00000000B3604101 <null>
+         _idlePrev: 00000000B3604101 <null>
+        _idleStart: 00000000BB608011 <Number: 1435577995949>
+            parser: 00000000B3604101 <null>
+            ondata: 00000000B3604101 <null>
+           _paused: 00000000B3604181 <false>
+      _httpMessage: 00000000B3604101 <null>
+         _peername: 00000000C1B5BB11 <an Object>#193#
+ #137# 00000000AA88E9E1: 00000000AA88E9E1 <an Object>
+ #138# 00000000AA88E9F9: 00000000AA88E9F9 <an Object>
+ #139# 00000000AA88EA11: 00000000AA88EA11 <JS Array[0]>
+ #140# 00000000990E90C9: 00000000990E90C9 <JS Function next>
+ #141# 00000000990E89A1: 00000000990E89A1 <an Url>
+          protocol: 00000000B3604101 <null>
+           slashes: 00000000B3604101 <null>
+              auth: 00000000B3604101 <null>
+              host: 00000000B3604101 <null>
+              port: 00000000B3604101 <null>
+          hostname: 00000000B3604101 <null>
+              hash: 00000000B3604101 <null>
+            search: 00000000990E8979 <String[88]: ?signature=6674224ae5c4c14e86c461ec0511dfb0990752aa&timestamp=1435577865&nonce=666064939>
+             query: 00000000990E8A21 <String[87]: signature=6674224ae5c4c14e86c461ec0511dfb0990752aa&timestamp=1435577865&nonce=666064939>
+          pathname: 000000008F718299 <String[1]: />
+              path: 00000000B4C9C0B9 <String[89]: /?signature=6674224ae5c4c14e86c461ec0511dfb0990752aa&timestamp=1435577865&nonce=666064939>
+              href: 00000000B4C9C0B9 <String[89]: /?signature=6674224ae5c4c14e86c461ec0511dfb0990752aa&timestamp=1435577865&nonce=666064939>
+              _raw: 00000000B4C9C0B9 <String[89]: /?signature=6674224ae5c4c14e86c461ec0511dfb0990752aa&timestamp=1435577865&nonce=666064939>
+ #142# 00000000990E8A49: 00000000990E8A49 <an Object>
+ #143# 00000000C1B5DB69: 00000000C1B5DB69 <an Object>
+         signature: 00000000B4CA1B09 <String[40]: 6674224ae5c4c14e86c461ec0511dfb0990752aa>
+         timestamp: 00000000B4CA1B49 <String[10]: 1435577865>
+             nonce: 00000000B4CA1B71 <String[9]: 666064939>
+ #144# 00000000C1B5CB79: 00000000C1B5CB79 <a ServerResponse>
+            domain: 00000000B3604101 <null>
+           _events: 00000000C1B5CC11 <an Object>#194#
+     _maxListeners: 10
+            output: 00000000C1B5CC69 <JS Array[0]>#195#
+   outputEncodings: 00000000C1B5CCA9 <JS Array[0]>#196#
+          writable: 00000000B3604161 <true>
+             _last: 00000000B3604161 <true>
+   chunkedEncoding: 00000000B3604181 <false>
+   shouldKeepAlive: 00000000B3604181 <false>
+useChunkedEncodingByDefault: 00000000B3604181 <false>
+          sendDate: 00000000B3604161 <true>
+       _headerSent: 00000000B3604161 <true>
+           _header: 00000000BB607891 <String[335]\: HTTP/1.1 200 OK\r\nX-Powered-By: Express\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 0\r\nETag: W/"0-0"\r\nset-cookie: laiyd=s%3AzOD65vuEbGgSndZ7txQJW5v3Pml6REx3.%2FgzR%2F%2FwesKxBoicD7tJk3F1Wo5bPttdeScIEYjbAyxY; Path=/; Expires=Mon, 29 Jun 2015 13:52:12 GMT; HttpOnly\r\nDate: Mon, 29 Jun 2015 11:38:52 GMT\r\nConnection: close\r\n\r\n>
+          _hasBody: 00000000B3604161 <true>
+          _trailer: 000000008F709A09 <String[0]: >
+          finished: 00000000B3604161 <true>
+      _hangupClose: 00000000B3604181 <false>
+            socket: 00000000B3604101 <null>
+        connection: 00000000B3604101 <null>
+          _headers: 00000000C1B5DFC1 <an Object>#197#
+      _headerNames: 00000000C1B5E299 <an Object>#198#
+               req: 00000000AA88E811 <an IncomingMessage>#90#
+            locals: 00000000C1B5AF09 <an Object>#199#
+      __onFinished: 00000000B3604101 <null>
+        statusCode: 200
+ #145# 00000000C1B5B541: 00000000C1B5B541 <JS Array[2]>
+                 0: 1619386
+                 1: 146228723
+ #146# 00000000C1B5B9C1: 00000000C1B5B9C1 <a Date>
+ #147# 00000000C1B58D41: 00000000C1B58D41 <an Object>
+ #148# 00000000C1B593C9: 00000000C1B593C9 <an Object>
+ #149# 00000000C1B59431: 00000000C1B59431 <an Object>
+ #150# 00000000C1B599F9: 00000000C1B599F9 <an Url>
+          protocol: 00000000B3604101 <null>
+           slashes: 00000000B3604101 <null>
+              auth: 00000000B3604101 <null>
+              host: 00000000B3604101 <null>
+              port: 00000000B3604101 <null>
+          hostname: 00000000B3604101 <null>
+              hash: 00000000B3604101 <null>
+            search: 00000000C1B599D1 <String[88]: ?signature=6674224ae5c4c14e86c461ec0511dfb0990752aa&timestamp=1435577865&nonce=666064939>
+             query: 00000000C1B59A79 <String[87]: signature=6674224ae5c4c14e86c461ec0511dfb0990752aa&timestamp=1435577865&nonce=666064939>
+          pathname: 00000000B4CA1BF9 <String[7]: /weixin>
+              path: 00000000B4CA2BB9 <String[95]: /weixin?signature=6674224ae5c4c14e86c461ec0511dfb0990752aa&timestamp=1435577865&nonce=666064939>
+              href: 00000000B4CA2BB9 <String[95]: /weixin?signature=6674224ae5c4c14e86c461ec0511dfb0990752aa&timestamp=1435577865&nonce=666064939>
+              _raw: 00000000B4CA2BB9 <String[95]: /weixin?signature=6674224ae5c4c14e86c461ec0511dfb0990752aa&timestamp=1435577865&nonce=666064939>
+ #151# 000000009901E621: 000000009901E621 <a MemoryStore>
+          sessions: 000000009901E681 <an Object>#200#
+           _events: 000000009901E7C1 <an Object>#201#
+ #152# 00000000C1B59DC9: 00000000C1B59DC9 <a Session>
+               req: 00000000AA88E811 <an IncomingMessage>#90#
+                id: 00000000B4CA1C31 <String[32]: zOD65vuEbGgSndZ7txQJW5v3Pml6REx3>
+            cookie: 00000000C1B59F61 <a Cookie>#202#
+ #153# 00000000E54F8E19: 00000000E54F8E19 <a Route>
+              path: 000000008F718299 <String[1]: />
+             stack: 00000000E54F8E49 <JS Array[1]>#203#
+           methods: 00000000E54F8E69 <an Object>#204#
+ #154# 00000000E0B640E9: 00000000E0B640E9 <JS Function>
+ #155# 00000000E0BA2E01: 00000000E0BA2E01 <JS Function>
+ #156# 00000000E0BA2E49: 00000000E0BA2E49 <JS Function>
+ #157# 00000000C3F2B8D9: 00000000C3F2B8D9 <JS Function>
+ #158# 00000000C3F2B921: 00000000C3F2B921 <JS Function>
+ #159# 00000000A7A1BEB1: 00000000A7A1BEB1 <JS Array[5]>
+                 0: 00000000C3F1DC59 <an Object>#205#
+                 1: 00000000C3F1DC99 <an Object>#206#
+                 2: 00000000C3F1DCD9 <an Object>#207#
+                 3: 00000000C3F1DD19 <an Object>#208#
+                 4: 00000000C3F1DD59 <an Object>#209#
+ #160# 00000000C3F4BB69: 00000000C3F4BB69 <JS Function>
+ #161# 00000000C3F4BBB1: 00000000C3F4BBB1 <JS Function>
+ #162# 00000000C3F4BBF9: 00000000C3F4BBF9 <JS Function>
+ #163# 00000000C3F4BC41: 00000000C3F4BC41 <JS Function>
+ #164# 00000000C3F29FA1: 00000000C3F29FA1 <JS Array[0]>
+ #165# 00000000C3F31D89: 00000000C3F31D89 <JS Function g>
+          listener: 000000009906F091 <JS Function onend>#182#
+ #166# 00000000C3F31DD1: 00000000C3F31DD1 <JS Array[1]>
+                 0: 00000000C3F42F01 <JS Function>#210#
+ #167# 00000000C3F31DF1: 00000000C3F31DF1 <JS Function g>
+          listener: 00000000C3F42F49 <JS Function>#211#
+ #168# 00000000C3F31E39: 00000000C3F31E39 <JS Function g>
+          listener: 00000000C3F42F91 <JS Function>#212#
+ #169# 00000000C3F31E81: 00000000C3F31E81 <JS Function g>
+          listener: 00000000C3F42FD9 <JS Function>#213#
+ #170# 00000000C3F31EC9: 00000000C3F31EC9 <JS Function>
+ #171# 00000000C3F31F11: 00000000C3F31F11 <JS Function>
+ #172# 00000000E0B90089: 00000000E0B90089 <JS Function>
+ #173# 00000000C3F2A019: 00000000C3F2A019 <JS Array[0]>
+ #174# 00000000990646C9: 00000000990646C9 <JS Function Readable>
+ #175# 00000000C3F1C8A1: 00000000C3F1C8A1 <an Object>
+ #176# 00000000C3F1C8B9: 00000000C3F1C8B9 <JS Array[5]>
+                 0: 00000000C3F079C1 <JS Object>#19#
+                 1: 00000000C3F26F71 <JS Object>#6#
+                 2: 00000000C3F27081 <JS Object>#214#
+                 3: 00000000C3F27191 <JS Object>#215#
+                 4: 00000000C3F272A1 <JS Object>#216#
+ #177# 00000000C3F1C8D9: 00000000C3F1C8D9 <JS Object>
+         className: 000000008B40E6D1 <String[4]: Pool>
+ #178# 00000000C3F35199: 00000000C3F35199 <JS Function>
+ #179# 00000000C3F351E1: 00000000C3F351E1 <JS Function>
+ #180# 00000000C3F35229: 00000000C3F35229 <JS Function>
+ #181# 00000000C3F35271: 00000000C3F35271 <JS Function>
+ #182# 000000009906F091: 000000009906F091 <JS Function onend>
+ #183# 00000000C3F352B9: 00000000C3F352B9 <JS Function>
+ #184# 00000000C3F35301: 00000000C3F35301 <JS Function>
+ #185# 00000000C3F35349: 00000000C3F35349 <JS Function>
+ #186# 00000000C3F35391: 00000000C3F35391 <JS Function>
+ #187# 00000000AA88E9A9: 00000000AA88E9A9 <JS Array[0]>
+ #188# 00000000C1B57B09: 00000000C1B57B09 <JS Object>
+          encoding: 00000000C6667ED9 <String[4]: utf8>
+     surrogateSize: 3
+        charBuffer: 00000000C1B57C91 <a Buffer>#217#
+      charReceived: 0
+        charLength: 0
+ #189# 00000000C1B5EAE9: 00000000C1B5EAE9 <a ReadableState>
+     highWaterMark: 16384
+            buffer: 00000000C1B5EBB1 <JS Array[0]>#218#
+            length: 0
+             pipes: 00000000B3604101 <null>
+        pipesCount: 0
+           flowing: 00000000B3604181 <false>
+             ended: 00000000B3604181 <false>
+        endEmitted: 00000000B3604181 <false>
+           reading: 00000000B3604161 <true>
+        calledRead: 00000000B3604161 <true>
+              sync: 00000000B3604181 <false>
+      needReadable: 00000000B3604161 <true>
+   emittedReadable: 00000000B3604181 <false>
+ readableListening: 00000000B3604181 <false>
+        objectMode: 00000000B3604181 <false>
+   defaultEncoding: 000000008F716A81 <String[4]: utf8>
+            ranOut: 00000000B3604181 <false>
+        awaitDrain: 0
+       readingMore: 00000000B3604181 <false>
+           oldMode: 00000000B3604181 <false>
+           decoder: 00000000B3604101 <null>
+          encoding: 00000000B3604101 <null>
+ #190# 00000000C1B5EBD1: 00000000C1B5EBD1 <an Object>
+               end: 00000000C1B5ED79 <JS Function g>#219#
+             drain: 00000000F898BA21 <JS Array[2]>#220#
+             error: 00000000C1B58631 <JS Array[1]>#221#
+             close: 00000000C1B5CF09 <JS Array[1]>#222#
+ #191# 00000000C1B5EBE9: 00000000C1B5EBE9 <a WritableState>
+     highWaterMark: 16384
+        objectMode: 00000000B3604181 <false>
+         needDrain: 00000000B3604181 <false>
+            ending: 00000000B3604161 <true>
+             ended: 00000000B3604161 <true>
+          finished: 00000000B3604161 <true>
+     decodeStrings: 00000000B3604181 <false>
+   defaultEncoding: 000000008F716A81 <String[4]: utf8>
+            length: 0
+           writing: 00000000B3604181 <false>
+              sync: 00000000B3604181 <false>
+  bufferProcessing: 00000000B3604181 <false>
+           onwrite: 00000000C1B47609 <JS Function>#223#
+           writecb: 00000000B3604101 <null>
+          writelen: 0
+            buffer: 00000000C1B5ED09 <JS Array[0]>#224#
+      errorEmitted: 00000000B3604181 <false>
+ #192# 000000009901F5F1: 000000009901F5F1 <a Server>
+            domain: 00000000B3604101 <null>
+           _events: 000000009901F881 <an Object>#225#
+     _maxListeners: 10
+      _connections: 0
+           _handle: 0000000099025841 <a TCP>#226#
+      _usingSlaves: 00000000B3604181 <false>
+           _slaves: 000000009901FC31 <JS Array[0]>#227#
+     allowHalfOpen: 00000000B3604161 <true>
+ httpAllowHalfOpen: 00000000B3604181 <false>
+           timeout: 120000
+    _connectionKey: 0000000099025971 <String[14]: 4:0.0.0.0:3000>
+ #193# 00000000C1B5BB11: 00000000C1B5BB11 <an Object>
+           address: 00000000B4CA1BD1 <String[13]: 192.168.1.104>
+            family: 00000000EF7683B9 <String[4]: IPv4>
+              port: 24394
+ #194# 00000000C1B5CC11: 00000000C1B5CC11 <an Object>
+ #195# 00000000C1B5CC69: 00000000C1B5CC69 <JS Array[0]>
+ #196# 00000000C1B5CCA9: 00000000C1B5CCA9 <JS Array[0]>
+ #197# 00000000C1B5DFC1: 00000000C1B5DFC1 <an Object>
+ #198# 00000000C1B5E299: 00000000C1B5E299 <an Object>
+ #199# 00000000C1B5AF09: 00000000C1B5AF09 <an Object>
+ #200# 000000009901E681: 000000009901E681 <an Object>
+ #201# 000000009901E7C1: 000000009901E7C1 <an Object>
+ #202# 00000000C1B59F61: 00000000C1B59F61 <a Cookie>
+              path: 000000008F718299 <String[1]: />
+          _expires: 00000000C1BE1D01 <a Date>#228#
+    originalMaxAge: 0000000081F94499 <Number: 8000000>
+          httpOnly: 00000000B3604161 <true>
+ #203# 00000000E54F8E49: 00000000E54F8E49 <JS Array[1]>
+                 0: 00000000E54F9139 <a Layer>#229#
+ #204# 00000000E54F8E69: 00000000E54F8E69 <an Object>
+              _all: 00000000B3604161 <true>
+ #205# 00000000C3F1DC59: 00000000C3F1DC59 <an Object>
+                 t: 000000008B40F0A9 <String[7]: command>
+                 n: 00000000B4CF0B21 <String[11]: system.$cmd>
+                 o: 00000000C3F22901 <an Object>#230#
+                op: 00000000C3F22921 <an Object>#231#
+                 c: 00000000C3F22939 <JS Function>#232#
+ #206# 00000000C3F1DC99: 00000000C3F1DC99 <an Object>
+                 t: 000000008B40F0A9 <String[7]: command>
+                 n: 00000000B4CF0B21 <String[11]: system.$cmd>
+                 o: 00000000C3F22981 <an Object>#233#
+                op: 00000000C3F229A1 <an Object>#234#
+                 c: 00000000C3F229B9 <JS Function>#235#
+ #207# 00000000C3F1DCD9: 00000000C3F1DCD9 <an Object>
+                 t: 000000008B40F0A9 <String[7]: command>
+                 n: 00000000B4CF0B21 <String[11]: system.$cmd>
+                 o: 00000000C3F22A01 <an Object>#236#
+                op: 00000000C3F22A21 <an Object>#237#
+                 c: 00000000C3F22A39 <JS Function>#238#
+ #208# 00000000C3F1DD19: 00000000C3F1DD19 <an Object>
+                 t: 000000008B40F0A9 <String[7]: command>
+                 n: 00000000B4CF0B21 <String[11]: system.$cmd>
+                 o: 00000000C3F22A81 <an Object>#239#
+                op: 00000000C3F22AA1 <an Object>#240#
+                 c: 00000000C3F22AB9 <JS Function>#241#
+ #209# 00000000C3F1DD59: 00000000C3F1DD59 <an Object>
+                 t: 000000008B40F0A9 <String[7]: command>
+                 n: 00000000B4CF0B21 <String[11]: system.$cmd>
+                 o: 00000000C3F22B01 <an Object>#242#
+                op: 00000000C3F22B21 <an Object>#243#
+                 c: 00000000C3F22B39 <JS Function>#244#
+ #210# 00000000C3F42F01: 00000000C3F42F01 <JS Function>
+ #211# 00000000C3F42F49: 00000000C3F42F49 <JS Function>
+ #212# 00000000C3F42F91: 00000000C3F42F91 <JS Function>
+ #213# 00000000C3F42FD9: 00000000C3F42FD9 <JS Function>
+ #214# 00000000C3F27081: 00000000C3F27081 <JS Object>
+            domain: 00000000B3604101 <null>
+           _events: 00000000C3F2BFD9 <an Object>#245#
+     _maxListeners: 10
+           options: 00000000AA8ECBB9 <an Object>#62#
+                id: 27
+            logger: 00000000C3F2BFF1 <JS Object>#246#
+              bson: 00000000A7A400E9 <a BSON>#28#
+               tag: 00000000B3604121 <undefined>
+    messageHandler: 00000000C3F07979 <JS Function>#64#
+maxBsonMessageSize: 67108864
+              port: 27017
+              host: 000000008B40DD89 <String[9]: localhost>
+         keepAlive: 00000000B3604161 <true>
+keepAliveInitialDelay: 0
+           noDelay: 00000000B3604161 <true>
+ connectionTimeout: 0
+     socketTimeout: 0
+      domainSocket: 00000000B3604181 <false>
+singleBufferSerializtion: 00000000B3604161 <true>
+serializationFunction: 00000000B4CF8C51 <String[12]: toBinUnified>
+                ca: 00000000B3604101 <null>
+              cert: 00000000B3604101 <null>
+               key: 00000000B3604101 <null>
+        passphrase: 00000000B3604101 <null>
+               ssl: 00000000B3604181 <false>
+rejectUnauthorized: 00000000B3604181 <false>
+   responseOptions: 00000000C3F2C011 <an Object>#247#
+          flushing: 00000000B3604181 <false>
+             queue: 00000000C3F2C031 <JS Array[0]>#248#
+        connection: 00000000C3F1F329 <a Socket>#249#
+       writeStream: 00000000B3604101 <null>
+ #215# 00000000C3F27191: 00000000C3F27191 <JS Object>
+            domain: 00000000B3604101 <null>
+           _events: 00000000C3F2C051 <an Object>#250#
+     _maxListeners: 10
+           options: 00000000AA8ECBB9 <an Object>#62#
+                id: 28
+            logger: 00000000C3F2C069 <JS Object>#251#
+              bson: 00000000A7A400E9 <a BSON>#28#
+               tag: 00000000B3604121 <undefined>
+    messageHandler: 00000000C3F07979 <JS Function>#64#
+maxBsonMessageSize: 67108864
+              port: 27017
+              host: 000000008B40DD89 <String[9]: localhost>
+         keepAlive: 00000000B3604161 <true>
+keepAliveInitialDelay: 0
+           noDelay: 00000000B3604161 <true>
+ connectionTimeout: 0
+     socketTimeout: 0
+      domainSocket: 00000000B3604181 <false>
+singleBufferSerializtion: 00000000B3604161 <true>
+serializationFunction: 00000000B4CF8C51 <String[12]: toBinUnified>
+                ca: 00000000B3604101 <null>
+              cert: 00000000B3604101 <null>
+               key: 00000000B3604101 <null>
+        passphrase: 00000000B3604101 <null>
+               ssl: 00000000B3604181 <false>
+rejectUnauthorized: 00000000B3604181 <false>
+   responseOptions: 00000000C3F2C089 <an Object>#252#
+          flushing: 00000000B3604181 <false>
+             queue: 00000000C3F2C0A9 <JS Array[0]>#253#
+        connection: 00000000C3F1F3E1 <a Socket>#254#
+       writeStream: 00000000B3604101 <null>
+ #216# 00000000C3F272A1: 00000000C3F272A1 <JS Object>
+            domain: 00000000B3604101 <null>
+           _events: 00000000C3F2C0C9 <an Object>#255#
+     _maxListeners: 10
+           options: 00000000AA8ECBB9 <an Object>#62#
+                id: 29
+            logger: 00000000C3F2C0E1 <JS Object>@00000000C3F2C0E1
+              bson: 00000000A7A400E9 <a BSON>#28#
+               tag: 00000000B3604121 <undefined>
+    messageHandler: 00000000C3F07979 <JS Function>#64#
+maxBsonMessageSize: 67108864
+              port: 27017
+              host: 000000008B40DD89 <String[9]: localhost>
+         keepAlive: 00000000B3604161 <true>
+keepAliveInitialDelay: 0
+           noDelay: 00000000B3604161 <true>
+ connectionTimeout: 0
+     socketTimeout: 0
+      domainSocket: 00000000B3604181 <false>
+singleBufferSerializtion: 00000000B3604161 <true>
+serializationFunction: 00000000B4CF8C51 <String[12]: toBinUnified>
+                ca: 00000000B3604101 <null>
+              cert: 00000000B3604101 <null>
+               key: 00000000B3604101 <null>
+        passphrase: 00000000B3604101 <null>
+               ssl: 00000000B3604181 <false>
+rejectUnauthorized: 00000000B3604181 <false>
+   responseOptions: 00000000C3F2C101 <an Object>@00000000C3F2C101
+          flushing: 00000000B3604181 <false>
+             queue: 00000000C3F2C121 <JS Array[0]>@00000000C3F2C121
+        connection: 00000000C3F1F499 <a Socket>@00000000C3F1F499
+       writeStream: 00000000B3604101 <null>
+ #217# 00000000C1B57C91: 00000000C1B57C91 <a Buffer>
+            length: 6
+            parent: 00000000C1B31C31 <a SlowBuffer>@00000000C1B31C31
+            offset: 4872
+ #218# 00000000C1B5EBB1: 00000000C1B5EBB1 <JS Array[0]>
+ #219# 00000000C1B5ED79: 00000000C1B5ED79 <JS Function g>
+          listener: 000000009906F091 <JS Function onend>#182#
+ #220# 00000000F898BA21: 00000000F898BA21 <JS Array[2]>
+                 0: 0000000099094309 <JS Function ondrain>@0000000099094309
+                 1: 00000000F89B2AF1 <JS Function socketOnDrain>@00000000F89B2AF1
+ #221# 00000000C1B58631: 00000000C1B58631 <JS Array[1]>
+                 0: 00000000F898B999 <JS Function>@00000000F898B999
+ #222# 00000000C1B5CF09: 00000000C1B5CF09 <JS Array[1]>
+                 0: 00000000F89B2AA9 <JS Function serverSocketCloseListener>@00000000F89B2AA9
+ #223# 00000000C1B47609: 00000000C1B47609 <JS Function>
+ #224# 00000000C1B5ED09: 00000000C1B5ED09 <JS Array[0]>
+ #225# 000000009901F881: 000000009901F881 <an Object>
+ #226# 0000000099025841: 0000000099025841 <a TCP>
+    writeQueueSize: 0
+             owner: 000000009901F5F1 <a Server>#192#
+ #227# 000000009901FC31: 000000009901FC31 <JS Array[0]>
+ #228# 00000000C1BE1D01: 00000000C1BE1D01 <a Date>
+ #229# 00000000E54F9139: 00000000E54F9139 <a Layer>
+            handle: 00000000E54F8DD1 <JS Function>@00000000E54F8DD1
+              name: 00000000EF7207C9 <String[11]: <anonymous>>
+            params: 00000000B3604121 <undefined>
+              path: 00000000B3604121 <undefined>
+              keys: 00000000E54F9189 <JS Array[0]>@00000000E54F9189
+            regexp: 00000000E54F91A9 <JS RegExp>@00000000E54F91A9
+            method: 00000000B3604121 <undefined>
+ #230# 00000000C3F22901: 00000000C3F22901 <an Object>
+          ismaster: 00000000B3604161 <true>
+ #231# 00000000C3F22921: 00000000C3F22921 <an Object>
+ #232# 00000000C3F22939: 00000000C3F22939 <JS Function>
+ #233# 00000000C3F22981: 00000000C3F22981 <an Object>
+          ismaster: 00000000B3604161 <true>
+ #234# 00000000C3F229A1: 00000000C3F229A1 <an Object>
+ #235# 00000000C3F229B9: 00000000C3F229B9 <JS Function>
+ #236# 00000000C3F22A01: 00000000C3F22A01 <an Object>
+          ismaster: 00000000B3604161 <true>
+ #237# 00000000C3F22A21: 00000000C3F22A21 <an Object>
+ #238# 00000000C3F22A39: 00000000C3F22A39 <JS Function>
+ #239# 00000000C3F22A81: 00000000C3F22A81 <an Object>
+          ismaster: 00000000B3604161 <true>
+ #240# 00000000C3F22AA1: 00000000C3F22AA1 <an Object>
+ #241# 00000000C3F22AB9: 00000000C3F22AB9 <JS Function>
+ #242# 00000000C3F22B01: 00000000C3F22B01 <an Object>
+          ismaster: 00000000B3604161 <true>
+ #243# 00000000C3F22B21: 00000000C3F22B21 <an Object>
+ #244# 00000000C3F22B39: 00000000C3F22B39 <JS Function>
+ #245# 00000000C3F2BFD9: 00000000C3F2BFD9 <an Object>
+             close: 00000000C3F3D679 <JS Function g>@00000000C3F3D679
+             error: 00000000C3F3D6C1 <JS Function g>@00000000C3F3D6C1
+           timeout: 00000000C3F3D709 <JS Function g>@00000000C3F3D709
+        parseError: 00000000C3F3D751 <JS Function g>@00000000C3F3D751
+           connect: 00000000C3F3D799 <JS Function>@00000000C3F3D799
+ #246# 00000000C3F2BFF1: 00000000C3F2BFF1 <JS Object>
+         className: 00000000EF766FD9 <String[10]: Connection>
+ #247# 00000000C3F2C011: 00000000C3F2C011 <an Object>
+      promoteLongs: 00000000B3604161 <true>
+ #248# 00000000C3F2C031: 00000000C3F2C031 <JS Array[0]>
+ #249# 00000000C3F1F329: 00000000C3F1F329 <a Socket>
+       _connecting: 00000000B3604181 <false>
+           _handle: 00000000C3F08A59 <a TCP>@00000000C3F08A59
+    _readableState: 00000000C3F250C9 <a ReadableState>@00000000C3F250C9
+          readable: 00000000B3604161 <true>
+            domain: 00000000B3604101 <null>
+           _events: 00000000C3F25191 <an Object>@00000000C3F25191
+     _maxListeners: 10
+    _writableState: 00000000C3F251A9 <a WritableState>@00000000C3F251A9
+          writable: 00000000B3604161 <true>
+     allowHalfOpen: 00000000B3604181 <false>
+             onend: 00000000

@@ -19,7 +19,12 @@ angular.module('resource', ['ngResource'])
 
 										'getSrById' 	:	{ method : 'GET' , url : 'data/activity/ServiceRequest/:id', params : { id : 0} },
 										'update' 		:	{ method : 'PUT'  },
-										'create' 		:	{ method : 'POST' }
+										'create' 		:	{ method : 'POST' },
+										'myActivities'	:   { method : 'GET' , isArray : true , url : 'data/activity/myActivities/:openId' },
+										'join'			:   { method : 'GET' , url : 'data/activity/join/:openId/:id' },
+										'quit'			:   { method : 'GET' , url : 'data/activity/quit/:openId/:id' },
+										'plus'			:   { method : 'GET' , url : 'data/activity/plus/:openId/:id' },
+										'minus'			:   { method : 'GET' , url : 'data/activity/minus/:openId/:id' }
 
 									}
 								);

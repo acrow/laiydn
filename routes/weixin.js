@@ -1,17 +1,20 @@
 var express = require('express');
-var router = express.Router();
-var wxHandler = require('../module/wxHandler');
 var xmlParser = require('xml2js').parseString;
 var crypto = require('crypto');
+var setting = require('../setting');
+var wxHandler = require('../module/wxHandler');
+var Member = require('../module/member');
+
+var router = express.Router();
 
 router.all('/', function(req, res, next) {
     // 验证消息来源
     if (req.param('signature') == null || req.param('timestamp') == null || req.param('nonce') == null) {
-        res.send("sorry!");
+        res.send("err!");
         return;
     }
     var paras = new Array();
-    paras[0] = 'albbh40dd'; //token 与公众号设置需要保持一致
+    paras[0] = setting.weixinUserToken; //token 与公众号设置需要保持一致
     paras[1] = req.param('timestamp');
     paras[2] = req.param('nonce');
     paras.sort();
@@ -20,7 +23,7 @@ router.all('/', function(req, res, next) {
     sha1.update(sig);
     var hsig = sha1.digest('hex');
     if (hsig != req.param('signature')) {
-        res.send("sorry!");
+        res.send("err!");
         return;
     }
     // 如果是测试直接返回测试值
@@ -40,10 +43,7 @@ router.all('/', function(req, res, next) {
     // 数据接收完毕，执行回调函数
     req.addListener("end", function () {
         xmlParser(postData, { explicitArray : false, ignoreAttrs : true }, function(err, result) {
-            if (!req.session.usr) {
-                req.session.usr = {};
-            }
-			wxHandler.handle(result.xml, req.session.usr);
+			wxHandler.handle(result.xml);
 		});
     });
 	
@@ -52,7 +52,6 @@ router.all('/', function(req, res, next) {
 
 router.get('/getConfig', function(req, res, next) {
     var url = req.param('url');
-    console.log(url);
     url = decodeURIComponent(url);
     res.send(wxHandler.generatePageConfig(url));
 });
@@ -61,7 +60,40 @@ router.get('/ping', function(req, res, next) {
     res.send(wxHandler.accessToken() + " | " + wxHandler.jsApiTicket());
 });
 
-router.get('/cusr', function(req, res, next) {
-    res.send(JSON.stringify(req.session.usr));
+router.get('/usr', function(req, res, next) {
+    var openId = req.param('openId');
+    if (typeof openId == 'undefined') {
+        res.send(JSON.stringify(req.session.usr));
+        return;
+    }
+    Member.getUserByOpenId(openId, function(err, mem) { // 数据库中查找用户
+        if (err) { 
+            res.send(err);
+            return;
+        } 
+        if (!mem) {
+            res.send('not find');
+            return;
+        }
+        res.send(JSON.stringify(mem));
+    });
 });
+
+/******************************* web page ***********************************/
+
+router.get('/web', function(req, res, next) {
+    if (!req.session.usr) {
+        if (req.param('code')) {
+            wxHandler.authorize(req, req.param('code'));
+
+        } else { // 如果用户未登录则重定向验证用户
+            var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ setting.weixinAppId +'&redirect_uri='+ encodeURIComponent('http://' + setting.host + req.baseUrl + req.url) +'&response_type=code&scope=snsapi_base#wechat_redirect';
+            res.redirect(url);
+            return; 
+        }
+    }
+    
+    res.render('index');
+});
+
 module.exports = router;	
