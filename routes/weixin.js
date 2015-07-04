@@ -27,10 +27,9 @@ router.all('/', function(req, res, next) {
         return;
     }
     // 如果是测试直接返回测试值
-	var echostr = req.param('echostr')
-	if (echostr != null) {
-		console.log("test connect: " + echostr);
-		res.send(echostr);
+	if (req.param('echostr')) {
+		res.send(req.param('echostr'));
+        return
 	}
     // 正式开始处理消息
 	// 设置接收数据编码格式为 UTF-8
