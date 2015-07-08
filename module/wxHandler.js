@@ -208,10 +208,6 @@ module.exports = WxHandler;
 // 微信消息处理
 WxHandler.handle = function(msg) {
 
-	if (msg.MsgType == 'text') {
-		sendText(msg.FromUserName, '收到：' + msg.Content + '  ' + JSON.stringify(msg));
-		return;
-	}
 	if (msg.MsgType == 'event') {
 		if (msg.Event == 'subscribe') { // 关注事件
 			sendText(msg.FromUserName, '欢迎，感谢您的关注！赶快找找您感兴趣的活动吧。^_^【来运动】');
@@ -242,9 +238,27 @@ WxHandler.handle = function(msg) {
 			return;
 		}
 		if (msg.Event == 'CLICK') { // 菜单事件
-			sendText(msg.FromUserName, '菜单事件：' + msg.EventKey + '  '+ JSON.stringify(msg));
+			if (msg.EventKey == 'HELP') {
+				sendText(msg.FromUserName, '试试输入 羽毛球 或者 篮球 搜索周边的活动吧');
+			}
+			// sendText(msg.FromUserName, '菜单事件：' + msg.EventKey + '  '+ JSON.stringify(msg));
+			if (msg.EventKey == 'SEARCH') {
+				sendText(msg.FromUserName, '... 做成中，敬请期待！');
+			}
 			return;
 		}
+	}
+		
+	if (msg.MsgType == 'text') {
+		var actType
+		if (msg.Content == '羽毛球' || msg.Content == '篮球' || msg.Content == '足球' || msg.Content == '篮球') {
+			actType = msg.Content;
+			sendText(msg.FromUserName, '正在检索' + actType + '... 做成中，敬请期待！');
+		} else {
+			sendText(msg.FromUserName, '你发送了' + msg.Content + '...然而并没有什么卵用 ┑(￣Д ￣)┍');
+		}
+		// sendText(msg.FromUserName, '收到：' + msg.Content + '  ' + JSON.stringify(msg));
+		return;
 	}
 
 };
