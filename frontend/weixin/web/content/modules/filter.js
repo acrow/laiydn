@@ -11,7 +11,16 @@ laiydApp.filter('actImg',function() {
 					}
 				} 
 			}
+		} else if (input) {
+			if (!input.img) {
+				if (input.type == '羽毛球') {
+					input.img = './img/yumaoqiu.png';
+				} else if (input.type == '足球') {
+					input.img = './img/zuqiu.png';
+				}
+			} 
 		}
+
 		return input;
 	}
 });
@@ -24,6 +33,10 @@ laiydApp.filter('memImg',function() {
 				if (!mem.headImgUrl) {
 					mem.headImgUrl = './img/111.png'
 				}
+			}
+		} else if (input) {
+			if (!input.headImgUrl) {
+				input.headImgUrl = './img/111.png'
 			}
 		}
 		return input;

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-ng-app="laiyd">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,user-scalable=no"/> 
+<title>来运动</title>
+<% include _jhead.ejs %>
+</head>
+<body data-ng-controller="actSearchCtl" class=" container">
+<div class="page-header text-primary">
+  <h2><span class="glyphicon glyphicon-search"></span> 活动搜索</h2>
+</div>
+<div  class="ng-cloak" data-ng-show="isLoaded">
+	<div class="form-horizontal">
+		<div class="form-group">
+			<label class="col-xs-3 control-label">活动类型</label>
+			<div class="col-xs-9">
+				<select class="form-control col-sm-10" data-ng-model="activity.type">
+					<option data-ng-repeat="value in types" data-ng-bind="value"></option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-3 control-label">活动日期</label>
+			<div class="col-xs-9">
+				<input type="date" class="form-control" data-ng-model="activity.date">
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<label class="col-xs-3 control-label">活动地点</label>
+			<div class="col-xs-9">
+				<input type="text" class="form-control" data-ng-model="activity.address">
+			</div>
+		</div>
+		<button class="btn btn-primary btn-block btn-lg" data-ng-click="onSearch()"><span class="glyphicon glyphicon-search"></span> 开始搜索</button>
+	</div>
+
+	<table class="table" data-ng-show="activities">
+		<tr data-ng-repeat="act in activities | actImg">
+			<td><img data-ng-src="{{act.img}}" alt="" style="height:50px;width:50px;"></td>
+			<td>{{act.type}}</td>
+			<td>{{act.date}}</td>
+			<td><a href="/weixin/web/viewAct/{{act._id}}">查看</a></td>
+		</tr>
+	</table>
+</div>
+<% include _jfoot.ejs %>
+<script src="content/controllers/actSearchCtl.js"></script>
+
+ <!--
+ <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=RkM9Z0ujZ8xDwuR19bdLGUmO"></script>
+-->
+</body>
+</html>

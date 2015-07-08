@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-ng-app="laiyd">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,user-scalable=no"/> 
+<title>来运动</title>
+<% include _jhead.ejs %>
+<% include _jfoot.ejs %>
+<script src="http://www.laiyd.com/weixin/web/content/controllers/actViewCtl.js"></script>
+</head>
+<body data-ng-controller="actViewCtl" data-ng-init="activity=<%= actStr %>;" class="container">
+	
+<div class="page-header text-primary">
+  <h2><span class="glyphicon glyphicon-qrcode"></span> 活动详情</h2>
+</div>
+
+<div class=" text-left">
+	<h1><%= activity.type %>活动</h1><small><%= activity.status %></small>
+	<img data-ng-src="{{activity.img | actImg }}" alt="" style="height:250px;">
+	<p>日期：<%= activity.date %>  [<%= activity.startTime %> ~ <%= activity.endTime %>]</p>
+	<p>地点：<%= activity.address %></p>
+	<p>内容：<%= activity.content %></p>
+	<p>费用：</p>
+	
+	<p>计划人数:<%= activity.maxUsers %>&nbsp;&nbsp;&nbsp;&nbsp;已报名人数:<%= activity.cntUsers %></p>
+	<small>报名人数少于<%= activity.minUsers %>人时，活动取消。</small>
+</div>
+<button class="btn btn-primary btn-block btn-lg" data-ng-click="onShare()"><span
+	class="glyphicon glyphicon-floppy-save"></span>分享</button>
+<a href="#/mine" class="btn btn-warning btn-block btn-lg"><span
+	class="glyphicon glyphicon-remove"></span> 取消</a>
+
+ <!--
+ <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=RkM9Z0ujZ8xDwuR19bdLGUmO"></script>
+-->
+</body>
+</html>

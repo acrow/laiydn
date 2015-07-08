@@ -52,6 +52,27 @@ Activity.prototype.save = function save(callback) {
 	});
 };
 
+Activity.get = function get(id, callback) {
+	var _id = new ObjectID(id);
+	db.open(function(err, db) {
+		if (err) {
+			return callback(err);
+		}
+		db.collection('activities', function(err, collection) {
+			if (err) {
+				db.close();
+				return callback(err);
+			}
+			if (collection) {
+				collection.findOne({_id: _id}, function(err, act) {
+					callback(err, act);
+				});
+			} else {
+				callback(err);
+			}
+		});
+	});
+};
 Activity.getAll = function getAll(callback) {
 	db.open(function(err, db) {
 		if (err) {
@@ -63,8 +84,8 @@ Activity.getAll = function getAll(callback) {
 				return callback(err);
 			}
 			if (collection) {
-				collection.find().toArray(function(err, docs) {
-					callback(err, docs);
+				collection.find().toArray(function(err, acts) {
+					callback(err, acts);
 				});
 			} else {
 				callback(err);

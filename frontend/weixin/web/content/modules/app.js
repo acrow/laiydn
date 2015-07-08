@@ -1,4 +1,4 @@
-var laiydApp = angular.module('laiyd', ['ngRoute','resource']);
+var laiydApp = angular.module('laiyd', ['ngRoute','resource', 'ui.bootstrap']);
 
 laiydApp.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider
@@ -44,7 +44,8 @@ laiydApp.directive('actDetails', function() {
 		restrict: 'E',
 		replace: true,
 		scope: {
-			act: '=data'
+			act: '=data',
+			onQuit: '=onQuit'
 		},
 		templateUrl: 'content/views/actDetails.html',
 		require: ['resource'],
@@ -91,6 +92,9 @@ laiydApp.directive('actDetails', function() {
 					function(result) {
 						$scope.act = result;
 						refresh();
+						if (onQuit) {
+							onQuit($scope.act._id);
+						}
 					},
 					function(err) {
 						$window.alert(err);
@@ -130,6 +134,52 @@ laiydApp.directive('actDetails', function() {
 		}]
 	};
 });
+
+laiydApp.factory("loading", ['$modal', function($modal) {
+
+  /***********************************************************************************
+   *                                                                                 *
+   *  The show/hide methods call be called multiple times.                          *
+   *  The loading layer will stay there when "count" is bigger than 0                *
+   *                                                                                 *
+      Loading sign with 50% opacity black backgrount layer.
+
+      Usage example:
+				loading.show();    //show the loading layer
+				loading.hide();    //hide the loading layer
+   ***********************************************************************************/
+  var Spin = function(){};
+  Spin.prototype.count = 0;
+  Spin.prototype.show  = function(info){
+  	if (!info) {
+  		info = "loading";
+  	}
+    this.count++;
+    if(this.count === 1){//it hasn't been started, yet.
+            this.modalInstance = $modal.open({
+              template: '<div class="text-center" style="color:white;"><img src="http://www.laiyd.com/weixin/web/img/loading.gif" /><br><p>' + info + '</p></div>',
+              windowClass: 'loading-with-mask',
+              backdrop : 'static',
+              keyboard : false,
+              controller: ['$scope', '$modalInstance',function ($scope, $modalInstance) {}],
+              size: 'sm'
+            });
+    }
+  };
+  Spin.prototype.hide = function(){
+    this.count--;
+    if(this.count === 0){
+      this.modalInstance.close();
+    }
+  };
+
+  Spin.prototype.close = function(){
+    this.count = 0;
+    this.modalInstance.close();
+  };
+
+  return new Spin();
+}]);
 
 laiydApp.run( function($rootScope) {
 	

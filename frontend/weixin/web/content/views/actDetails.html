@@ -9,14 +9,14 @@
     <p data-ng-repeat="mem in act.members | memImg | orderBy:'joinDate'">
       <img data-ng-src="{{mem.headImgUrl}}" alt="" style="height:15px;"> {{mem.nickName}}<span class="badge" data-ng-show='mem.userCount > 1'>{{mem.userCount}}</span> 
     </p>
-    <p>
-      <button type="button" class="btn btn-primary" data-ng-hide="isJoined" role="button" data-ng-click="join()" title="加入"><span class="glyphicon glyphicon-thumbs-up"></button>
-      <button type="button" class="btn btn-primary" data-ng-show="isJoined" role="button" data-ng-click="plus()" title="+1"><span class="glyphicon glyphicon-plus-sign"></button>
-      <button type="button" class="btn btn-primary" data-ng-show="isOver1" role="button" data-ng-click="minus()" title="-1"><span class="glyphicon glyphicon-minus-sign"></button>
+
+      <button type="button" class="btn btn-success btn-block btn-lg" data-ng-hide="isJoined" role="button" data-ng-click="join()" title="参加"><span class="glyphicon glyphicon-thumbs-up"> 加我一个</button>
+      <button type="button" class="btn btn-success btn-block btn-lg" data-ng-show="isJoined" role="button" data-ng-click="plus()" title="+1"><span class="glyphicon glyphicon-plus-sign"> 追加一人</button>
+      <button type="button" class="btn btn-danger btn-block btn-lg" data-ng-show="isOver1" role="button" data-ng-click="minus()" title="-1"><span class="glyphicon glyphicon-minus-sign"> 减少一人</button>
       
-      <button type="button" class="btn btn-primary" data-ng-show="isOwner" role="button" data-ng-click="modify()" title="修改"><span class="glyphicon glyphicon-pencil"></button>
-      <button type="button" class="btn btn-primary"  data-ng-show="isJoined" role="button" data-ng-click="shareAct()" title="分享"><span class="glyphicon glyphicon-share"></button> 
-      <button type="button" class="btn btn-primary" data-ng-show="isJoined && !isOver1" role="button" data-ng-click="quit()" title="退出"><span class="glyphicon glyphicon-thumbs-down"></button>
-    </p>
+      <button type="button" class="btn btn-primary btn-block btn-lg" data-ng-show="isOwner" role="button" data-ng-click="modify()" title="修改"><span class="glyphicon glyphicon-pencil"> 修改活动</button>
+      <button type="button" class="btn btn-primary btn-block btn-lg"  data-ng-show="isJoined" role="button" data-ng-click="shareAct()" title="分享"><span class="glyphicon glyphicon-share"> 分享活动</button> 
+      <button type="button" class="btn btn-danger btn-block btn-lg" data-ng-show="isJoined && !isOver1" role="button" data-ng-click="quit()" title="退出"><span class="glyphicon glyphicon-thumbs-down"> 退出活动</button>
+
   </div>
 </div>

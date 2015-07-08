@@ -81,7 +81,7 @@ Member.login = function login(usrName, pwd, callback) {
 				return callback(err);
 			}
 			if (collection) {
-				collection.findOne({userName:usrName})(function(err, mem) {
+				collection.findOne({userName:usrName}, function(err, mem) {
 					db.close();
 					if (err) {
 						return callback(err);

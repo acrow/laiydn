@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-ng-app="laiyd">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,user-scalable=no"/> 
+<title>来运动</title>
+<% include _jhead.ejs %>
+<link href="http://www.laiyd.com/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+</head>
+<body data-ng-controller="actEditCtl" class=" container">
+<div class="page-header text-primary">
+  <h2><span class="glyphicon glyphicon-pencil"></span> 活动编辑</h2>
+</div>
+<form name="actForm" class="form-horizontal" >
+	<div class="form-group">
+		<label class="col-xs-3 control-label">活动类型</label>
+		<div class="col-xs-9">
+			<select class="form-control col-sm-10" data-ng-model="activity.type" data-ng-options="value for value in types"></select>
+		</div>
+	</div>
+	<div class="form-group">
+        <label class="col-xs-3 control-label" for="dtp_input1">活动时间</label>
+        <div class="col-xs-9 ">
+	        <div class="input-group date form_datetime" data-date-format="yyyy/mm/dd hh:ii" data-link-field="dtp_input1">
+	            <input class="form-control" type="text" data-ng-model="activity.date" >
+	            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+				<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+	        </div>
+    	</div>
+		<input type="hidden" id="dtp_input1" data-ng-model="activity.date" /><br/>
+    </div>
+	<div class="form-group">
+		<label class="col-xs-3 control-label">活动时长</label>
+		<div class="col-xs-9">
+			<select class="form-control col-sm-10" data-ng-model="activity.hours" data-ng-options="value for value in ['1小时','2小时','3小时','4小时','5小时','6小时','7小时','8小时','8小时','10小时','11小时','12小时','不限时']"></select>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-xs-3 control-label">活动地点</label>
+		<div class="col-xs-9">
+			<input type="text" class="form-control" data-ng-model="activity.address">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-xs-3 control-label">活动内容</label>
+		<div class="col-xs-9">
+			<textarea rows="3" class="form-control" data-ng-model="activity.content"></textarea>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-xs-3 control-label" title="活动人数少于最低人数时，活动将自动取消">人数限制</label>
+		<div class="col-xs-9">
+			<div class="input-group">
+				<input type="number" min="0" class="form-control" title="0表示不限制人数" data-ng-model="activity.minUsers">
+				<div class="input-group-addon">~</div>
+				<input type="number" min="0" class="form-control" title="0表示不限制人数" data-ng-model="activity.maxUsers">
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-xs-3 control-label">加入审批</label>
+		<div class="col-xs-9">
+			<select class="form-control col-sm-10" data-ng-model="activity.auditMethod" data-ng-options="value for value in ['自动通过','需要我批准']"></select>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-xs-3 control-label">允许匿名</label>
+		<div class="col-xs-3 text-left">
+			<input type="checkbox" data-ng-model="activity.allowAnonymous" data-ng-true-value="1" data-ng-false-value="0">
+		</div>
+		<label class="col-xs-3 control-label">管理费用</label>
+		<div class="col-xs-3 text-left">
+			<input type="checkbox" data-ng-model="isManagerAmount" data-ng-true-value="1" data-ng-false-value="0">
+		</div>
+	</div>
+	<div class="form-group"data-ng-show="isManagerAmount">
+		<label class="col-xs-3 control-label">费用总额</label>
+		<div class="col-xs-9">
+			<div class="input-group">
+				<div class="input-group-addon">￥</div>
+				<input type="number" class="form-control" min="0" data-ng-model="activity.amount">
+				<div class="input-group-addon">.00</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<button class="btn btn-success btn-block btn-lg" data-ng-click="onSave()"><span class="glyphicon glyphicon-send"></span> 保存发布</button>
+<br>
+	{{activity}}
+<% include _jfoot.ejs %>
+<script type="text/javascript" src="http://www.laiyd.com/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="http://www.laiyd.com/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script src="content/controllers/actEditCtl.js"></script>
+<script type="text/javascript">
+    var endate = new Date();
+    endate.setDate(endate.getDate() + 30);
+    $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+        maxView: 2,
+		forceParse: 0,
+        showMeridian: 0,
+        language: 'zh-CN',
+        minuteStep: 30,
+        startDate: new Date(),
+        endDate: endate
+    });
+</script>
+ <!--
+ <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=RkM9Z0ujZ8xDwuR19bdLGUmO"></script>
+-->
+</body>
+</html>

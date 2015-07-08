@@ -4,6 +4,7 @@ var crypto = require('crypto');
 var setting = require('../setting');
 var wxHandler = require('../module/wxHandler');
 var Member = require('../module/member');
+var Activity = require('../module/activity');
 
 var router = express.Router();
 
@@ -93,6 +94,69 @@ router.get('/web', function(req, res, next) {
     }
     
     res.render('index');
+});
+
+router.get('/web/myAct', function(req, res, next) {
+    if (!req.session.usr) {
+        if (req.param('code')) {
+            wxHandler.authorize(req, req.param('code'));
+
+        } else { // 如果用户未登录则重定向验证用户
+            var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ setting.weixinAppId +'&redirect_uri='+ encodeURIComponent('http://' + setting.host + req.baseUrl + req.url) +'&response_type=code&scope=snsapi_base#wechat_redirect';
+            res.redirect(url);
+            return; 
+        }
+    }
+    
+    res.render('actMine');
+});
+router.get('/web/editAct', function(req, res, next) {
+    // if (!req.session.usr) {
+    //     if (req.param('code')) {
+    //         wxHandler.authorize(req, req.param('code'));
+
+    //     } else { // 如果用户未登录则重定向验证用户
+    //         var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ setting.weixinAppId +'&redirect_uri='+ encodeURIComponent('http://' + setting.host + req.baseUrl + req.url) +'&response_type=code&scope=snsapi_base#wechat_redirect';
+    //         res.redirect(url);
+    //         return; 
+    //     }
+    // }
+    
+    res.render('actEdit');
+});
+router.get('/web/searchAct', function(req, res, next) {
+    if (!req.session.usr) {
+        // if (req.param('code')) {
+        //     wxHandler.authorize(req, req.param('code'));
+
+        // } else { // 如果用户未登录则重定向验证用户
+        //     var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ setting.weixinAppId +'&redirect_uri='+ encodeURIComponent('http://' + setting.host + req.baseUrl + req.url) +'&response_type=code&scope=snsapi_base#wechat_redirect';
+        //     res.redirect(url);
+        //     return; 
+        // }
+    }
+    
+    res.render('actSearch');
+});
+router.get('/web/viewAct/:actId', function(req, res, next) {
+    if (!req.session.usr) {
+        // if (req.param('code')) {
+        //     wxHandler.authorize(req, req.param('code'));
+
+        // } else { // 如果用户未登录则重定向验证用户
+        //     var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ setting.weixinAppId +'&redirect_uri='+ encodeURIComponent('http://' + setting.host + req.baseUrl + req.url) +'&response_type=code&scope=snsapi_base#wechat_redirect';
+        //     res.redirect(url);
+        //     return; 
+        // }
+    }
+
+    Activity.get(req.param('actId'), function(err, result) {
+        var str = JSON.stringify(result);
+        // str = str.replace(/"/g, "'");
+        // res.render('actView',{activity: str});
+        res.render('actView',{activity: result, actStr: str});
+    });
+    
 });
 
 module.exports = router;	

@@ -237,7 +237,7 @@ WxHandler.handle = function(msg) {
 					console.error(err);
 				}
 			});
-			sendText(msg.FromUserName, '地理位置:' + JSON.stringify(msg));
+			// sendText(msg.FromUserName, '地理位置:' + JSON.stringify(msg));
 
 			return;
 		}

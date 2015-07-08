@@ -1,8 +1,11 @@
-laiydApp.controller('myActCtl', function($scope, $window, Activity, Weixin,$rootScope) {
-
+laiydApp.controller('actMineCtl', function($scope, $window, Activity, Weixin, $rootScope, loading) {
+	$scope.isLoaded = false;
+	loading.show('正在准备配置...');
 	Weixin.getConfig(
 		{url : location.href.split('#')[0]},
 		function(result) {
+			loading.hide();
+			loading.show('正在应用配置...');
 			wx.config({
 				debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
 			    appId: result.appId, // 必填，公众号的唯一标识
@@ -13,10 +16,12 @@ laiydApp.controller('myActCtl', function($scope, $window, Activity, Weixin,$root
 
 			});
 			wx.error(function(res){
+				loading.hide();
 				$window.alert('验证失败!');
 				$window.alert(location.href.split('#')[0])
 			});
 			wx.ready(function(res){
+				
 				// wx.checkJsApi({
 			 //      jsApiList: [
 			 //        'getNetworkType',
@@ -42,50 +47,37 @@ laiydApp.controller('myActCtl', function($scope, $window, Activity, Weixin,$root
 				        $window.alert('取消分享!');
 				    }
 				});
-			
+				loading.hide();
+				loading.show('正在获取我的信息...');
 				Weixin.getCurrentUser( // 取得当前用户
 					{},
 					function(result) {
 						$rootScope.usr = result;
 						$scope.usr = $rootScope.usr;
-						// Activity.query( // 查找当前用户相关活动
-						// 	{activity: JSON.stringify({members : {$elemMatch : {openId : $rootScope.usr.openId}}})},
-						// 	function(result) {
-						// 		if (result) {
-						// 			$scope.activities = result;
-						// 		} else {
+						loading.hide();
+						loading.show('正在检索我的活动...');
+						Activity.query( // 查找当前用户相关活动
+							{activity: JSON.stringify({members : {$elemMatch : {openId : $rootScope.usr.openId}}})},
+							function(result) {
+								if (result) {
+									$scope.activities = result;
+								} else {
 
-						// 		}
-						// 	},
-						// 	function(err) {
-						// 		$window.alert(err);
-						// 	}
-						// );
+								}
+								loading.hide();
+								$scope.isLoaded = true;
+							},
+							function(err) {
+								$window.alert(err);
+								loading.hide();
+							}
+						);
 					}
 				);
 			});
 		}
 	);
 
-					
-	Activity.getAll(
-		{},
-		function(result) {
-			if (result) {
-				$scope.activities = result;
-			} else {
-				$scope.activities = [
-	                     {id : '12',type:'羽毛球',date:'2015/02/11', startTime:'17:30', endTime:'19:30', address:'广顺南大街东口民航干部管理学院运动中心', img:'yumaoqiu.png', content:'欢乐羽毛球俱乐部，欢迎大家热情参与。会员每人次30元，非会员每人次40元。含场地费，羽毛用球，不含服装与球拍，要求业余2级以上人员。谢谢合作！'},
-	                     {id : '34',type:'足球',date:'2015/02/10',startTime:'09:00',endTime:'11:00',address:'国家奥体中心足球场3号场地', img:'zuqiu.png', content:'NTTDATA足球俱乐部，欢迎大家热情参与。只欢迎本俱乐部内部人员参与，其他人员勿扰。谢谢合作！'},
-	                     {id : '34',type:'足球',date:'2015/02/10',startTime:'09:00',endTime:'11:00',address:'国家奥体中心足球场3号场地', img:'zuqiu.png', content:'NTTDATA足球俱乐部，欢迎大家热情参与。只欢迎本俱乐部内部人员参与，其他人员勿扰。谢谢合作！'}
-	                     ];
-			}
-		},
-		function(err) {
-			$window.alert(err);
-		}
-	);
-	
 	$scope.encodeURI = function(url) {
 		return encodeURI(encodeURI(angular.toJson(url)));
 	};
@@ -121,56 +113,18 @@ laiydApp.controller('myActCtl', function($scope, $window, Activity, Weixin,$root
 	$scope.openBaiduMap = function() {
 		$window.open('baiduMap.html', '_blank');
 	};
-});
 
-laiydApp.controller('actEditCtl',function($scope, $routeParams, $window, $http, Activity) {
-	$scope.usr = $rootScope.usr;
-	$scope.types = ['羽毛球','足球','篮球','乒乓球'];
-	if ($routeParams.id) {
-		$scope.activity = $routeParams.id;
-	} else {
-		$scope.activity = {
-				type : '羽毛球'
-		}
-	}
-	$scope.onSave = function() {
-		$scope.activity.members = [{openId : $rootScope.usr.openId, nickName : $rootScope.usr.nickName, headImgUrl : $rootScope.usr.headImgUrl, userCount : 1, owner : true, joinDate : new Date()}];
-		Activity.create(
-			{},
-			{activity : $scope.activity},
-			function(result) {
-				$window.alert(result);
-			},
-			function(err) {
-				$window.alert(err);
+	$scope.onQuitActivity = function(id) {
+		for (var i = 0; i < $scope.activities.length; i++) {
+			if ($scope.activities[i]._id = id) {
+				$scope.activities.splice(i, 1);
+				return;
 			}
-		);
-		// $http.post('./svc/addAct',  $scope.activity)
-		// .success(function() {			
-		// 	$window.alert(angular.toJson($scope.activity));
-		// });
-	}
+		};
+	};
+
+	$scope.goSearch = function() {
+		$window.location.href='http://www.laiyd.com/weixin/web/searchAct';
+	};
 });
 
-laiydApp.controller('actViewCtl',function($scope, $routeParams) {
-    $scope.id = $routeParams.id;
-});
-
-
-laiydApp.controller('actSearchCtl',function($scope, $routeParams) {
-	$scope.types = ['羽毛球','足球','篮球','乒乓球'];
-	$scope.onSearch=function(){
-		$scope.activities = [
-		                     {id : '12',type:'羽毛球',date:'2015/02/11'},
-		                     {id : '34',type:'足球',date:'2015/02/10'}
-		                     ];
-	}
-});
-
-laiydApp.controller('loginCtl', function($scope, $routeParams) {
-	
-});
-
-laiydApp.controller('regCtl', function($scope, $routeParams) {
-	
-});

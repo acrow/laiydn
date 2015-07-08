@@ -74,7 +74,7 @@ laiydApp.controller('myActCtl', function($scope, $window, Activity, Weixin, $roo
 	};
 });
 
-laiydApp.controller('actEditCtl',function($scope, $routeParams, $window, $http, Activity) {
+laiydApp.controller('actEditCtl',function($scope, $routeParams, $window, $http, Activity, $rootScope) {
 	$scope.usr = {openId :'testusr', nickName : 'testusr'};
 	$scope.types = ['羽毛球','足球','篮球','乒乓球'];
 	if ($routeParams.id) {
