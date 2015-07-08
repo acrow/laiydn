@@ -11,21 +11,21 @@ angular.module('resource', ['ngResource'])
 
 			}]).factory('Activity', ['$resource', function ($resource, appConfig) {
 				return $resource(
-									'http://www.laiyd.com/data/activity',
+									'http://www.laiyd.cn/data/activity',
 									null, 
 									{
 										'getAll' 		:	{ method : 'GET' , isArray : true },
-										'getOnePage'	:	{ method : 'GET' , url : 'http://www.laiyd.com/data/activity/Search/:count/:page', params : {SearchTerm : "", Status:"", count : 5, page : 1 } },
+										'getOnePage'	:	{ method : 'GET' , url : 'http://www.laiyd.cn/data/activity/Search/:count/:page', params : {SearchTerm : "", Status:"", count : 5, page : 1 } },
 
-										'getSrById' 	:	{ method : 'GET' , url : 'http://www.laiyd.com/data/activity/ServiceRequest/:id', params : { id : 0} },
+										'getSrById' 	:	{ method : 'GET' , url : 'http://www.laiyd.cn/data/activity/ServiceRequest/:id', params : { id : 0} },
 										'update' 		:	{ method : 'PUT'  },
 										'create' 		:	{ method : 'POST' },
-										'query'			:   { method : 'GET', url : 'http://www.laiyd.com/data/activity/query/:activity', isArray : true},
-										'myActivities'	:   { method : 'GET' , isArray : true , url : 'http://www.laiyd.com/data/activity/myActivities/:openId' },
-										'join'			:   { method : 'GET' , url : 'http://www.laiyd.com/data/activity/join/:openId/:id' },
-										'quit'			:   { method : 'GET' , url : 'http://www.laiyd.com/data/activity/quit/:openId/:id' },
-										'plus'			:   { method : 'GET' , url : 'http://www.laiyd.com/data/activity/plus/:openId/:id' },
-										'minus'			:   { method : 'GET' , url : 'http://www.laiyd.com/data/activity/minus/:openId/:id' }
+										'query'			:   { method : 'GET', url : 'http://www.laiyd.cn/data/activity/query/:activity', isArray : true},
+										'myActivities'	:   { method : 'GET' , isArray : true , url : 'http://www.laiyd.cn/data/activity/myActivities/:openId' },
+										'join'			:   { method : 'GET' , url : 'http://www.laiyd.cn/data/activity/join/:openId/:id' },
+										'quit'			:   { method : 'GET' , url : 'http://www.laiyd.cn/data/activity/quit/:openId/:id' },
+										'plus'			:   { method : 'GET' , url : 'http://www.laiyd.cn/data/activity/plus/:openId/:id' },
+										'minus'			:   { method : 'GET' , url : 'http://www.laiyd.cn/data/activity/minus/:openId/:id' }
 									}
 								);
 
@@ -36,8 +36,8 @@ angular.module('resource', ['ngResource'])
 									null, 
 									{
 						
-										'getConfig' 	:	{ method : 'GET' , url : 'http://www.laiyd.com/weixin/getConfig'},
-										'getCurrentUser':   { method : 'GET' , url : 'http://www.laiyd.com/weixin/usr'}
+										'getConfig' 	:	{ method : 'GET' , url : 'http://www.laiyd.cn/weixin/getConfig'},
+										'getCurrentUser':   { method : 'GET' , url : 'http://www.laiyd.cn/weixin/usr'}
 									}
 								);
 

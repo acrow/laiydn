@@ -157,7 +157,7 @@ laiydApp.factory("loading", ['$modal', function($modal) {
     this.count++;
     if(this.count === 1){//it hasn't been started, yet.
             this.modalInstance = $modal.open({
-              template: '<div class="text-center" style="color:white;"><img src="http://www.laiyd.com/weixin/web/img/loading.gif" /><br><p>' + info + '</p></div>',
+              template: '<div class="text-center" style="color:white;"><img src="http://www.laiyd.cn/weixin/web/img/loading.gif" /><br><p>' + info + '</p></div>',
               windowClass: 'loading-with-mask',
               backdrop : 'static',
               keyboard : false,

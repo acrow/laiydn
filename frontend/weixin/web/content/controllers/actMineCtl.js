@@ -124,7 +124,7 @@ laiydApp.controller('actMineCtl', function($scope, $window, Activity, Weixin, $r
 	};
 
 	$scope.goSearch = function() {
-		$window.location.href='http://www.laiyd.com/weixin/web/searchAct';
+		$window.location.href='http://www.laiyd.cn/weixin/web/searchAct';
 	};
 });
 
