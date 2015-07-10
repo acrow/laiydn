@@ -7,8 +7,6 @@ function Member(mem) {
 	this._id = mem._id;	
 	this.userName = mem.userName;
 	this.password = mem.password;
-	this.displayName = mem.displayName;
-	this.icon = mem.icon;
 	this.openId = mem.openId;
 	this.nickName = mem.nickName;
 	this.sex = mem.sex;
@@ -21,6 +19,10 @@ function Member(mem) {
 	this.unionId = mem.unionId;
 	this.remark = mem.remark;
 	this.groupId = mem.groupId;
+	this.subscribe = mem.subscribe;
+	this.activityType = mem.activityType;
+	this.activityTypes = mem.activityTypes;
+	this.point = mem.point
 	this.location = mem.location;
 }
 
@@ -31,8 +33,6 @@ Member.prototype.save = function save(callback) {
 		_id : this._id,
 		userName : this.userName,
 		password : this.password,
-		displayName : this.displayName,
-		icon : this.icon,
 		openId : this.openId,
 		nickName : this.nickName,
 		sex : this.sex,
@@ -40,11 +40,15 @@ Member.prototype.save = function save(callback) {
 		country : this.country,
 		province : this.province,
 		language : this.language,
-		headImgUrl : this.headimgUrl,
+		headImgUrl : this.headImgUrl,
 		subscribeTime : this.subscribeTime,
 		unionId : this.unionId,
 		remark : this.remark,
 		groupId : this.groupId,
+		subscribe : this.subscribe,
+		activityType : this.activityType,
+		activityTypes : this.activityTypes,
+		point : this.point,
 		location : this.location
 	};
 	if (!mem.nickName) {

@@ -81,6 +81,26 @@ router.get('/usr', function(req, res, next) {
 
 /******************************* web page ***********************************/
 
+function checkAuth(req, res) {
+    if (!req.session.usr) {
+        // 当前访问的url
+        var url = 'http://' + setting.host + req.baseUrl + req.url; 
+        // 微信验证成功后返回的url
+        url = "http://www.laiyd.com/weixin/web/auth?redirect_uri=" + encodeURIComponent(url); 
+        // 微信验证用的url
+        url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ setting.weixinAppId +'&redirect_uri='+ encodeURIComponent(url) +'&response_type=code&scope=snsapi_base#wechat_redirect';
+        // 跳转到微信认证
+        res.redirect(url);
+        return false; 
+    }
+    return true;
+}
+
+router.get('/web/auth', function(req, res, next) {
+    wxHandler.authorize(req, req.param('code'));
+    res.redirect(req.param('redirect_uri'));
+});
+
 router.get('/web', function(req, res, next) {
     if (!req.session.usr) {
         if (req.param('code')) {
@@ -93,37 +113,21 @@ router.get('/web', function(req, res, next) {
         }
     }
     
-    res.render('index');
+    res.render('index'); 
 });
 
 router.get('/web/myAct', function(req, res, next) {
-    if (!req.session.usr) {
-        if (req.param('code')) {
-            wxHandler.authorize(req, req.param('code'));
-
-        } else { // 如果用户未登录则重定向验证用户
-            var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ setting.weixinAppId +'&redirect_uri='+ encodeURIComponent('http://' + setting.host + req.baseUrl + req.url) +'&response_type=code&scope=snsapi_base#wechat_redirect';
-            res.redirect(url);
-            return; 
-        }
+    if (checkAuth(req, res)) {
+        res.render('actMine');    
     }
-    
-    res.render('actMine');
 });
-router.get('/web/editAct', function(req, res, next) {
-    // if (!req.session.usr) {
-    //     if (req.param('code')) {
-    //         wxHandler.authorize(req, req.param('code'));
 
-    //     } else { // 如果用户未登录则重定向验证用户
-    //         var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ setting.weixinAppId +'&redirect_uri='+ encodeURIComponent('http://' + setting.host + req.baseUrl + req.url) +'&response_type=code&scope=snsapi_base#wechat_redirect';
-    //         res.redirect(url);
-    //         return; 
-    //     }
-    // }
-    
-    res.render('actEdit');
+router.get('/web/editAct', function(req, res, next) {
+    if (checkAuth(req, res)) {
+        res.render('actEdit');
+    }
 });
+
 router.get('/web/searchAct', function(req, res, next) {
     if (!req.session.usr) {
         // if (req.param('code')) {

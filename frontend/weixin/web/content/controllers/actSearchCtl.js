@@ -1,6 +1,10 @@
-laiydApp.controller('actSearchCtl',function($scope, $routeParams, $window, Activity, loading) {
+laiydApp.controller('actSearchCtl',function($scope, $routeParams, $window, Activity, loading, wxMethods) {
 	$scope.isLoaded = false;
 	$scope.types = ['羽毛球','足球','篮球','乒乓球'];
+	wxMethods.jsSdkConfig(function() {
+		wx.hideOptionMenu(); // 隐藏右上角菜单
+		$scope.isLoaded = true;
+	});
 	$scope.onSearch = function(){
 		loading.show('正在搜索活动...');
 		Activity.getAll(
@@ -22,6 +26,6 @@ laiydApp.controller('actSearchCtl',function($scope, $routeParams, $window, Activ
 			}
 		);
 	};
-	$scope.isLoaded = true;
+	
 });
 

@@ -36,14 +36,19 @@
 		<button class="btn btn-primary btn-block btn-lg" data-ng-click="onSearch()"><span class="glyphicon glyphicon-search"></span> 开始搜索</button>
 	</div>
 
-	<table class="table" data-ng-show="activities">
+	<div class="text-left row">
+  		<div class="col-xs-12  col-md-4 "  data-ng-repeat="act in activities | actImg | orderBy:'date'">
+      		<act-details data=act on-quit="onQuitActivity(act._id)"></act-details>
+    	</div>
+  	</div>
+	<!-- <table class="table" data-ng-show="activities">
 		<tr data-ng-repeat="act in activities | actImg">
 			<td><img data-ng-src="{{act.img}}" alt="" style="height:50px;width:50px;"></td>
 			<td>{{act.type}}</td>
 			<td>{{act.date}}</td>
 			<td><a href="/weixin/web/viewAct/{{act._id}}">查看</a></td>
 		</tr>
-	</table>
+	</table> -->
 </div>
 <% include _jfoot.ejs %>
 <script src="content/controllers/actSearchCtl.js"></script>

@@ -52,6 +52,7 @@ router.route('/activity/:id?')
 		}
 	});
 });
+
 // 通用查询
 router.get('/activity/query/:activity', function(req, res, next) {
 	var act = JSON.parse(req.param('activity'));

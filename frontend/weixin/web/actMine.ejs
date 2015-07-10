@@ -14,15 +14,16 @@
 <div  class="ng-cloak" data-ng-show="isLoaded">
   <div class="text-left row">
   	<div class="col-xs-12  col-md-4 "  data-ng-repeat="act in activities | actImg | orderBy:'date'">
-      	<act-details data=act on-quit="onQuitActivity(act._id)"></act-details>
-    	</div>
+    	<act-details data=act on-quit="onQuitActivity(act._id)"></act-details>
+  	</div>
   </div>
   <div data-ng-show="!activities || activities.length == 0">
-    <img data-ng-src="http://www.laiyd.cn/weixin/web/img/noact.png" alt="" style="height:250px;">
+    <img data-ng-src="http://www.laiyd.com/weixin/web/img/noact.png" alt="" style="height:250px;">
     <div class="alert alert-info" role="alert">
       暂时还没有参加任何活动，试试去搜索自己感兴趣的活动吧！
     </div>
     <button class="btn btn-primary btn-block btn-lg" data-ng-click="goSearch()"><span class="glyphicon glyphicon-search"></span> 去搜索</button>
+    <button class="btn btn-success btn-block btn-lg" data-ng-click="goEdit()"><span class="glyphicon glyphicon-edit"></span> 去发布</button>
   </div>
 </div>
 <!-- Modal -->

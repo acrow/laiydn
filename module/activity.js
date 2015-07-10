@@ -3,17 +3,17 @@ var ObjectID = require('mongodb').ObjectID;
 function Activity(activity) {
 	this._id = activity._id;
 	this.type = activity.type;
-	this.date = activity.date;
 	this.startTime = activity.startTime;
-	this.endTime = activity.endTime;
-	this.content = activity.content;
+	this.hours = activity.hours;
 	this.address = activity.address;
+	this.content = activity.content;
 	this.maxUsers = activity.maxUsers;
 	this.minUsers = activity.minUsers;
 	this.amount = activity.amount;
 	this.auditMethod = activity.auditMethod;
 	this.status = activity.status;
-	this.members = activity.members;
+	this.allowAnonymous = activity.allowAnonymous;
+	this.applications = activity.applications;
 }
 
 module.exports = Activity;
@@ -22,17 +22,17 @@ Activity.prototype.save = function save(callback) {
 	var activity = {
 		_id: this._id,
 		type: this.type,
-		date: this.date,
 		startTime: this.startTime,
-		endTime: this.endTime,
-		content: this.content,
+		hours: this.hours,
 		address: this.address,
+		content: this.content,
 		maxUsers: this.maxUsers,
 		minUsers: this.minUsers,
 		amount: this.amount,
 		auditMethod: this.auditMethod,
 		status: this.status,
-		members: this.members
+		allowAnonymous: this.allowAnonymous,
+		applications: this.applications
 	};
 	db.open(function(err, db) {
 		if (err) {
