@@ -16,7 +16,7 @@ laiydApp.factory("loading", ['$modal', function($modal) {
   Spin.prototype.count = 0;
   Spin.prototype.show  = function(info){
   	if (!info) {
-  		info = "loading";
+  		info = "请稍后...";
   	}
     this.count++;
     if(this.count === 1){//it hasn't been started, yet.
@@ -46,63 +46,82 @@ laiydApp.factory("loading", ['$modal', function($modal) {
 }]);
 
 // 微信jsSdk注入
-laiydApp.factory('wxMethods', function($window, Activity, Weixin, loading) {
+laiydApp.factory('wxMethods', function($window, $q, $rootScope, Activity, Weixin, loading) {
 	var methods = {
-		jsSdkConfig : function(callback) {
-			loading.show('正在准备配置...');
-			Weixin.getConfig( // 去服务器端取得配置
-				{url : location.href.split('#')[0]},
-				function(result) {  // 取得成功
-					loading.hide();
-					loading.show('正在应用配置...');
-					wx.config({ // 注册配置到微信
-						debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-					    appId: result.appId, // 必填，公众号的唯一标识
-					    timestamp: result.timestamp, // 必填，生成签名的时间戳
-					    nonceStr: result.nonceStr, // 必填，生成签名的随机串
-					    signature: result.signature,// 必填，签名，见附录1
-					    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'openLocation', 'getLocation', 'hideOptionMenu'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-
-					});
-					wx.error(function(res){ // 注册失败
+		jsConfig : function() {
+			var deferred = $q.defer();
+			if ($rootScope.wxOk) { // 已经成功注入的标志
+				deferred.resolve('微信jsSdk注入成功');
+			} else {
+				loading.show('');
+				Weixin.getConfig( // 去服务器端取得配置
+					{url : location.href.split('#')[0]},
+					function(result) {  // 取得成功
 						loading.hide();
-						$window.alert('验证失败!' + location.href.split('#')[0]);
-					});
-					wx.ready(function(res){ // 注册成功
-						// wx.checkJsApi({
-					 //      jsApiList: [
-					 //        'getNetworkType',
-					 //        'previewImage'
-					 //      ],
-					 //      success: function (res) {
-					 //        alert(JSON.stringify(res));
-					 //      }
-					 //    });
-						// wx.onMenuShareAppMessage({
-						//     // title: 'test', // 分享标题
-						//     // desc: 'share', // 分享描述
-						//     link: location.href.split('?code')[0], // 分享链接
-						//     // imgUrl: '', // 分享图标
-						//     // type: '', // 分享类型,music、video或link，不填默认为link
-						//     // dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-						//     success: function () { 
-						//         // 用户确认分享后执行的回调函数
-						//         $window.alert('分享成功!');
-						//     },
-						//     cancel: function () { 
-						//         // 用户取消分享后执行的回调函数
-						//         $window.alert('取消分享!');
-						//     }
-						// });
-						
-						
+						loading.show('');
+						wx.config({ // 注册配置到微信
+							debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+						    appId: result.appId, // 必填，公众号的唯一标识
+						    timestamp: result.timestamp, // 必填，生成签名的时间戳
+						    nonceStr: result.nonceStr, // 必填，生成签名的随机串
+						    signature: result.signature,// 必填，签名，见附录1
+						    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'openLocation', 'getLocation', 'hideOptionMenu'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+						});
+						wx.error(function(res){ // 注册失败
+							loading.hide();
+							deferred.reject('微信jsSdk注入失败');
+						});
+						wx.ready(function(res){ // 注册成功
+							loading.hide();
+							$rootScope.wxOk = true;
+							deferred.resolve('微信jsSdk注入成功');
+						});
+					}
+				);	
+			}
+			
+			return deferred.promise;
+		},
+		getCurrentUser: function() {
+			var deferred = $q.defer();
+			if ($rootScope.usr) {
+				deferred.resolve($rootScope.usr);
+			} else {
+				loading.show('正在获取我的信息...');
+				Weixin.getCurrentUser( // 取得当前用户
+					{},
+					function(usr) {
 						loading.hide();
-						if (callback) {
-							callback();
+						if (usr) {
+							$rootScope.usr = usr;
+							deferred.resolve(usr);
+						} else {
+							deferred.reject('用户不存在');
 						}
-					});
+					},
+					function(err) {
+						loading.hide();
+						deferred.reject('取得用户信息发生错误：' + JSON.stringify(err));
+					}
+				);
+			}
+			return deferred.promise;
+		},
+		getMyActivities: function(usr) {
+			var deferred = $q.defer();
+			loading.show('正在检索我的活动...');
+			Activity.query( // 查找当前用户相关活动
+				{activity: JSON.stringify({applications : {$elemMatch : {openId : usr.openId}}})},
+				function(activities) {
+					loading.hide();
+					deferred.resolve(activities);
+				},
+				function(err) {
+					loading.hide();
+					deferred.reject('取得我的活动发生错误：' + JSON.stringify(err));
 				}
 			);
+			return deferred.promise;
 		}
 	};
 	return methods;

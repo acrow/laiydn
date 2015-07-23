@@ -6,49 +6,12 @@
 <title>来运动</title>
 <% include _jhead.ejs %>
 </head>
-<body data-ng-controller="actMineCtl" class=" container">
-
-<div class="page-header text-primary">
-  <h2><span class="glyphicon glyphicon-fire"></span> 我的活动</h2>
-</div>
-<div  class="ng-cloak" data-ng-show="isLoaded">
-  <div class="text-left row">
-  	<div class="col-xs-12  col-md-4 "  data-ng-repeat="act in activities | actImg | orderBy:'date'">
-    	<act-details data=act on-quit="onQuitActivity(act._id)"></act-details>
-  	</div>
-  </div>
-  <div data-ng-show="!activities || activities.length == 0">
-    <img data-ng-src="http://www.laiyd.com/weixin/web/img/noact.png" alt="" style="height:250px;">
-    <div class="alert alert-info" role="alert">
-      暂时还没有参加任何活动，试试去搜索自己感兴趣的活动吧！
-    </div>
-    <button class="btn btn-primary btn-block btn-lg" data-ng-click="goSearch()"><span class="glyphicon glyphicon-search"></span> 去搜索</button>
-    <button class="btn btn-success btn-block btn-lg" data-ng-click="goEdit()"><span class="glyphicon glyphicon-edit"></span> 去发布</button>
-  </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">地图</h4>
-      </div>
-      <div class="modal-body" id="mapContainer" style="height:500px;">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary">保存</button>
-      </div>
-    </div>
-  </div>
+<body class=" container">
+<div ng-view>
 </div>
 
 <% include _jfoot.ejs %>
- <script src="content/controllers/actMineCtl.js"></script>
- <!--
- <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=RkM9Z0ujZ8xDwuR19bdLGUmO"></script>
--->
+ <script src="http://www.laiyd.com/weixin/web/content/controllers/main.js"></script>
+
 </body>
 </html>

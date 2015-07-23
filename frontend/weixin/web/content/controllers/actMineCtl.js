@@ -1,59 +1,18 @@
-laiydApp.controller('actMineCtl', function($scope, $window, Activity, Weixin, $rootScope, loading, wxMethods) {
+laiydApp.controller('actMineCtl', function($scope, $window, Activity, Weixin, $rootScope, loading, wxMethods, $location, $q) {
 	$scope.isLoaded = false;
-	wxMethods.jsSdkConfig(function() {
-		wx.hideOptionMenu(); // 隐藏右上角菜单
-		// wx.checkJsApi({
-			 //      jsApiList: [
-			 //        'getNetworkType',
-			 //        'previewImage'
-			 //      ],
-			 //      success: function (res) {
-			 //        alert(JSON.stringify(res));
-			 //      }
-			 //    });
-				wx.onMenuShareAppMessage({
-				    // title: 'test', // 分享标题
-				    // desc: 'share', // 分享描述
-				    link: location.href.split('?code')[0], // 分享链接
-				    // imgUrl: '', // 分享图标
-				    // type: '', // 分享类型,music、video或link，不填默认为link
-				    // dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-				    success: function () { 
-				        // 用户确认分享后执行的回调函数
-				        $window.alert('分享成功!');
-				    },
-				    cancel: function () { 
-				        // 用户取消分享后执行的回调函数
-				        $window.alert('取消分享!');
-				    }
-				});
-				loading.hide();
-				loading.show('正在获取我的信息...');
-				Weixin.getCurrentUser( // 取得当前用户
-					{},
-					function(result) {
-						$rootScope.usr = result;
-						$scope.usr = $rootScope.usr;
-						loading.hide();
-						loading.show('正在检索我的活动...');
-						Activity.query( // 查找当前用户相关活动
-							{activity: JSON.stringify({members : {$elemMatch : {openId : $rootScope.usr.openId}}})},
-							function(result) {
-								if (result) {
-									$scope.activities = result;
-								} else {
+	$scope.isEmpty = true;
 
-								}
-								loading.hide();
-								$scope.isLoaded = true;
-							},
-							function(err) {
-								$window.alert(err);
-								loading.hide();
-							}
-						);
-					}
-				);
+	wxMethods.jsConfig().then(wxMethods.getCurrentUser).then(wxMethods.getMyActivities).then(function(activities) {
+		if (activities && activities.length > 0) {
+			$scope.isEmpty = false;
+			$scope.activities = activities;
+		}
+	})
+	.catch(function(err) {
+		$window.alert(err);
+	})
+	.finally(function() {
+		wx.hideOptionMenu(); // 隐藏右上角菜单
 		$scope.isLoaded = true;
 	});
 
@@ -94,8 +53,9 @@ laiydApp.controller('actMineCtl', function($scope, $window, Activity, Weixin, $r
 	};
 
 	$scope.onQuitActivity = function(id) {
+		$window.alert(id);
 		for (var i = 0; i < $scope.activities.length; i++) {
-			if ($scope.activities[i]._id = id) {
+			if ($scope.activities[i]._id == id) {
 				$scope.activities.splice(i, 1);
 				return;
 			}
@@ -103,11 +63,13 @@ laiydApp.controller('actMineCtl', function($scope, $window, Activity, Weixin, $r
 	};
 
 	$scope.goSearch = function() {
-		$window.location.href='http://www.laiyd.com/weixin/web/searchAct';
+		$location.url('/search');
+		//$window.location.href='http://www.laiyd.com/weixin/web/searchAct';
 	};
 
 	$scope.goEdit = function() {
-		$window.location.href='http://www.laiyd.com/weixin/web/editAct';
+		$location.url('/edit');
+		//$window.location.href='http://www.laiyd.com/weixin/web/editAct';
 	};
 });
 

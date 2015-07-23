@@ -3,8 +3,8 @@ var laiydApp = angular.module('laiyd', ['ngRoute','resource', 'ui.bootstrap']);
 laiydApp.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider
 	.when('/mine', {
-		templateUrl:'content/views/myAct.html',
-		controller: 'myActCtl'
+		templateUrl:'content/views/actMine.html',
+		controller: 'actMineCtl'
 	})
 	.when('/edit', {
 		templateUrl:'content/views/actEdit.html',

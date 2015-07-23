@@ -1,7 +1,11 @@
-laiydApp.controller('actSearchCtl',function($scope, $routeParams, $window, Activity, loading, wxMethods) {
+laiydApp.controller('actSearchCtl',function($scope, $rootScope, $routeParams, $window, Activity, loading, wxMethods, Weixin) {
 	$scope.isLoaded = false;
 	$scope.types = ['羽毛球','足球','篮球','乒乓球'];
-	wxMethods.jsSdkConfig(function() {
+	wxMethods.jsConfig().then(wxMethods.getCurrentUser)
+	.catch(function(err) {
+		$window.alert(err);
+	})
+	.finally(function() {
 		wx.hideOptionMenu(); // 隐藏右上角菜单
 		$scope.isLoaded = true;
 	});
@@ -26,6 +30,6 @@ laiydApp.controller('actSearchCtl',function($scope, $routeParams, $window, Activ
 			}
 		);
 	};
-	
+	$scope.isLoaded = true;
 });
 

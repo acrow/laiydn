@@ -73,6 +73,7 @@ Activity.get = function get(id, callback) {
 		});
 	});
 };
+
 Activity.getAll = function getAll(callback) {
 	db.open(function(err, db) {
 		if (err) {
@@ -93,6 +94,7 @@ Activity.getAll = function getAll(callback) {
 		});
 	});
 };
+
 Activity.query = function query(act, callback) {
 	db.open(function(err, db) {
 		if (err) {
@@ -125,7 +127,7 @@ Activity.myActivities = function query(openId, callback) {
 				return callback(err);
 			}
 			if (collection) {
-				collection.find({'members.openId' : openId}).toArray(function(err, acts) {
+				collection.find({'applications.openId' : openId}).toArray(function(err, acts) {
 					callback(err, acts);
 				});
 			} else {
@@ -134,6 +136,7 @@ Activity.myActivities = function query(openId, callback) {
 		});
 	});
 };
+
 // 用户加入活动
 Activity.join = function query(openId, id, callback) {
 	var _id = new ObjectID(id);
@@ -156,22 +159,26 @@ Activity.join = function query(openId, id, callback) {
 						mem = {openId : openId, nickName: '匿名'};
 					}
 
-					actColl.update({_id : _id}, {$push:{members:{openId: mem.openId, nickName: mem.nickName, headImgUrl: mem.headImgUrl, userCount: 1, owner: false, joinDate: new Date(), passed: true}}}, function(err) {
+					actColl.findOne({_id : _id}, function(err, act) { // 查找活动信息
 						if (err) {
 							db.close();
 							return callback(err);
+						} 
+						var application = Activity.newApplication(mem, false);
+						if (act.auditMethod == '自动通过') {
+							application.status = '通过';
+							//actColl.update({_id : id}, {$set : {'applications.$.status' : '通过'}});
 						}
-						actColl.findOne({_id : _id}, function(err, act) {
+						actColl.update({_id : _id}, {$push:{applications: application}}, function(err) {
 							if (err) {
 								db.close();
 								return callback(err);
-							} 
-							callback(err, act);
-							if (act.auditMethod == '自动通过') {
-								actColl.update({_id : id}, {$set : {'members.$.passed' : true}});
 							}
+							act.applications.push(application);
+							callback(err, act);
 						});
 					});
+					
 				});
 
 			});
@@ -190,7 +197,7 @@ Activity.quit = function quit(openId, id, callback) {
 				db.close();
 				return callback(err);
 			}
-			actColl.update({_id : _id}, {$pull:{members:{openId: openId}}}, function(err) {
+			actColl.update({_id : _id}, {$pull:{applications:{openId: openId}}}, function(err) {
 				if (err) {
 					db.close();
 					return callback(err);
@@ -218,7 +225,7 @@ function changeUserCount(openId, id, count, callback) {
 				db.close();
 				return callback(err);
 			}
-			actColl.update({_id : _id, 'members.openId' : openId}, {$inc:{'members.$.userCount' : count}}, function(err) {
+			actColl.update({_id : _id, 'applications.openId' : openId}, {$inc:{'applications.$.userCount' : count}}, function(err) {
 				if (err) {
 					db.close();
 					return callback(err);
@@ -242,3 +249,13 @@ Activity.plus = function plus(openId, id, callback) {
 Activity.minus = function minus(openId, id, callback) {
 	changeUserCount(openId, id, -1, callback);
 };
+
+// 返回新的申请信息
+Activity.newApplication = function newApplication(mem, isOwner) {
+	apl = {openId: mem.openId, nickName: mem.nickName, headImgUrl: mem.headImgUrl, userCount: 1, owner: '否', applicationTime: new Date(), status: '申请中'};
+	if (isOwner) {
+		apl.owner = '是';
+		apl.status = '通过';
+	}
+	return apl;
+}

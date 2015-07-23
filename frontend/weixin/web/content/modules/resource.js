@@ -32,10 +32,9 @@ angular.module('resource', ['ngResource'])
 
 			}]).factory('Weixin', ['$resource', function ($resource, appConfig) {
 				return $resource(
-									'weixin',
+									'http://www.laiyd.com/weixin',
 									null, 
 									{
-						
 										'getConfig' 	:	{ method : 'GET' , url : 'http://www.laiyd.com/weixin/getConfig'},
 										'getCurrentUser':   { method : 'GET' , url : 'http://www.laiyd.com/weixin/usr'}
 									}

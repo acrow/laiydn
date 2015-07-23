@@ -146,7 +146,10 @@ function getMember(openId, callback) {
 						subscribeTime: u.subscribe_time
 					});
 				}
-				callback(usr);
+				usr.save(function(err, result) {
+					callback(usr);
+				});
+				
 			});
 		} else {
 			callback(mem);
@@ -321,3 +324,4 @@ WxHandler.authorize = function(req, code) {
 		}
 	);
 };
+

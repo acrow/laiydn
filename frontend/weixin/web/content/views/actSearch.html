@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="zh-CN" data-ng-app="laiyd">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width,user-scalable=no"/> 
-<title>来运动</title>
-<% include _jhead.ejs %>
-</head>
-<body data-ng-controller="actSearchCtl" class=" container">
+
 <div class="page-header text-primary">
   <h2><span class="glyphicon glyphicon-search"></span> 活动搜索</h2>
 </div>
@@ -37,8 +29,8 @@
 	</div>
 
 	<div class="text-left row">
-  		<div class="col-xs-12  col-md-4 "  data-ng-repeat="act in activities | actImg | orderBy:'applicationTime'">
-      		<act-details data=act ></act-details>
+  		<div class="col-xs-12  col-md-4 "  data-ng-repeat="act in activities | actImg | orderBy:'date'">
+      		<act-details data=act on-quit="onQuitActivity(act._id)"></act-details>
     	</div>
   	</div>
 	<!-- <table class="table" data-ng-show="activities">
@@ -50,11 +42,7 @@
 		</tr>
 	</table> -->
 </div>
-<% include _jfoot.ejs %>
-<script src="content/controllers/actSearchCtl.js"></script>
 
  <!--
  <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=RkM9Z0ujZ8xDwuR19bdLGUmO"></script>
 -->
-</body>
-</html>

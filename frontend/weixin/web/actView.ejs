@@ -2,36 +2,161 @@
 <html lang="zh-CN" data-ng-app="laiyd">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,user-scalable=no"/> 
 <title>来运动</title>
 <% include _jhead.ejs %>
-<% include _jfoot.ejs %>
-<script src="http://www.laiyd.com/weixin/web/content/controllers/actViewCtl.js"></script>
+<link href="http://www.laiyd.com/weixin/web/css/calendar.css" rel="stylesheet">
 </head>
-<body data-ng-controller="actViewCtl" data-ng-init="activity=<%= actStr %>;" class="container">
-	
-<div class="page-header text-primary">
-  <h2><span class="glyphicon glyphicon-qrcode"></span> 活动详情</h2>
+<body data-ng-init='act=<%- actStr %> | actImg;' class="container">
+<div class="page-header text-primary" >
+  <h2><span class="glyphicon glyphicon-qrcode"></span> 来运动活动分享</h2>
 </div>
-
 <div class=" text-left">
 	<h1><%= activity.type %>活动</h1><small><%= activity.status %></small>
-	<img data-ng-src="{{activity.img | actImg }}" alt="" style="height:250px;">
-	<p>日期：<%= activity.date %>  [<%= activity.startTime %> ~ <%= activity.endTime %>]</p>
+	<div class='row'>
+		<div class="col-md-6">
+			<img data-ng-src="{{act.img}}" alt="" style="width:100%;">
+			<br><br>
+		</div>
+		<div class="col-md-6">
+			<p>发起者：<img src="<%- activity.owner.headImgUrl %>" alt="" style="height:15px;"> <%- activity.owner.nickName %></p>
+			<p>活动内容：<%= activity.content %><small>（<span  data-ng-show="act.maxUsers">计划人数：<%= activity.maxUsers %> 人，</span>参加者少于<%= activity.minUsers %>人时活动取消。）</small></p>
+			<p data-ng-show="act.amount">活动费用：{{act.amount | currency:"&yen;"}}&nbsp;<span data-ng-show="act.maxUsers">（人均：{{act.amount/act.userCount | currency:"&yen;"}}）</p>
+			<p>时间：<%= activity.startTime %> &nbsp;&nbsp; 时长：<span class="badge"><%= activity.hours %></span></p>
+			<div class="Calendar">
+			  <span id="idCalendarYear">2015</span>年 <span id="idCalendarMonth">7</span>月
+			  <table cellspacing="0">
+			    <thead>
+			      <tr>
+			        <td>日</td>
+			        <td>一</td>
+			        <td>二</td>
+			        <td>三</td>
+			        <td>四</td>
+			        <td>五</td>
+			        <td>六</td>
+			      </tr>
+			    </thead>
+			    <tbody id="idCalendar">
+			    </tbody>
+			  </table>
+			</div>
+			<br>
+		</div>
+	</div>
 	<p>地点：<%= activity.address %></p>
-	<p>内容：<%= activity.content %></p>
-	<p>费用：</p>
+	<div id="mapContainer" style="height:200px;"></div>
+	<br>
 	
-	<p>计划人数:<%= activity.maxUsers %>&nbsp;&nbsp;&nbsp;&nbsp;已报名人数:<%= activity.cntUsers %></p>
-	<small>报名人数少于<%= activity.minUsers %>人时，活动取消。</small>
+	<p>参加者共 <span class="badge"><%= activity.userCount %></span> 人&nbsp;&nbsp;&nbsp;&nbsp; ：</p>
+	<p>
+	    <span data-ng-repeat="mem in act.applications | memImg | orderBy:'applicationTime' | filter: {status: '通过'}">
+	      &nbsp;&nbsp;<img data-ng-src="{{mem.headImgUrl}}" alt="" style="height:15px;"> {{mem.nickName}}<span class="badge" data-ng-show='mem.userCount > 1'>{{mem.userCount}}</span> 
+	    </span>
+	</p>
+	<% if (isShare) { %>
+    	<p class="alert alert-info text-center" role="alert" >请点击右上角菜单选择分享！</p>
+    <% } else if (isJoined) { %>
+    	<% if (isJoined == 1) {%>
+	    	<p class="alert alert-info text-center" role="alert" >你已经发出了参加申请，正在等待发起者批准。</p>
+    	<%}%>
+    	<% if (isJoined == 2) {%>
+	    	<p class="alert alert-success text-center" role="alert" >恭喜你，你已经成为参加者，请记好时间地点，按时出席哦！</p>
+    	<%}%>
+    	<% if (isJoined == 3) {%>
+	    	<p class="alert alert-danger text-center" role="alert" >真遗憾，你的申请被发起者拒绝了！</p>
+    	<%}%>
+    <% } else { %>
+    	<button type="button" class="btn btn-success btn-block btn-lg" role="button" onClick="join('<%= activity._id %>')" title="参加"><span class="glyphicon glyphicon-thumbs-up"> 申请参加</button>
+    <% } %>
+	isShare:<%- isShare %> isJoined:<%- isJoined %> openId:<%- openId %>
+	<br>
 </div>
-<button class="btn btn-primary btn-block btn-lg" data-ng-click="onShare()"><span
-	class="glyphicon glyphicon-floppy-save"></span>分享</button>
-<a href="#/mine" class="btn btn-warning btn-block btn-lg"><span
-	class="glyphicon glyphicon-remove"></span> 取消</a>
+<% include _jfoot.ejs %>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=RkM9Z0ujZ8xDwuR19bdLGUmO"></script>
+<script src="http://www.laiyd.com/js/calendar.js"></script>
 
- <!--
- <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=RkM9Z0ujZ8xDwuR19bdLGUmO"></script>
--->
+<script language="JavaScript">
+<% if (isShare) { %>
+	// 微信js配置
+	var jsConfig = <%- jsConfig %>;
+	if (jsConfig) {
+		jsConfig.debug = false;
+		wx.config(jsConfig);
+		wx.error(function(res){ // 注册失败
+			alert('验证失败!' + location.href.split('#')[0]);
+		});
+		wx.ready(function(res){ // 注册成功
+			// 分享给朋友
+			wx.onMenuShareAppMessage({ 
+			    title: '【来运动】吧！<%= activity.type %>活动分享，<%= activity.startTime %>，<%= activity.hours %>', // 分享标题
+			    desc: '<%= activity.content %>，<%= activity.address %>', // 分享描述
+			    link: location.href.split('?')[0], // 分享链接
+			    imgUrl: 'http://www.laiyd.com/weixin/web/img/111.png', // 分享图标
+			    // type: '', // 分享类型,music、video或link，不填默认为link
+			    // dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+			    success: function () { 
+			        // 用户确认分享后执行的v回调函数
+			    },
+			
+			    cancel: function () { 
+			        // 用户取消分享后执行的回调函数
+			    }
+			});
+			// 分享给朋友圈
+			wx.onMenuShareTimeline({
+			    title: '【来运动】吧！<%= activity.type %>活动分享，<%= activity.startTime %>，<%= activity.hours %>，<%= activity.address %>', // 分享标题
+			    link: location.href.split('?')[0], // 分享链接
+			    imgUrl: 'http://www.laiyd.com/weixin/web/img/111.png', // 分享图标
+			    // type: '', // 分享类型,music、video或link，不填默认为link
+			    // dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+			    success: function () { 
+			        // 用户确认分享后执行的v回调函数
+			    },
+			
+			    cancel: function () { 
+			        // 用户取消分享后执行的回调函数
+			    }
+			});
+		});
+	}
+<% } %>	
+
+	// 显示日历
+	var cale = new Calendar("idCalendar", {
+	    SelectDay: '<%= activity.startTime.substring(0, 10) %>',
+	    onSelectDay: function(o){ o.className = "onSelect"; },
+	    onToday: function(o){ o.className = "onToday"; },
+	    onFinish: function(){
+	        $("idCalendarYear").innerHTML = this.Year; $("idCalendarMonth").innerHTML = this.Month;
+	    }
+	});
+
+	// 百度地图API功能
+	var map = new BMap.Map("mapContainer");    // 创建Map实例
+	map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
+	// 创建地址解析器实例
+	var myGeo = new BMap.Geocoder();
+	// 将地址解析结果显示在地图上,并调整地图视野
+	myGeo.getPoint("<%= activity.address %>", function(point){
+		if (point) {
+			map.centerAndZoom(point, 16);
+			map.addOverlay(new BMap.Marker(point));
+		}else{
+			alert("您选择地址没有解析到结果!");
+		}
+	}, "北京市");
+
+	function join(actid) {
+		var url = window.location.href;
+		if (url.indexOf('?') > -1) {
+			url = url + '&isJoin=1';
+		} else {
+			url = url + '?isJoin=1';
+		}
+		window.location.href = url;
+	}
+</script>
 </body>
 </html>
