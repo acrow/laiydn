@@ -1,7 +1,7 @@
 laiydApp.controller('actMineCtl', function($scope, $window, Activity, Weixin, $rootScope, loading, wxMethods, $location, $q) {
 	$scope.isLoaded = false;
 	$scope.isEmpty = true;
-
+	loading.show('');
 	wxMethods.jsConfig().then(wxMethods.getCurrentUser).then(wxMethods.getMyActivities).then(function(activities) {
 		if (activities && activities.length > 0) {
 			$scope.isEmpty = false;
@@ -14,6 +14,7 @@ laiydApp.controller('actMineCtl', function($scope, $window, Activity, Weixin, $r
 	.finally(function() {
 		wx.hideOptionMenu(); // 隐藏右上角菜单
 		$scope.isLoaded = true;
+		loading.hide();
 	});
 
 	$scope.encodeURI = function(url) {

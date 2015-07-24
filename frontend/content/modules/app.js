@@ -134,3 +134,4 @@ laiydApp.directive('actDetails', function() {
 laiydApp.run( function($rootScope) {
 	
 });
+

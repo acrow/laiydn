@@ -35,7 +35,9 @@ laiydApp.controller('myActCtl', function($scope, $window, Activity, Weixin, $roo
 	// 		$window.alert(err);
 	// 	}
 	// );
-
+	$scope.showPrompt = function() {
+		prompt.show('');
+	}
 	
 	$scope.encodeURI = function(url) {
 		return encodeURI(encodeURI(angular.toJson(url)));

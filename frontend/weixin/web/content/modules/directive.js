@@ -10,7 +10,7 @@ laiydApp.directive('actDetails', function() {
 		},
 		templateUrl: 'content/views/actDetails.html',
 		require: ['resource'],
-		controller: ['$scope', '$rootScope', '$window', 'Activity', 'loading', function($scope, $rootScope, $window, Activity, loading) {
+		controller: ['$scope', '$rootScope', '$window', 'Activity', 'loading', function($scope, $rootScope, $window, Activity, loading, prompt) {
 			
 			function refresh() {
 				$scope.isWaiting = false; // 是否尚未通过
@@ -66,21 +66,22 @@ laiydApp.directive('actDetails', function() {
 			};
 
 			$scope.quit = function() {
-				loading.show('');
-				Activity.quit(
-					{openId: $rootScope.usr.openId, id: $scope.act._id},
-					function(result) {
-						$scope.act = result;
-						refresh();
-						if (onQuit) {
-							onQuit($scope.act._id);
-						}
-						loading.hide();
-					},
-					function(err) {
-						$window.alert(JSON.stringify(err));
-					}
-				);
+				prompt.show('');
+				// loading.show('');
+				// Activity.quit(
+				// 	{openId: $rootScope.usr.openId, id: $scope.act._id},
+				// 	function(result) {
+				// 		$scope.act = result;
+				// 		refresh();
+				// 		if (onQuit) {
+				// 			onQuit($scope.act._id);
+				// 		}
+				// 		loading.hide();
+				// 	},
+				// 	function(err) {
+				// 		$window.alert(JSON.stringify(err));
+				// 	}
+				// );
 			};
 
 			$scope.plus = function() {
