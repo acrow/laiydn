@@ -102,9 +102,6 @@ function checkAuth(req, res) {
 // 用户认证时需要跳转到此地址
 router.get('/web/auth', function(req, res, next) {
     wxHandler.authorize(req, req.query.code);
-    if (req.query.redirect_uri.indexOf('clientpath=edit') > -1) {
-        req.query.redirect_uri = req.query.redirect_uri+'#edit';
-    }
     res.redirect(req.query.redirect_uri);
 });
 // 测试用
