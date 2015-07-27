@@ -144,14 +144,21 @@ router.get('/web/viewAct/:actId', function(req, res, next) {
     var openId = '';
     var isJoined = 0;
     var msg = '';
+    if (req.session.usr) {
+        openId = req.session.usr.openId;
+    }
     if (req.query.isJoin) { // 如果是参加申请
         if (!checkAuth(req, res)) { // 要求用户认证
             return false;
         }
+
+        Activity.join(openId, req.params.actId, function(err, act) {
+            // var url = 'http://www.laiyd.cn/weixin' + req.url;
+            // res.redirect(url);
+        });
     }
-    if (req.session.usr) {
-        openId = req.session.usr.openId;
-    }
+ 
+
     Activity.get(req.params.actId, function(err, act) {
         act.userCount = 0;
         
