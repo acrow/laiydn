@@ -65,12 +65,12 @@ laiydApp.controller('actMineCtl', function($scope, $window, Activity, Weixin, $r
 
 	$scope.goSearch = function() {
 		$location.url('/search');
-		//$window.location.href='http://www.laiyd.com/weixin/web/searchAct';
+		//$window.location.href='http://www.laiyd.cn/weixin/web/searchAct';
 	};
 
 	$scope.goEdit = function() {
 		$location.url('/edit');
-		//$window.location.href='http://www.laiyd.com/weixin/web/editAct';
+		//$window.location.href='http://www.laiyd.cn/weixin/web/editAct';
 	};
 });
 

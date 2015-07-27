@@ -14,7 +14,8 @@ laiydApp.directive('actDetails', function() {
 			
 			function refresh() {
 				$scope.isWaiting = false; // 是否尚未通过
-				$scope.isJoined = false; // 是否已通过
+				$scope.isJoined = false; // 是否已通过申请
+				$scope.isReject = false; // 是否被拒绝
 				$scope.isOwner = false; // 是否是发起者
 				$scope.isOver1 = false; // 是否大于1人（带朋友一起参加）
 				$scope.userCount = 1;
@@ -26,6 +27,8 @@ laiydApp.directive('actDetails', function() {
 						if ($rootScope.usr && mem.openId == $rootScope.usr.openId) {
 							if (mem.status == '通过') {
 								$scope.isJoined = true;	
+							} else if (mem.status == '拒绝') {
+								$scope.isReject = true;	
 							} else {
 								$scope.isWaiting = true;
 							}
@@ -66,7 +69,8 @@ laiydApp.directive('actDetails', function() {
 			};
 
 			$scope.quit = function() {
-				prompt.show('');
+				alert(prompt);
+				//prompt.show('');
 				// loading.show('');
 				// Activity.quit(
 				// 	{openId: $rootScope.usr.openId, id: $scope.act._id},
@@ -114,6 +118,38 @@ laiydApp.directive('actDetails', function() {
 				);
 			};
 
+			$scope.approve = function(openId) {
+				loading.show('');
+				Activity.approve(
+					{openId: openId, id: $scope.act._id},
+					function(result) {
+						$scope.act = result;
+						refresh();
+						loading.hide();
+					},
+					function(err) {
+						$window.alert(JSON.stringify(err));
+					}
+				);
+			};
+
+			$scope.reject = function(openId) {
+
+
+				loading.show('');
+				Activity.reject(
+					{openId: openId, id: $scope.act._id},
+					function(result) {
+						$scope.act = result;
+						refresh();
+						loading.hide();
+					},
+					function(err) {
+						$window.alert(JSON.stringify(err));
+					}
+				);
+			};
+
 			$scope.modify = function() {
 				$window.alert('modify');
 			};
@@ -132,7 +168,7 @@ laiydApp.directive('actDetails', function() {
 				// } catch (e) {
 				// 	$window.alert('err:' + JSON.stringify(e));
 				// }
-				$window.location.href = 'http://www.laiyd.com/weixin/web/viewAct/' + $scope.act._id + '?isShare=1';
+				$window.location.href = 'http://www.laiyd.cn/weixin/web/viewAct/' + $scope.act._id + '?isShare=1';
 			};
 
 			$scope.shareCircle = function() {

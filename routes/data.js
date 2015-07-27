@@ -116,6 +116,26 @@ router.get('/activity/minus/:openId/:id', function(req, res, next) {
 		}
 	});
 });
+// 接受用户申请
+router.get('/activity/approve/:openId/:id', function(req, res, next) {
+	Activity.approve(req.params.openId, req.params.id, function(err, result) {
+		if (err) {
+			res.json(err);
+		} else {
+			res.json(result);		
+		}
+	});
+});
+// 拒绝用户申请
+router.get('/activity/reject/:openId/:id', function(req, res, next) {
+	Activity.reject(req.params.openId, req.params.id, function(err, result) {
+		if (err) {
+			res.json(err);
+		} else {
+			res.json(result);		
+		}
+	});
+});
 
 /************************************* 用户相关 **********************************/
 // 登录

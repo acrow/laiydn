@@ -116,7 +116,7 @@ Activity.query = function query(act, callback) {
 	});
 };
 
-Activity.myActivities = function query(openId, callback) {
+Activity.myActivities = function myActivities(openId, callback) {
 	db.open(function(err, db) {
 		if (err) {
 			return callback(err);
@@ -138,7 +138,7 @@ Activity.myActivities = function query(openId, callback) {
 };
 
 // 用户加入活动
-Activity.join = function query(openId, id, callback) {
+Activity.join = function join(openId, id, callback) {
 	var _id = new ObjectID(id);
 	db.open(function(err, db) {
 		if (err) {
@@ -164,19 +164,41 @@ Activity.join = function query(openId, id, callback) {
 							db.close();
 							return callback(err);
 						} 
-						var application = Activity.newApplication(mem, false);
-						if (act.auditMethod == '自动通过') {
-							application.status = '通过';
-							//actColl.update({_id : id}, {$set : {'applications.$.status' : '通过'}});
+						// 检查用户是否申请过了（有可能被拒绝了），修改状态为申请中，然后返回
+						var isApplied = false;
+						if (act.applications) {
+							for(var i = 0; i < act.applications.length; i++) {
+								if (act.applications[i].openId == openId) {
+									act.applications[i].status = '申请中';
+									actColl.update({_id : _id, 'applications.openId' : openId}, {$set:{'applications.$.status' : '申请中'}}, function(err) {
+										db.close();
+										if (err) {
+											return callback(err);
+										}
+										return callback(err, act); 
+									});
+									isApplied = true;
+									break;
+								}
+							}	
 						}
-						actColl.update({_id : _id}, {$push:{applications: application}}, function(err) {
-							if (err) {
-								db.close();
-								return callback(err);
+						if (!isApplied) {
+							// 用户新申请
+							var application = Activity.newApplication(mem, false);
+							if (act.auditMethod == '自动通过') {
+								application.status = '通过';
+								//actColl.update({_id : id}, {$set : {'applications.$.status' : '通过'}});
 							}
-							act.applications.push(application);
-							callback(err, act);
-						});
+							actColl.update({_id : _id}, {$push:{applications: application}}, function(err) {
+								if (err) {
+									db.close();
+									return callback(err);
+								}
+								act.applications.push(application);
+								callback(err, act);
+							});	
+						}
+						
 					});
 					
 				});
@@ -249,6 +271,62 @@ Activity.plus = function plus(openId, id, callback) {
 Activity.minus = function minus(openId, id, callback) {
 	changeUserCount(openId, id, -1, callback);
 };
+// 接受用户申请
+Activity.approve = function approve(openId, id, callback) {
+	var _id = new ObjectID(id);
+	db.open(function(err, db) {
+		if (err) {
+			return callback(err);
+		}
+		db.collection('activities', function(err, actColl) {
+			if (err) {
+				db.close();
+				return callback(err);
+			}
+			actColl.update({_id : _id, 'applications.openId' : openId}, {$set:{'applications.$.status' : '通过'}}, function(err) {
+				if (err) {
+					db.close();
+					return callback(err);
+				}
+				actColl.findOne({_id : _id}, function(err, act) {
+					if (err) {
+						db.close();
+						return callback(err);
+					} 
+					callback(err, act);
+				});
+			});
+		});
+	});
+}
+// 拒绝用户申请
+Activity.reject = function reject(openId, id, callback) {
+	var _id = new ObjectID(id);
+	db.open(function(err, db) {
+		if (err) {
+			return callback(err);
+		}
+		db.collection('activities', function(err, actColl) {
+			if (err) {
+				db.close();
+				return callback(err);
+			}
+			actColl.update({_id : _id, 'applications.openId' : openId}, {$set:{'applications.$.status' : '拒绝'}}, function(err) {
+				if (err) {
+					db.close();
+					return callback(err);
+				}
+				actColl.findOne({_id : _id}, function(err, act) {
+					if (err) {
+						db.close();
+						return callback(err);
+					} 
+					callback(err, act);
+				});
+			});
+		});
+	});
+}
 
 // 返回新的申请信息
 Activity.newApplication = function newApplication(mem, isOwner) {

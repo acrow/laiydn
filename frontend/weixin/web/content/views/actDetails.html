@@ -8,7 +8,7 @@
     <p data-ng-show="act.amount">活动费用：{{act.amount | currency:"&yen;"}}&nbsp;<span data-ng-show="act.maxUsers">（人均：{{act.amount/acceptCount | currency:"&yen;"}}）</p>
     <p data-ng-show='waitingCount>0 && isOwner'>申请者 {{waitingCount}} 人，等待你的批准 ：</p>
     <p data-ng-show='waitingCount>0 && isOwner' data-ng-repeat="mem in act.applications | memImg | orderBy:'applicationTime' | filter: {status: '申请中'}">
-      &nbsp;&nbsp;<img data-ng-src="{{mem.headImgUrl}}" alt="" style="height:15px;"> {{mem.nickName}}<span class="badge" data-ng-show='mem.userCount > 1'>{{mem.userCount}}</span> <button type="button" class="btn btn-success">接受</button> <button type="button" class="btn btn-danger">拒绝</button> <br>
+      &nbsp;&nbsp;<img data-ng-src="{{mem.headImgUrl}}" alt="" style="height:15px;"> {{mem.nickName}}<span class="badge" data-ng-show='mem.userCount > 1'>{{mem.userCount}}</span> <button type="button" class="btn btn-success" data-ng-click="approve(mem.openId)">接受</button> <button type="button" class="btn btn-danger" data-ng-click="reject(mem.openId)">拒绝</button> <br>
     </p>
     <p>参加者共 <span class="badge">{{acceptCount}}</span> 人 ：</p>
     <p>
@@ -17,9 +17,11 @@
       </span>
     </p>
     <div class="alert alert-info text-center" role="alert" data-ng-show="isWaiting"><span class="glyphicon glyphicon-exclamation-sign"></span> 已申请<span data-ng-show='userCount > 1'><span class="badge">{{userCount}}</span>人参加</span>，等待批准 &hellip;</div>
+    <div class="alert alert-danger text-center" role="alert" data-ng-show="isReject"><span class="glyphicon glyphicon-exclamation-sign"></span> 真遗憾，您的申请被发起者拒绝了！</div>
 
     <button type="button" class="btn btn-success btn-block btn-lg" data-ng-hide="isJoined || isWaiting" role="button" data-ng-click="join()" title="参加"><span class="glyphicon glyphicon-thumbs-up"> 申请参加</button>
-    <button type="button" class="btn btn-success btn-block btn-lg" data-ng-show="isJoined || isWaiting" role="button" data-ng-click="plus()" title="+1"><span class="glyphicon glyphicon-plus-sign"> 追加一人</button>
+    <button type="button" class="btn btn-success btn-block btn-lg" data-ng-show="isJoined
+     || isWaiting" role="button" data-ng-click="plus()" title="+1"><span class="glyphicon glyphicon-plus-sign"> 追加一人</button>
     <button type="button" class="btn btn-danger btn-block btn-lg" data-ng-show="isOver1" role="button" data-ng-click="minus()" title="-1"><span class="glyphicon glyphicon-minus-sign"> 减少一人</button>
     
     <button type="button" class="btn btn-primary btn-block btn-lg" data-ng-show="isOwner" role="button" data-ng-click="modify()" title="修改"><span class="glyphicon glyphicon-pencil"> 修改活动</button>

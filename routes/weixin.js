@@ -84,12 +84,13 @@ router.get('/usr', function(req, res, next) {
 
 /******************************* web page ***********************************/
 // 检查用户是否已经认证，未认证则执行认证
+
 function checkAuth(req, res) {
     if (!req.session.usr) {
         // 当前访问的url
         var url = 'http://' + setting.host + req.baseUrl + req.url; 
         // 微信验证成功后返回的url
-        url = "http://www.laiyd.com/weixin/web/auth?redirect_uri=" + encodeURIComponent(url); 
+        url = "http://www.laiyd.cn/weixin/web/auth?redirect_uri=" + encodeURIComponent(url); 
         // 微信验证用的url
         url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ setting.weixinAppId +'&redirect_uri='+ encodeURIComponent(url) +'&response_type=code&scope=snsapi_base#wechat_redirect';
         // 跳转到微信认证
@@ -131,14 +132,14 @@ router.get('/web/myAct', function(req, res, next) {
 router.get('/web/editAct', function(req, res, next) {
     if (checkAuth(req, res)) { // 要求用户认证
         //res.render('actEdit');
-        res.redirect('http://www.laiyd.com/weixin/web/myAct#/edit')
+        res.redirect('http://www.laiyd.cn/weixin/web/myAct#/edit')
     }
 });
 // 搜索活动画面
 router.get('/web/searchAct', function(req, res, next) {
     if (checkAuth(req, res)) { // 要求用户认证
         //res.render('actSearch');
-        res.redirect('http://www.laiyd.com/weixin/web/myAct#/search')
+        res.redirect('http://www.laiyd.cn/weixin/web/myAct#/search')
     }
 });
 // 查看活动画面
@@ -178,7 +179,7 @@ router.get('/web/viewAct/:actId', function(req, res, next) {
         }
         var jsConfig = '';
         if (req.query.isShare) { // 如果是分享
-            var url = 'http://www.laiyd.com/weixin' + req.url;
+            var url = 'http://www.laiyd.cn/weixin' + req.url;
             url = decodeURIComponent(url);
             jsConfig = JSON.stringify(wxHandler.generatePageConfig(url));
             act.shareMsg = act.content + ' ' + act.startTime + ' ' + act.address;
