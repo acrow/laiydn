@@ -153,9 +153,15 @@ router.get('/web/viewAct/:actId', function(req, res, next) {
         }
 
         Activity.join(openId, req.params.actId, function(err, act) {
-            // var url = 'http://www.laiyd.cn/weixin' + req.url;
-            // res.redirect(url);
+             var url = 'http://www.laiyd.cn/weixin' + req.url;
+             url = url.replace('&isJoin=1', '');
+             url = url.replace('?isJoin=1', '?');
+             if (url.substring(url.length - 1) == '?') {
+                url = url.substring(0, url.length - 1);
+             }
+             res.redirect(url);
         });
+        return false;
     }
  
 
