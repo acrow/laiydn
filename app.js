@@ -18,7 +18,7 @@ var app = express();
 
 
 // view engine setup
-app.set('views', path.join(__dirname, 'frontend/weixin/web'));
+app.set('views', path.join(__dirname, 'www/weixin'));
 app.set('view engine', 'ejs');
 // app.engine('.html', ejs.__express);
 // app.set('view engine', 'html');
@@ -37,7 +37,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
-app.use(express.static(path.join(__dirname, 'frontend')));
+app.use(express.static(path.join(__dirname, 'www')));
 
 app.use('/', routes);
 app.use('/users', users);

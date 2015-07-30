@@ -90,7 +90,7 @@ function checkAuth(req, res) {
         // 当前访问的url
         var url = 'http://' + setting.host + req.baseUrl + req.url; 
         // 微信验证成功后返回的url
-        url = "http://www.laiyd.cn/weixin/web/auth?redirect_uri=" + encodeURIComponent(url); 
+        url = "http://www.laiyd.com/weixin/auth?redirect_uri=" + encodeURIComponent(url); 
         // 微信验证用的url
         url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ setting.weixinAppId +'&redirect_uri='+ encodeURIComponent(url) +'&response_type=code&scope=snsapi_base#wechat_redirect';
         // 跳转到微信认证
@@ -100,7 +100,7 @@ function checkAuth(req, res) {
     return true;
 }
 // 用户认证时需要跳转到此地址
-router.get('/web/auth', function(req, res, next) {
+router.get('/auth', function(req, res, next) {
     wxHandler.authorize(req, req.query.code);
     res.redirect(req.query.redirect_uri);
 });
@@ -120,27 +120,27 @@ router.get('/web', function(req, res, next) {
     res.render('index'); 
 });
 // 我的活动画面
-router.get('/web/myAct', function(req, res, next) {
+router.get('/actmine', function(req, res, next) {
     if (checkAuth(req, res)) { // 要求用户认证
         res.render('actMine');    
     }
 });
 // 编辑活动画面
-router.get('/web/editAct', function(req, res, next) {
+router.get('/actedit', function(req, res, next) {
     if (checkAuth(req, res)) { // 要求用户认证
         //res.render('actEdit');
-        res.redirect('http://www.laiyd.cn/weixin/web/myAct#/edit')
+        res.redirect('http://www.laiyd.com/weixin/actmine#/edit')
     }
 });
 // 搜索活动画面
-router.get('/web/searchAct', function(req, res, next) {
+router.get('/actsearch', function(req, res, next) {
     if (checkAuth(req, res)) { // 要求用户认证
         //res.render('actSearch');
-        res.redirect('http://www.laiyd.cn/weixin/web/myAct#/search')
+        res.redirect('http://www.laiyd.com/weixin/actmine#/search')
     }
 });
 // 查看活动画面
-router.get('/web/viewAct/:actId', function(req, res, next) {
+router.get('/actview', function(req, res, next) {
     var openId = '';
     var isJoined = 0;
     var msg = '';
@@ -152,8 +152,8 @@ router.get('/web/viewAct/:actId', function(req, res, next) {
             return false;
         }
 
-        Activity.join(openId, req.params.actId, function(err, act) {
-             var url = 'http://www.laiyd.cn/weixin' + req.url;
+        Activity.join(openId, req.query.actId, function(err, act) {
+             var url = 'http://www.laiyd.com/weixin' + req.url;
              url = url.replace('&isJoin=1', '');
              url = url.replace('?isJoin=1', '?');
              if (url.substring(url.length - 1) == '?') {
@@ -165,7 +165,7 @@ router.get('/web/viewAct/:actId', function(req, res, next) {
     }
  
 
-    Activity.get(req.params.actId, function(err, act) {
+    Activity.get(req.query.actId, function(err, act) {
         act.userCount = 0;
         
         if (act.applications) {
@@ -188,12 +188,10 @@ router.get('/web/viewAct/:actId', function(req, res, next) {
             }
         }
         var jsConfig = '';
-        if (req.query.isShare) { // 如果是分享
-            var url = 'http://www.laiyd.cn/weixin' + req.url;
-            url = decodeURIComponent(url);
-            jsConfig = JSON.stringify(wxHandler.generatePageConfig(url));
-            act.shareMsg = act.content + ' ' + act.startTime + ' ' + act.address;
-        }
+        var url = 'http://www.laiyd.com/weixin' + req.url;
+        url = decodeURIComponent(url);
+        jsConfig = JSON.stringify(wxHandler.generatePageConfig(url));
+        act.shareMsg = act.content + ' ' + act.startTime + ' ' + act.address;
         var str = JSON.stringify(act);
         res.render('actView',{activity: act, actStr: str, isShare: req.query.isShare, jsConfig: jsConfig, openId: openId, isJoined: isJoined, msg: msg});
     });

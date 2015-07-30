@@ -6,13 +6,12 @@
 <meta name="viewport" content="width=device-width,user-scalable=no"/> 
 <title>来运动</title>
 <% include _jhead.ejs %>
-<link href="http://www.laiyd.cn/weixin/web/css/calendar.css" rel="stylesheet">
+<link href="http://www.laiyd.com/weixin/css/calendar.css" rel="stylesheet">
 </head>
 <body data-ng-init='act=<%- actStr %> | actImg;' class="container">
 <div class="page-header text-primary" >
   <h2><span class="glyphicon glyphicon-qrcode"></span> 来运动活动分享</h2>
 </div>
-{{usr}}
 <div class=" text-left">
 	<h1><%= activity.type %>活动</h1><small><%= activity.status %></small>
 	<div class='row'>
@@ -71,15 +70,13 @@
     <% } else { %>
     	<button type="button" class="btn btn-success btn-block btn-lg" role="button" onClick="join('<%= activity._id %>')" title="参加"><span class="glyphicon glyphicon-thumbs-up"> 申请参加</button>
     <% } %>
-	isShare:<%- isShare %> isJoined:<%- isJoined %> openId:<%- openId %>
 	<br>
 </div>
 <% include _jfoot.ejs %>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=RkM9Z0ujZ8xDwuR19bdLGUmO"></script>
-<script src="http://www.laiyd.cn/js/calendar.js"></script>
+<script src="http://www.laiyd.com/js/calendar.js"></script>
 
 <script language="JavaScript">
-<% if (isShare) { %>
 	// 微信js配置
 	var jsConfig = <%- jsConfig %>;
 	if (jsConfig) {
@@ -93,8 +90,8 @@
 			wx.onMenuShareAppMessage({ 
 			    title: '【来运动】吧！<%= activity.type %>活动分享，<%= activity.startTime %>，<%= activity.hours %>', // 分享标题
 			    desc: '<%= activity.content %>，<%= activity.address %>', // 分享描述
-			    link: location.href.split('?')[0], // 分享链接
-			    imgUrl: 'http://www.laiyd.cn/weixin/web/img/111.png', // 分享图标
+			    link: location.href.split('&')[0], // 分享链接
+			    imgUrl: 'http://www.laiyd.com/weixin/img/111.png', // 分享图标
 			    // type: '', // 分享类型,music、video或link，不填默认为link
 			    // dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
 			    success: function () { 
@@ -108,8 +105,8 @@
 			// 分享给朋友圈
 			wx.onMenuShareTimeline({
 			    title: '【来运动】吧！<%= activity.type %>活动分享，<%= activity.startTime %>，<%= activity.hours %>，<%= activity.address %>', // 分享标题
-			    link: location.href.split('?')[0], // 分享链接
-			    imgUrl: 'http://www.laiyd.cn/weixin/web/img/111.png', // 分享图标
+			    link: location.href.split('&')[0], // 分享链接
+			    imgUrl: 'http://www.laiyd.com/weixin/img/111.png', // 分享图标
 			    // type: '', // 分享类型,music、video或link，不填默认为link
 			    // dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
 			    success: function () { 
@@ -122,7 +119,6 @@
 			});
 		});
 	}
-<% } %>	
 
 	// 显示日历
 	var cale = new Calendar("idCalendar", {

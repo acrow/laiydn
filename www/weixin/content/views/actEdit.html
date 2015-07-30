@@ -2,8 +2,6 @@
 <div class="page-header text-primary">
   <h2><span class="glyphicon glyphicon-pencil"></span> 活动编辑</h2>
 </div>
-usr:
-{{usr}}
 <form name="actForm" class="form-horizontal" >
 	<div class="form-group">
 		<label class="col-xs-3 control-label">活动类型</label>
@@ -80,9 +78,8 @@ usr:
 
 <button class="btn btn-success btn-block btn-lg" data-ng-click="onSave()"><span class="glyphicon glyphicon-send"></span> 保存发布</button>
 <br>
-	{{activity}}
-<script type="text/javascript" src="http://www.laiyd.cn/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
-<script type="text/javascript" src="http://www.laiyd.cn/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript" src="http://www.laiyd.com/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="http://www.laiyd.com/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 <script type="text/javascript">
     var endate = new Date();
     endate.setDate(endate.getDate() + 30);
@@ -102,6 +99,3 @@ usr:
         endDate: endate
     });
 </script>
- <!--
- <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=RkM9Z0ujZ8xDwuR19bdLGUmO"></script>
--->

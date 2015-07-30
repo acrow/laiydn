@@ -154,35 +154,10 @@ laiydApp.directive('actDetails', function() {
 				$window.alert('modify');
 			};
 
-			$scope.shareFirend = function() {
-				// try {
-				// 	var bLevel = {
-				//         qq: {forbid: 0, lower: 1, higher: 2},
-				//         uc: {forbid: 0, allow: 1}
-				//     };
-				//     var UA = navigator.appVersion;
-				//     var isqqBrowser = (UA.split("MQQBrowser/").length > 1) ? bLevel.qq.higher : bLevel.qq.forbid;
-				//     var isucBrowser = (UA.split("UCBrowser/").length > 1) ? bLevel.uc.allow : bLevel.uc.forbid;
-
-				//     $window.alert(browser);
-				// } catch (e) {
-				// 	$window.alert('err:' + JSON.stringify(e));
-				// }
-				$window.location.href = 'http://www.laiyd.cn/weixin/web/viewAct/' + $scope.act._id + '?isShare=1';
+			$scope.showShare = function() {
+				$window.location.href = 'http://www.laiyd.com/weixin/actview?actId=' + $scope.act._id + '&isShare=1';
 			};
 
-			$scope.shareCircle = function() {
-				var Browser = new Object();
-                Browser.ios = /iphone/.test(Browser.userAgent); //判断ios系统 
-                var title = document.title;
-                var img = "";
-                var url = location.href;
-                if (Browser.ios) {
-                    ucbrowser.web_share(title, img, url, 'kWeixinFriend', '', '', '');
-                } else {
-                    ucweb.startRequest("shell.page_share", [title, img, url, 'WechatTimeline', '', '', '']);
-                };
-			}
 		}]
 	};
 });
