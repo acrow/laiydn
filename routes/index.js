@@ -3,8 +3,10 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	res.render('index', {title:'laiyd'});
+	// res.render('./web/index', {title:'laiyd'});
+	res.redirect('/view/web');
 });
+
 
 module.exports = router;
 

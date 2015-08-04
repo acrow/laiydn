@@ -18,7 +18,7 @@ var app = express();
 
 
 // view engine setup
-app.set('views', path.join(__dirname, 'www/weixin'));
+app.set('views', path.join(__dirname, 'www/view/weixin'));
 app.set('view engine', 'ejs');
 // app.engine('.html', ejs.__express);
 // app.set('view engine', 'html');

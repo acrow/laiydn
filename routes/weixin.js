@@ -122,7 +122,7 @@ router.get('/web', function(req, res, next) {
 // 我的活动画面
 router.get('/actmine', function(req, res, next) {
     if (checkAuth(req, res)) { // 要求用户认证
-        res.render('actMine');    
+        res.render('./weixin/actMine');    
     }
 });
 // 编辑活动画面
