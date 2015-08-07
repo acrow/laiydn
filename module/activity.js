@@ -43,9 +43,9 @@ Activity.prototype.save = function save(callback) {
 				db.close();
 				return callback(err);
 			}
-			collection.save(activity, function(err,activity) {
+			collection.save(activity, function(err, result) {
 				db.close();
-				callback(err, activity);
+				callback(err, result.ops[0]);
 			});
 		});
 		
