@@ -197,7 +197,7 @@ router.get('/actview', function(req, res, next) {
         jsConfig = JSON.stringify(wxHandler.generatePageConfig(url));
         act.shareMsg = act.content + ' ' + act.startTime + ' ' + act.address;
         var str = JSON.stringify(act);
-        res.render('actView',{activity: act, actStr: str, isShare: req.query.isShare, jsConfig: jsConfig, openId: openId, isJoined: isJoined, msg: msg});
+        res.render('./weixin/actView',{activity: act, actStr: str, isShare: req.query.isShare, jsConfig: jsConfig, openId: openId, isJoined: isJoined, msg: msg});
     });
 });
 
