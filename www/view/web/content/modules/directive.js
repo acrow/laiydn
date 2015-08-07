@@ -1,43 +1,3 @@
-var laiydApp = angular.module('laiyd', ['ngRoute','resource']);
-
-laiydApp.config(['$routeProvider', function ($routeProvider) {
-	$routeProvider
-	.when('/mine', {
-		templateUrl:'content/views/myAct.html',
-		controller: 'myActCtl'
-	})
-	.when('/edit', {
-		templateUrl:'content/views/actEdit.html',
-		controller: 'actEditCtl'
-	})
-	.when('/edit/:id', {
-		templateUrl:'content/views/actEdit.html',
-		controller: 'actEditCtl'
-	})
-	.when('/view/:id', {
-		templateUrl:'content/views/actView.html',
-		controller: 'actViewCtl'
-	})
-	.when('/apply/:id', {
-		templateUrl:'content/views/actApply.html',
-		controller: 'actApplyCtl'
-	})
-	.when('/search', {
-		templateUrl:'content/views/actSearch.html',
-		controller: 'actSearchCtl'
-	})
-	.when('/login', {
-		templateUrl:'content/views/login.html',
-		controller: 'loginCtl'
-	})
-	.when('/reg', {
-		templateUrl:'content/views/reg.html',
-		controller: 'regCtl'
-	})
-	.otherwise({
-        redirectTo: '/mine'
-    });
-}]);
 
 laiydApp.directive('actDetails', function() {
 	return {
@@ -48,7 +8,7 @@ laiydApp.directive('actDetails', function() {
 		},
 		templateUrl: 'content/views/actDetails.html',
 		require: ['resource'],
-		controller: ['$scope', '$rootScope', '$window', 'Activity', function($scope, $rootScope, $window, Activity) {
+		controller: ['$scope', '$rootScope', '$window', 'Activity', 'loading', 'prompt', function($scope, $rootScope, $window, Activity, loading, prompt) {
 			
 			function refresh() {
 				$scope.isJoined = false; // 是否是参与者
@@ -73,6 +33,7 @@ laiydApp.directive('actDetails', function() {
 			}
 			refresh();
 			$scope.join = function() {
+				prompt.show('really?', function() {$window.alert('yes');})
 				Activity.join(
 					{openId: $rootScope.usr.openId, id: $scope.act._id},
 					function(result) {
@@ -129,9 +90,5 @@ laiydApp.directive('actDetails', function() {
 			};
 		}]
 	};
-});
-
-laiydApp.run( function($rootScope) {
-	
 });
 

@@ -2,19 +2,19 @@ laiydApp.controller('actMineCtl', function($scope, $window, Activity, Weixin, $r
 	$scope.isLoaded = false;
 	$scope.isEmpty = true;
 
-	wxMethods.jsConfig().then(wxMethods.getCurrentUser).then(wxMethods.getMyActivities).then(function(activities) {
-		if (activities && activities.length > 0) {
-			$scope.isEmpty = false;
-			$scope.activities = activities;
-		}
-	})
-	.catch(function(err) {
-		$window.alert(err);
-	})
-	.finally(function() {
-		wx.hideOptionMenu(); // 隐藏右上角菜单
-		$scope.isLoaded = true;
-	});
+	// wxMethods.jsConfig().then(wxMethods.getCurrentUser).then(wxMethods.getMyActivities).then(function(activities) {
+	// 	if (activities && activities.length > 0) {
+	// 		$scope.isEmpty = false;
+	// 		$scope.activities = activities;
+	// 	}
+	// })
+	// .catch(function(err) {
+	// 	$window.alert(err);
+	// })
+	// .finally(function() {
+	// 	wx.hideOptionMenu(); // 隐藏右上角菜单
+	// 	$scope.isLoaded = true;
+	// });
 
 	$scope.encodeURI = function(url) {
 		return encodeURI(encodeURI(angular.toJson(url)));
@@ -64,12 +64,10 @@ laiydApp.controller('actMineCtl', function($scope, $window, Activity, Weixin, $r
 
 	$scope.goSearch = function() {
 		$location.url('/search');
-		//$window.location.href='http://www.laiyd.com/weixin/searchAct';
 	};
 
 	$scope.goEdit = function() {
 		$location.url('/edit');
-		//$window.location.href='http://www.laiyd.com/weixin/editAct';
 	};
 });
 

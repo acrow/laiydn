@@ -5,18 +5,18 @@ laiydApp.filter('actImg',function() {
 				var act = input[i];
 				if (!act.img) {
 					if (act.type == '羽毛球') {
-						act.img = 'http://www.laiyd.com/weixin/img/yumaoqiu.png';
+						act.img = '/view/weixin/img/yumaoqiu.png';
 					} else if (act.type == '足球') {
-						act.img = 'http://www.laiyd.com/weixin/img/zuqiu.png';
+						act.img = '/view/weixin/img/zuqiu.png';
 					}
 				} 
 			}
 		} else if (input) {
 			if (!input.img) {
 				if (input.type == '羽毛球') {
-					input.img = 'http://www.laiyd.com/weixin/img/yumaoqiu.png';
+					input.img = '/view/weixin/img/yumaoqiu.png';
 				} else if (input.type == '足球') {
-					input.img = 'http://www.laiyd.com/weixin/img/zuqiu.png';
+					input.img = '/view/weixin/img/zuqiu.png';
 				}
 			} 
 		}
@@ -31,14 +31,14 @@ laiydApp.filter('memImg',function() {
 			for (var i = 0; i < input.length; i++) {
 				var mem = input[i];
 				if (!mem.headImgUrl) {
-					mem.headImgUrl = 'http://www.laiyd.com/weixin/img/111.png'
+					mem.headImgUrl = '/view/weixin/img/111.png'
 				} else {
 					mem.headImgUrl = decodeURIComponent(mem.headImgUrl);
 				}
 			}
 		} else if (input) {
 			if (!input.headImgUrl) {
-				input.headImgUrl = 'http://www.laiyd.com/weixin/img/111.png'
+				input.headImgUrl = '/view/weixin/img/111.png'
 			} else {
 				mem.headImgUrl = decodeURIComponent(mem.headImgUrl);
 			}

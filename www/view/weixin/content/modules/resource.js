@@ -11,34 +11,34 @@ angular.module('resource', ['ngResource'])
 
 			}]).factory('Activity', ['$resource', function ($resource, appConfig) {
 				return $resource(
-									'http://www.laiyd.com/data/activity',
+									'/data/activity',
 									null, 
 									{
 										'getAll' 		:	{ method : 'GET' , isArray : true },
-										'getOnePage'	:	{ method : 'GET' , url : 'http://www.laiyd.com/data/activity/Search/:count/:page', params : {SearchTerm : "", Status:"", count : 5, page : 1 } },
+										'getOnePage'	:	{ method : 'GET' , url : '/data/activity/Search/:count/:page', params : {SearchTerm : "", Status:"", count : 5, page : 1 } },
 
-										'getSrById' 	:	{ method : 'GET' , url : 'http://www.laiyd.com/data/activity/ServiceRequest/:id', params : { id : 0} },
+										'getSrById' 	:	{ method : 'GET' , url : '/data/activity/ServiceRequest/:id', params : { id : 0} },
 										'update' 		:	{ method : 'PUT'  },
 										'create' 		:	{ method : 'POST' },
-										'query'			:   { method : 'GET', url : 'http://www.laiyd.com/data/activity/query/:activity', isArray : true},
-										'myActivities'	:   { method : 'GET' , isArray : true , url : 'http://www.laiyd.com/data/activity/myActivities/:openId' },
-										'join'			:   { method : 'GET' , url : 'http://www.laiyd.com/data/activity/join/:openId/:id' },
-										'quit'			:   { method : 'GET' , url : 'http://www.laiyd.com/data/activity/quit/:openId/:id' },
-										'plus'			:   { method : 'GET' , url : 'http://www.laiyd.com/data/activity/plus/:openId/:id' },
-										'minus'			:   { method : 'GET' , url : 'http://www.laiyd.com/data/activity/minus/:openId/:id' },
-										'approve'			:   { method : 'GET' , url : 'http://www.laiyd.com/data/activity/approve/:openId/:id' },
-										'reject'			:   { method : 'GET' , url : 'http://www.laiyd.com/data/activity/reject/:openId/:id' }
+										'query'			:   { method : 'GET', url : '/data/activity/query/:activity', isArray : true},
+										'myActivities'	:   { method : 'GET' , isArray : true , url : '/data/activity/myActivities/:openId' },
+										'join'			:   { method : 'GET' , url : '/data/activity/join/:openId/:id' },
+										'quit'			:   { method : 'GET' , url : '/data/activity/quit/:openId/:id' },
+										'plus'			:   { method : 'GET' , url : '/data/activity/plus/:openId/:id' },
+										'minus'			:   { method : 'GET' , url : '/data/activity/minus/:openId/:id' },
+										'approve'			:   { method : 'GET' , url : '/data/activity/approve/:openId/:id' },
+										'reject'			:   { method : 'GET' , url : '/data/activity/reject/:openId/:id' }
 									}
 								);
 
 
 			}]).factory('Weixin', ['$resource', function ($resource, appConfig) {
 				return $resource(
-									'http://www.laiyd.com/weixin',
+									'/weixin',
 									null, 
 									{
-										'getConfig' 	:	{ method : 'GET' , url : 'http://www.laiyd.com/weixin/getConfig'},
-										'getCurrentUser':   { method : 'GET' , url : 'http://www.laiyd.com/weixin/usr'}
+										'getConfig' 	:	{ method : 'GET' , url : '/weixin/getConfig'},
+										'getCurrentUser':   { method : 'GET' , url : '/weixin/usr'}
 									}
 								);
 

@@ -42,7 +42,7 @@ laiydApp.factory("prompt", ['$modal', function($modal) {
   		info = "确定要继续吗？";
   	}
     this.modalInstance = $modal.open({
-      templateUrl: '/view/weixin/content/views/prompt.html',
+      templateUrl: 'content/views/prompt.html',
       backdrop : true,
       keyboard : true,
       controller: ['$scope', '$modalInstance',function ($scope, $modalInstance) {

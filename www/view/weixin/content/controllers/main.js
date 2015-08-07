@@ -65,18 +65,16 @@ laiydApp.controller('actMineCtl', function($scope, $window, Activity, Weixin, $r
 
 	$scope.goSearch = function() {
 		$location.url('/search');
-		//$window.location.href='http://www.laiyd.com/weixin/searchAct';
 	};
 
 	$scope.goEdit = function() {
 		$location.url('/edit');
-		//$window.location.href='http://www.laiyd.com/weixin/editAct';
 	};
 });
 
 laiydApp.controller('actEditCtl', function($scope, $routeParams, $window, Activity, $rootScope, loading, wxMethods, Weixin) {
 	$scope.isLoaded = false;
-	$scope.types = ['羽毛球','足球','篮球','乒乓球'];
+	$scope.types = ['羽毛球','足球','篮球','乒乓球','骑行','远足','聚餐','广场舞'];
 	$scope.hours = ['1小时','2小时','3小时','4小时','5小时','6小时','7小时','8小时','8小时','10小时','11小时','12小时','不限时'];
 	$scope.auditMethods = ['自动通过','需要我批准'];
 	wxMethods.jsConfig().then(wxMethods.getCurrentUser)

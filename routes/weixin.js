@@ -90,7 +90,7 @@ function checkAuth(req, res) {
         // 当前访问的url
         var url = 'http://' + setting.host + req.baseUrl + req.url; 
         // 微信验证成功后返回的url
-        url = "http://www.laiyd.com/weixin/auth?redirect_uri=" + encodeURIComponent(url); 
+        url = 'http://' + setting.host + '/weixin/auth?redirect_uri=' + encodeURIComponent(url); 
         // 微信验证用的url
         url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+ setting.weixinAppId +'&redirect_uri='+ encodeURIComponent(url) +'&response_type=code&scope=snsapi_base#wechat_redirect';
         // 跳转到微信认证
@@ -129,15 +129,19 @@ router.get('/actmine', function(req, res, next) {
 router.get('/actedit', function(req, res, next) {
     if (checkAuth(req, res)) { // 要求用户认证
         //res.render('actEdit');
-        res.redirect('http://www.laiyd.com/weixin/actmine#/edit')
+        res.redirect('http://' + setting.host + '/weixin/actmine#/edit')
     }
 });
 // 搜索活动画面
 router.get('/actsearch', function(req, res, next) {
     if (checkAuth(req, res)) { // 要求用户认证
         //res.render('actSearch');
-        res.redirect('http://www.laiyd.com/weixin/actmine#/search')
+        res.redirect('http://' + setting.host + '/weixin/actmine#/search')
     }
+});
+// 设置画面
+router.get('/setting', function(req, res, next) {
+    res.render('./weixin/setting');
 });
 // 查看活动画面
 router.get('/actview', function(req, res, next) {
@@ -153,7 +157,7 @@ router.get('/actview', function(req, res, next) {
         }
 
         Activity.join(openId, req.query.actId, function(err, act) {
-             var url = 'http://www.laiyd.com/weixin' + req.url;
+             var url = 'http://' + setting.host + '/weixin' + req.url;
              url = url.replace('&isJoin=1', '');
              url = url.replace('?isJoin=1', '?');
              if (url.substring(url.length - 1) == '?') {
@@ -188,7 +192,7 @@ router.get('/actview', function(req, res, next) {
             }
         }
         var jsConfig = '';
-        var url = 'http://www.laiyd.com/weixin' + req.url;
+        var url = 'http://' + setting.host + '/weixin' + req.url;
         url = decodeURIComponent(url);
         jsConfig = JSON.stringify(wxHandler.generatePageConfig(url));
         act.shareMsg = act.content + ' ' + act.startTime + ' ' + act.address;

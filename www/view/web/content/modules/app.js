@@ -1,37 +1,37 @@
-var laiydApp = angular.module('laiyd', ['ngRoute','resource', 'ui.bootstrap']);
+var laiydApp = angular.module('laiyd', ['ngRoute', 'resource', 'ui.bootstrap']);
 
 laiydApp.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider
 	.when('/mine', {
-		templateUrl:'/view/weixin/content/views/actMine.html',
-		controller: 'actMineCtl'
+		templateUrl:'content/views/myAct.html',
+		controller: 'myActCtl'
 	})
 	.when('/edit', {
-		templateUrl:'/view/weixin/content/views/actEdit.html',
+		templateUrl:'content/views/actEdit.html',
 		controller: 'actEditCtl'
 	})
 	.when('/edit/:id', {
-		templateUrl:'/view/weixin/content/views/actEdit.html',
+		templateUrl:'content/views/actEdit.html',
 		controller: 'actEditCtl'
 	})
 	.when('/view/:id', {
-		templateUrl:'/view/weixin/content/views/actView.html',
+		templateUrl:'content/views/actView.html',
 		controller: 'actViewCtl'
 	})
 	.when('/apply/:id', {
-		templateUrl:'/view/weixin/content/views/actApply.html',
+		templateUrl:'content/views/actApply.html',
 		controller: 'actApplyCtl'
 	})
 	.when('/search', {
-		templateUrl:'/view/weixin/content/views/actSearch.html',
+		templateUrl:'content/views/actSearch.html',
 		controller: 'actSearchCtl'
 	})
 	.when('/login', {
-		templateUrl:'/view/weixin//views/login.html',
+		templateUrl:'content/views/login.html',
 		controller: 'loginCtl'
 	})
 	.when('/reg', {
-		templateUrl:'/view/weixin/content/views/reg.html',
+		templateUrl:'content/views/reg.html',
 		controller: 'regCtl'
 	})
 	.otherwise({
@@ -42,3 +42,4 @@ laiydApp.config(['$routeProvider', function ($routeProvider) {
 laiydApp.run( function($rootScope) {
 	
 });
+

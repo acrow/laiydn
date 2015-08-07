@@ -1,11 +1,13 @@
-laiydApp.controller('myActCtl', function($scope, $window, Activity, Weixin, $rootScope) {
+laiydApp.controller('myActCtl', function($scope, $window, Activity, prompt, $rootScope, loading) {
 	$rootScope.usr = {openId :'testusr', nickName : 'testusr'};
 	$scope.usr = $rootScope.usr;
+	loading.show();
 	Activity.getAll(
 		{},
 		function(result) {
 			if (result) {
 				$scope.activities = result;
+				loading.hide();
 			} else {
 				$scope.activities = [
 	                     {id : '12',type:'羽毛球',date:'2015/02/11', startTime:'17:30', endTime:'19:30', address:'广顺南大街东口民航干部管理学院运动中心', img:'yumaoqiu.png', content:'欢乐羽毛球俱乐部，欢迎大家热情参与。会员每人次30元，非会员每人次40元。含场地费，羽毛用球，不含服装与球拍，要求业余2级以上人员。谢谢合作！'},
@@ -36,7 +38,7 @@ laiydApp.controller('myActCtl', function($scope, $window, Activity, Weixin, $roo
 	// 	}
 	// );
 	$scope.showPrompt = function() {
-		prompt.show('');
+		prompt.show('就这样吧',function() {$window.alert('yes');});
 	}
 	
 	$scope.encodeURI = function(url) {

@@ -8,9 +8,9 @@ laiydApp.directive('actDetails', function() {
 			act: '=data',
 			onQuit: '=onQuit'
 		},
-		templateUrl: 'content/views/actDetails.html',
+		templateUrl: '/view/weixin/content/views/actDetails.html',
 		require: ['resource'],
-		controller: ['$scope', '$rootScope', '$window', 'Activity', 'loading', function($scope, $rootScope, $window, Activity, loading, prompt) {
+		controller: ['$scope', '$rootScope', '$window', 'Activity', 'loading', 'prompt', function($scope, $rootScope, $window, Activity, loading, prompt) {
 			
 			function refresh() {
 				$scope.isWaiting = false; // 是否尚未通过
@@ -69,23 +69,24 @@ laiydApp.directive('actDetails', function() {
 			};
 
 			$scope.quit = function() {
-				alert(prompt);
-				//prompt.show('');
-				// loading.show('');
-				// Activity.quit(
-				// 	{openId: $rootScope.usr.openId, id: $scope.act._id},
-				// 	function(result) {
-				// 		$scope.act = result;
-				// 		refresh();
-				// 		if (onQuit) {
-				// 			onQuit($scope.act._id);
-				// 		}
-				// 		loading.hide();
-				// 	},
-				// 	function(err) {
-				// 		$window.alert(JSON.stringify(err));
-				// 	}
-				// );
+				prompt.show('就这样退出了吗？', function() {
+					loading.show('');
+					Activity.quit(
+						{openId: $rootScope.usr.openId, id: $scope.act._id},
+						function(result) {
+							$scope.act = result;
+							refresh();
+							if (onQuit) {
+								onQuit($scope.act._id);
+							}
+							loading.hide();
+						},
+						function(err) {
+							$window.alert(JSON.stringify(err));
+						}
+					);	
+				});
+				
 			};
 
 			$scope.plus = function() {
@@ -155,7 +156,7 @@ laiydApp.directive('actDetails', function() {
 			};
 
 			$scope.showShare = function() {
-				$window.location.href = 'http://www.laiyd.com/weixin/actview?actId=' + $scope.act._id + '&isShare=1';
+				$window.location.href = '/weixin/actview?actId=' + $scope.act._id + '&isShare=1';
 			};
 
 		}]
