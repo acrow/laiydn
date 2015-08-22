@@ -105,12 +105,11 @@ laiydApp.controller('actEditCtl', function($scope, $routeParams, $window, Activi
 			{activity : $scope.activity},
 			function(result) {
 				loading.hide();
-				$window.alert(JSON.stringify(result));
 				$window.location.href = '/weixin/actview?actId=' + result._id + '&isShare=1';
 			},
 			function(err) {
 				loading.hide();
-				$window.alert(JSON.stringify(err));
+				$window.alert('Error:' + JSON.stringify(err));
 			}
 		);
 	};

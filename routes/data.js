@@ -39,7 +39,7 @@ router.route('/activity/:id?')
 				if (err) {
 					res.json(err);
 				} else {
-					res.json(act);
+					res.json(result);
 				}
 			});
 		}

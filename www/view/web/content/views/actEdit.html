@@ -7,62 +7,69 @@
 <hr />
 <form name="actForm" class="form-horizontal" >
 	<div class="form-group">
-		<label class="col-xs-2 control-label">活动类型</label>
-		<div class="col-xs-10">
-			<select class="form-control col-sm-10" data-ng-model="activity.type">
-				<option data-ng-repeat="value in types">{{value}}</option>
-			</select>
+		<label class="col-xs-3 control-label">活动类型</label>
+		<div class="col-xs-9">
+			<select class="form-control col-sm-10" data-ng-model="activity.type" data-ng-options="value for value in types"></select>
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-xs-2 control-label">活动日期</label>
-		<div class="col-xs-10">
-			<input type="date" class="form-control" data-ng-model="activity.date">
+        <label class="col-xs-3 control-label" for="dtp_input1">活动时间</label>
+        <div class="col-xs-9 ">
+	        <div class="input-group date form_datetime" data-date-format="yyyy/mm/dd hh:ii" data-link-field="dtp_input1">
+	            <input class="form-control" type="text" data-ng-model="activity.startTime" >
+	            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+				<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+	        </div>
+    	</div>
+		<input type="hidden" id="dtp_input1" /><br/>
+    </div>
+	<div class="form-group">
+		<label class="col-xs-3 control-label">活动时长</label>
+		<div class="col-xs-9">
+			<select class="form-control col-sm-10" data-ng-model="activity.hours" data-ng-options="value for value in hours"></select>
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-xs-2 control-label">开始时间</label>
-		<div class="col-xs-10">
-			<input type="time" class="form-control" data-ng-model="activity.startTime">
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-xs-2 control-label">结束时间</label>
-		<div class="col-xs-10">
-			<input type="time" class="form-control" data-ng-model="activity.endTime">
-		</div>
-	</div>
-	<div class="form-group">
-		<label class="col-xs-2 control-label">活动地点</label>
-		<div class="col-xs-10">
+		<label class="col-xs-3 control-label">活动地点</label>
+		<div class="col-xs-9">
 			<input type="text" class="form-control" data-ng-model="activity.address">
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-xs-2 control-label">活动内容</label>
-		<div class="col-xs-10">
+		<label class="col-xs-3 control-label">活动内容</label>
+		<div class="col-xs-9">
 			<textarea rows="3" class="form-control" data-ng-model="activity.content"></textarea>
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="col-xs-2 control-label"
-			title="活动人数少于最低人数时，活动将自动取消">人数限制</label>
-		<div class="col-xs-10">
-			<div class="row">
-				<div class="col-xs-5">
-					<input type="number" min="0" class="form-control" title="0表示不限制人数" data-ng-model="activity.minUsers">
-				</div>
-				<div class="col-xs-2">~</div>
-				<div class="col-xs-5">
-					<input type="number" min="0" class="form-control" title="0表示不限制人数" data-ng-model="activity.maxUsers">
-				</div>
+		<label class="col-xs-3 control-label" title="活动人数少于最低人数时，活动将自动取消">人数限制</label>
+		<div class="col-xs-9">
+			<div class="input-group">
+				<input type="number" min="0" class="form-control" title="0表示不限制人数" data-ng-model="activity.minUsers">
+				<div class="input-group-addon">~</div>
+				<input type="number" min="0" class="form-control" title="0表示不限制人数" data-ng-model="activity.maxUsers">
 			</div>
 		</div>
-
 	</div>
 	<div class="form-group">
-		<label class="col-xs-2 control-label">费用总额</label>
-		<div class="col-xs-10">
+		<label class="col-xs-3 control-label">人员审批</label>
+		<div class="col-xs-9">
+			<select class="form-control col-sm-10" data-ng-model="activity.auditMethod" data-ng-options="value for value in auditMethods"></select>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-xs-3 control-label">允许匿名</label>
+		<div class="col-xs-3 text-left">
+			<input type="checkbox" data-ng-model="activity.allowAnonymous" data-ng-true-value="'是'" data-ng-false-value="'否'">
+		</div>
+		<label class="col-xs-3 control-label">管理费用</label>
+		<div class="col-xs-3 text-left">
+			<input type="checkbox" data-ng-model="isManagerAmount" data-ng-true-value="1" data-ng-false-value="0">
+		</div>
+	</div>
+	<div class="form-group"data-ng-show="isManagerAmount">
+		<label class="col-xs-3 control-label">费用总额</label>
+		<div class="col-xs-9">
 			<div class="input-group">
 				<div class="input-group-addon">￥</div>
 				<input type="number" class="form-control" min="0" data-ng-model="activity.amount">
@@ -70,17 +77,28 @@
 			</div>
 		</div>
 	</div>
-	<div class="form-group">
-		<label class="col-xs-2 control-label">人员加入</label>
-		<div class="col-xs-10">
-			<select class="form-control col-sm-10" data-ng-model="activity.auditMethod">
-				<option data-ng-repeat="value in ['自动通过','需要我批准']">{{value}}</option>
-			</select>
-		</div>
-	</div>
 </form>
-{{activity}}
-<button class="btn btn-primary btn-block" data-ng-click="onSave()"><span
-	class="glyphicon glyphicon-floppy-save"></span> 保存</button>
-<a href="#/mine" class="btn btn-warning btn-block"><span
-	class="glyphicon glyphicon-remove"></span> 取消</a>
+
+<button class="btn btn-success btn-block btn-lg" data-ng-click="onSave()"><span class="glyphicon glyphicon-send"></span> 保存发布</button>
+<br>
+<script type="text/javascript" src="/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+    var endate = new Date();
+    endate.setDate(endate.getDate() + 30);
+    $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+        maxView: 2,
+		forceParse: 0,
+        showMeridian: 0,
+        language: 'zh-CN',
+        minuteStep: 30,
+        startDate: new Date(),
+        endDate: endate
+    });
+</script>

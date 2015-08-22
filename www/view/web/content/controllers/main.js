@@ -78,32 +78,38 @@ laiydApp.controller('myActCtl', function($scope, $window, Activity, prompt, $roo
 	};
 });
 
-laiydApp.controller('actEditCtl',function($scope, $routeParams, $window, $http, Activity, $rootScope) {
-	$scope.usr = {openId :'testusr', nickName : 'testusr'};
-	$scope.types = ['羽毛球','足球','篮球','乒乓球'];
+laiydApp.controller('actEditCtl',function($scope, $routeParams, $window, $http, Activity, $rootScope, loading) {
+	$scope.isLoaded = false;
+	$scope.types = ['羽毛球','足球','篮球','乒乓球','骑行','远足','聚餐','广场舞'];
+	$scope.hours = ['1小时','2小时','3小时','4小时','5小时','6小时','7小时','8小时','8小时','10小时','11小时','12小时','不限时'];
+	$scope.auditMethods = ['自动通过','需要我批准'];
+
 	if ($routeParams.id) {
 		$scope.activity = $routeParams.id;
 	} else {
 		$scope.activity = {
-				type : '羽毛球'
-		}
+				type : '羽毛球',
+				minUsers : 2,
+				auditMethod : '自动通过',
+				hours : '2小时',
+				allowAnonymous :'是'
+		};
 	}
 	$scope.onSave = function() {
-		$scope.activity.members = [{openId : $scope.usr.openId, nickName : $scope.usr.nickName, headImgUrl : $scope.usr.headImgUrl, userCount : 1, owner : true}];
+		$scope.activity.applications = [{openId : 'test'}];
+		loading.show('正在保存...');
 		Activity.create(
 			{},
 			{activity : $scope.activity},
 			function(result) {
-				$window.alert(result);
+				loading.hide();
+				$window.location.href = '/weixin/actview?actId=' + result._id + '&isShare=1';
 			},
 			function(err) {
-				$window.alert(err);
+				loading.hide();
+				$window.alert('Error:' + JSON.stringify(err));
 			}
 		);
-		// $http.post('./svc/addAct',  $scope.activity)
-		// .success(function() {			
-		// 	$window.alert(angular.toJson($scope.activity));
-		// });
 	}
 });
 
